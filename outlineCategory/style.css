@@ -4,6 +4,7 @@ body {
     min-height: 100vh;
     margin: 0;
 }
+
 .list-unstyled.custom-list li a {
     text-decoration: none; 
     color: white;
@@ -15,10 +16,9 @@ body {
     padding-top: 20px;
 }
 
-#carouselExample {
+#carouselExample ,#boxesCarousel{
     width: 100%;
     overflow: hidden;
-    /* opacity: 50%; */
     border-radius: 20px;
     max-height: 300px;
     position: relative;
@@ -29,6 +29,7 @@ body {
     border: 2px solid white;
     border-radius: 20px;
     position: relative;
+    
 }
 
 .carousel-item img {
@@ -36,6 +37,7 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
 
 h1{
     font-family: "Mansalva",sans-serif;
@@ -61,12 +63,54 @@ h1{
 .line p {
     font-family: "Jockey One", sans-serif;
     font-size: 20px;
-    margin: 0 30px; /* ระยะห่างขอบข้างของข้อความ */
+    margin: 0 30px; 
+}
+@media (max-width: 767px) {
+  .line {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .line p {
+    text-align: center;
+  }
+  #carouselExample,
+  #boxesCarousel {
+      border-radius: 0;
+  }
+
+  .carousel-container {
+      margin: 20px;
+  }
 }
 
 hr {
     flex: 1;
     height: 5px;
     background-color: green;
-    /* margin: 20px 0; */
 }
+
+.box{
+    background-color: antiquewhite;
+    height: 300px;
+    /* width: 200px; */
+    border: 1px solid black;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#boxesCarousel .carousel-control-prev,
+#boxesCarousel .carousel-control-next {
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(242, 78, 78);
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+
