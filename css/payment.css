@@ -2,15 +2,19 @@
 .paymentmethod{
   width: 100%;
   background-color: antiquewhite; 
-  border-radius: 5px; 
-  display: flex;  
+  border-radius: 5px;
+  /* display: flex;   */
   /* align-items: center;
   justify-content: center; */
 }
 .paymentchoice{
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
   margin-left: 30px;
   margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative; 
 }
 .rounded.border.w-100.p-3 {
   /* เพิ่มความยาวเพื่อให้กล่องข้อความยาวขึ้น */
@@ -19,6 +23,14 @@
   border-radius: 10px; /* ปรับขนาดของมุมกล่อง */
   border-color: #ccc; /* เปลี่ยนสีของเส้นขอบ */
   border-width: 2px; /* ปรับความหนาของเส้นขอบ */
+  margin-top: 10px;
+  font-family: "Josefin Sans", sans-serif;
+}
+.bank-item {
+  font-family: "Josefin Sans", sans-serif;
+}
+.cash-item2{
+  font-family: "Josefin Sans", sans-serif;
 }
 .creditinfo{
   margin-left: 30px;
@@ -29,12 +41,42 @@
   margin-right: 10px;
   margin-bottom: 10px;
   border-color: gray;
+  background-color: white;
+}
+.cashinfo{
+  margin-left: 20px;
+  margin-right: 10px;
+  background-color: white;
+  font-family: "Josefin Sans", sans-serif;
+  padding-left: 5px;
+  padding-top: 5px;
 }
 .paymentmethod .paymentchoice .mobileinfo {
   padding: 20px;
   /* border: 1px solid #ddd; */
   border-top: none;
 }
+.infotext{
+  padding-bottom: 15px;
+  color: rgb(105, 103, 103);
+}
+.notetostaff{
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.form-control{
+  width: 60%;
+}
+.backbutton{
+  float: left;
+  font-family: "Josefin Sans", sans-serif;
+}
+.checkoutbutton {
+  float: right; 
+  margin-bottom: 10px;
+  font-family: "Jockey One", sans-serif;
+}
+
 
 /* .paymentmethod .paymentchoice .mobileinfo .bank-logo {
   display: flex;
@@ -63,7 +105,8 @@
     border-radius: 5px; 
     padding: 20px; 
     margin-top: 10px;
-    background-color: rgb(205, 202, 202);   
+    background-color: rgb(205, 202, 202); 
+    font-family: "Josefin Sans", sans-serif;  
 }
 
 @media (max-width: 992px) {
@@ -95,9 +138,7 @@
     color: red;
 }
 
-.checkoutbutton{
-    float: right;
-}
+
 
 .cash p.active {
   color: red; /* สีที่คุณต้องการให้เปลี่ยนเมื่อถูกเลือก */
@@ -110,6 +151,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  margin-top: 20px;
   
 }
 
