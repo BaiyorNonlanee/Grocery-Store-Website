@@ -93,7 +93,7 @@ h1{
 hr {
     flex: 1;
     height: 5px;
-    background-color: green;
+    background-color: RED;
 }
 
 .box{
