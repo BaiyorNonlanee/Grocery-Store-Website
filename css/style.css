@@ -37,8 +37,9 @@
 .backbutton{
     float: right;
 }
-.paymentbutton ,.backbutton{
+.paymentbutton{
     float:right;
+    font-family: "Jockey One", sans-serif;
 }
 
 
@@ -79,6 +80,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .stepper-item {
@@ -90,8 +92,10 @@
 }
 .stepper-item {
     font-family: "Jockey One", sans-serif;
-
 }
+.step-name{
+    text-align: center;
+  }
 
 .stepper-item::before {
     position: absolute;
