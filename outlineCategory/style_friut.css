@@ -98,16 +98,15 @@ hr {
 .box{
     background-color: antiquewhite;
     height: 300px;
-    /* width: 200px; */
     border: 1px solid black;
     margin-bottom: 10px;
     border-radius: 20px;
     justify-content: center;
     align-items: center;
     display: flex;
+    box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
+    
 }
-
-
 
 #boxesCarousel .carousel-control-prev,
 #boxesCarousel .carousel-control-next,
