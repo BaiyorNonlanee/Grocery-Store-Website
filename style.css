@@ -129,7 +129,7 @@ input[type="text"]{
     outline: none; 
     margin-left: 20px;
 }
-#name ,#surname, #city, #province, #code, #mobile{
+#name ,#surname, #city, #province, #code, #mobile, #date, #idCard{
     width: 200px;
 }
 #address{
@@ -146,18 +146,18 @@ input[type="text"]{
 
 .nameSurname {
     display: flex;
-    align-items: center; /* จัดให้เนื้อหาอยู่กึ่งกลางแนวตั้ง */
+    align-items: center; 
 }
 
 .nameSurname label {
-    margin-right: 10px; /* เพิ่มระยะห่างด้านขวาของชื่อ */
+    margin-right: 10px; 
 }
 
 @media screen and (max-width: 768px) {
     .textbox {
-        font-size: 14px; /* ปรับขนาดตัวหนังสือเล็กลง */
-        padding: 8px 16px; /* ปรับขนาด padding เพื่อให้กล่องข้อความเล็กลง */
-        margin-left: 3%; /* ปรับการจัดตำแหน่งของกล่องข้อความ */
+        font-size: 14px; 
+        padding: 8px 16px; 
+        margin-left: 3%;
     }
 }
 .textboxAdd {
