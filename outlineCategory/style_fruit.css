@@ -20,7 +20,7 @@ body {
     width: 100%;
     overflow: hidden;
     border-radius: 20px;
-    max-height: 300px;
+    max-height: 400px;
     position: relative;
 }
 .carousel-item{

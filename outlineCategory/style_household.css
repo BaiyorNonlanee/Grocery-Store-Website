@@ -26,7 +26,6 @@ body {
 .carousel-item{
     width: 100%;
     flex: 0 0 auto;
-    /* border-radius: 20px; */
 }
 
 .carousel-item img {
@@ -35,7 +34,7 @@ body {
     object-fit: cover;
     border-radius: 20px;
     box-sizing: border-box;
-    object-position: center center;
+    object-position: center top;
    
 }
 
@@ -87,13 +86,12 @@ h1{
     height: 200px;
   }
   
-  
 }
 
 hr {
     flex: 1;
     height: 5px;
-    background-color: RED;
+    background-color: rgb(123, 70, 0);
 }
 
 .box{
@@ -108,23 +106,6 @@ hr {
     box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
     
 }
-
-#boxesCarousel .carousel-control-prev,
-#boxesCarousel .carousel-control-next,
-#boxesCarousel2 .carousel-control-prev,
-#boxesCarousel2 .carousel-control-next {
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: orange;
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
- 
-}
-.container #boxesCarousel2{
+#box-container{
     margin-bottom: 50px;
-}
-.container #boxesCarousel{
-    margin-bottom: 40px;
 }
