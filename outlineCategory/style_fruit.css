@@ -74,8 +74,7 @@ h1{
   .line p {
     text-align: center;
   }
-  #carouselExample,
-  #boxesCarousel, #boxesCarousel2{
+  #carouselExample{
       border-radius: 0;
   }
 
@@ -86,7 +85,7 @@ h1{
     height: 200px;
   }
   
-  
+
 }
 
 hr {
@@ -105,25 +104,9 @@ hr {
     align-items: center;
     display: flex;
     box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
-    
 }
 
-#boxesCarousel .carousel-control-prev,
-#boxesCarousel .carousel-control-next,
-#boxesCarousel2 .carousel-control-prev,
-#boxesCarousel2 .carousel-control-next {
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: orange;
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
- 
-}
-.container #boxesCarousel2{
+#box-container, #box-container2{
     margin-bottom: 50px;
 }
-.container #boxesCarousel{
-    margin-bottom: 40px;
-}
+
