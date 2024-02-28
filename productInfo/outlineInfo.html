@@ -23,27 +23,50 @@
   <body>
     <section id="info">
       <div class="container">
+        <!-- First Box -->
         <div class="row">
-          <!-- First box -->
-          <div id="box1" class="box">
-            <div class="col1">
-              <img src="images/strawberry.png" class="img-fluid">
-            </div>
-            <div class="col2">
-              <h2>Strawberry</h2>
-              <p>description</p>
+          <div class="col-md-12">
+            <!-- Content of the first box goes here -->
+            <div id="box1" class="box">
+              <!-- Left side with image -->
+              <div id="leftBox1" class="left-side">
+                <img src="images/strawberry.png">
+              </div>
+              <!-- Right side with information -->
+              <div id="rightBox1" class="right-side">
+                <h2 style="font-family: 'Josefin Sans', sans-serif;">Korean Strawberry 250g.</h2>
+                <p>฿108.00/Pack</p>
+                    <div class="row">
+                  <div class="col quantity-counter">
+                    <button id="decrement">-</button>
+                    <input type="text" id="quantity" value="0" readonly>
+                    <button id="increment">+</button>
+                    <button id="addCart">ADD TO CART</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-          <div class="row">
-          <!--Second box -->
+         <!-- Second Box -->
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Content of the second box goes here -->
           <div id="box2" class="box">
-            <!-- เนื้อหาในกล่องที่ 2 -->
+            <!-- Left side with image -->
+            <div id="leftBox2" class="left-side">
+              <img class="image" src="path/to/your/image2.jpg" alt="Image 2">
+            </div>
+            <!-- Right side with information -->
+            <div id="rightBox2" class="right-side">
+              <h2>Box 2</h2>
+              <p>This is the content of Box 2.</p>
+            </div>
           </div>
         </div>
       </div>
-     
+    </div>
     </section>
 
     <section id="footer">
@@ -96,14 +119,3 @@
   </body>
 </html>
 
-    <!-- <div class="row">
-                  <div class="col quantity-counter">
-                    <button id="decrement">-</button>
-                    <input type="text" id="quantity" value="0" readonly>
-                    <button id="increment">+</button>
-                  </div>
-                  <div class="col cart">
-                    <button id="addCart">ADD TO CART</button>
-                  </div>
-
-                </div> -->
