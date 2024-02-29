@@ -1,3 +1,4 @@
+// Comfirm box for editCategory Page
 document.querySelectorAll('.deletebutton').forEach(button => {
     button.addEventListener('click', function() {
         document.querySelector('.confirmbox').style.opacity = '1';
@@ -38,6 +39,24 @@ document.addEventListener('DOMContentLoaded', function() {
         categoryElement.textContent = updatedCategoryName;
     }
 });
+
+// Comfirm box for productInCategory Page
+// เลือกทุกปุ่มที่มีคลาส deletebutton และเพิ่มเหตุการณ์ click
+document.querySelectorAll('.deletebutton').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault(); // หยุดการทำงานปกติของลิงก์
+
+        // แสดงกล่อง confirmbox
+        document.querySelector('.confirmbox').style.display = 'block';
+    });
+});
+
+// เลือกปุ่ม cancelbutton และเพิ่มเหตุการณ์ click
+document.querySelector('.canclebutton').addEventListener('click', function() {
+    // ซ่อนกล่อง confirmbox เมื่อผู้ใช้กดปุ่ม cancel
+    document.querySelector('.confirmbox').style.display = 'none';
+});
+
 
 
 
