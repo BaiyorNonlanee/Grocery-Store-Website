@@ -18,7 +18,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet">
 </head>
 <body>
-  
+
+  <section id="Navigator">
+    <div class="container-fluid ">
+        <nav class="navbar navbar-expand-lg navbar-light" style="margin: 0% 3.5% 0% 0%;">
+            <div style="width: 20%;" >
+                <a class="navbar-brand" href="HomeForCustomer.htmlS">
+                    <img src="..\Picture\newlogo.png" alt="Home" width=100px height=100px>
+                </a>
+            </div>
+            <button style="margin: 0% 0% 0% 25%;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="bi bi-list" ></i></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav" >
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#allProduct">PRODUCTS</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            CATEGORIES
+                        </a>
+                        <ul class="dropdown-menu" >
+                            <li><a class="dropdown-item" href="#fruits">Fruits & Vegetables</a></li>
+                            <li><a class="dropdown-item" href="#meet">BeverageMeat & Seafood</a></li>
+                            <li><a class="dropdown-item" href="#beverages">Beverage</a></li>
+                            <li><a class="dropdown-item" href="#household">Household</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#promotion">PROMOTION</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>
+                </ul>
+            </div>                                 
+            <button class="login" type="button" aria-expanded="false">login</button>
+            <div>
+                <a class="nav-item nav-link" href="#" style="margin-right: 2%;">
+                    <i class="fas fa-shopping-cart" style="color: white;"></i>
+                </a>
+            </div>        
+        </nav>
+    </div>
+  </section>
+
     <section id="content">
         <h1>Fruits and Vegetables</h1>
         <div class="carousel-container">
@@ -51,19 +97,14 @@
          <div id="box-container" class="container">
             <div class="row">
               <div class="col-6 col-md-3">
-                <div class="box"></div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="box"></div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="box"></div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="box"></div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="box"></div>
+                <div class="box">
+                  <img class="categotyImage" src="..\outlineCategory\images\Fruits&Vegetables\Apple Envy Pack 6 198B per pack.png" alt="Apple Envy Pack 6">
+                  <div class="descript">
+                    <p>Apple Envy Pack 6</p>
+                    <p><span>฿198.00/Pack</span></p>
+                  </div>
+                  <button>ADD TO CART</button>
+                </div>
               </div>
               <div class="col-6 col-md-3">
                 <div class="box"></div>
@@ -95,18 +136,6 @@
      <br>
      <div id="box-container2" class="container">
         <div class="row">
-          <div class="col-6 col-md-3">
-            <div class="box"></div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="box"></div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="box"></div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="box"></div>
-          </div>
           <div class="col-6 col-md-3">
             <div class="box"></div>
           </div>
