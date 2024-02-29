@@ -10,8 +10,9 @@
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 30px;
-    padding-right: 30px;  
-       
+    padding-right: 30px; 
+    border-radius: 5px; 
+    font-family: "Josefin Sans", sans-serif;
 }
 .edit{
     margin-top: 50px;
