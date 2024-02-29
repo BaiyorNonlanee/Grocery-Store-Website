@@ -89,12 +89,17 @@
     margin-top: 20px;
     background-color: hsla(40, 100%, 74%, 0.178);
     margin-left: 3%;
+    height: 750px;
+    margin-bottom: 20px;
 
 }
 .acc2 {
     margin-top: 20px;
     background-color: hsla(40, 100%, 74%, 0.178);
     padding-top: 48px;
+    height: 750px;
+    margin-bottom: 20px;
+    margin-left: 3%;
 }
 .multi {
     color: red;
@@ -108,6 +113,24 @@
     margin-top: 3%;
 }
 
+input[type="text"]{
+    width: 40%;
+    padding: 8px;
+    border: 1px solid black; 
+    border-radius: 5px; 
+    outline: none; 
+    margin-left: 20px;
+}
+#name ,#surname, #city, #province, #code, #mobile, #date, #idCard{
+    width: 200px;
+}
+#address{
+    width: 85%;
+    padding: 20px;
+}
+
+
+/* shop */
 .headingshop {
     margin-left: 14%;
     margin-bottom: 15px;
@@ -151,14 +174,14 @@
     margin-left: 5%;
     margin-bottom: 3%;
 }
-@media screen and (max-width: 768px) {
+ @media screen and (max-width: 768px) {
     .textboxAdd {
         font-size: 14px; /* ปรับขนาดตัวหนังสือเล็กลง */
         padding: 8px 16px; /* ปรับขนาด padding เพื่อให้กล่องข้อความเล็กลง */
         margin-left: 3%; /* ปรับการจัดตำแหน่งของกล่องข้อความ */
     }
 }
-.saveBut {
+#saveButton {
     font-size: 16px;
     background-color: #81818152; 
     border-radius: 10px;
@@ -166,7 +189,9 @@
     border: 2px solid black; 
     cursor: pointer; 
     color: black;
-    margin-bottom: 34%;
+    margin-bottom: 30%;
+    margin-left: 18%;
+    margin-top: 10%;
 }
 .centered-btn {
     display: flex;
@@ -195,12 +220,12 @@
 }
 /* ปรับปุ่ม เมื่อจอเล็กลง*/
 @media screen and (max-width: 768px) {
-    .saveBut {
+    #saveButton {
         font-size: 14px; 
         padding: 8px 100px; 
         margin-left: 3%;
     }
-    .saveButBus {
+    #saveButBus {
         font-size: 14px; 
         padding: 8px 100px; 
         margin-left: 3%; 
