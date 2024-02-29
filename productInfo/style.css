@@ -19,14 +19,14 @@ body{
 }
 .box{
     background-color: antiquewhite;
-    padding: 100px;
-    margin-bottom: 20px;
-    border-radius: 20px;
+    border-radius: 15px;
     height: auto;
     overflow: hidden;   
 }
 #box1{
     margin-top: 250px;
+    margin-bottom: 15px;
+    padding: 100px;
 }
 #leftBox1{
     float: left;
@@ -48,7 +48,7 @@ body{
 }
 
 img{
-    width: 450px;
+    width: 400px;
     height: auto;
     box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
     margin-left: -25px;
@@ -81,13 +81,12 @@ img{
     .quantity-counter{
         position: relative;
         margin-bottom: 30px;
+        margin-left: 50px;
     }
     #addCart{
         margin-right: 30px;
         font-size: 15px;
     }
-  
-
 }
 /* quantity */
 .quantity-counter{
@@ -126,9 +125,24 @@ img{
     color: white;
  
  }
-hr{
-    width: auto;
+#box2 hr{
+    width: 100%;
     border: 1px solid black;
     margin: 0;
  }
+ #box2 h2{
+    /* margin-top: -70px; */
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+ }
+ #box2 ul{
+    font-size: 20px;
+    margin-left: 20px;
+ }
 
+#box2{
+    margin-bottom: 40px;
+    padding: 0;
+}
