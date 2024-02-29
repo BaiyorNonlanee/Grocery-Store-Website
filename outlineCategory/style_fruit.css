@@ -183,7 +183,7 @@ hr {
 
 .box{
     background-color: antiquewhite;
-    height: 300px;
+    height: 320px;
     border: 1px solid black;
     margin-bottom: 10px;
     border-radius: 20px;
@@ -191,18 +191,72 @@ hr {
     align-items: center;
     display: flex;
     box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
+    display: block;
 }
 
 #box-container, #box-container2{
     margin-bottom: 50px;
 }
 
-.categotyImage {
-    object-fit: cover;
-    width: auto;
-    height: 60%;
-    margin: 0% 0% 30% 0%;
+.img-container {
+    text-align: center;
+    display: block; 
+    margin: auto;
 }
+
+.imageFoecate {
+    object-fit: cover;
+    width: 50%;
+    height: auto;
+    margin:auto;
+    padding-top: 5%;
+    display: inline-block;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+    .imageFoecate {
+      width: 50%; 
+      height: auto;
+      object-fit: cover;
+      padding-top: 5%;
+      display: inline-block;
+      object-fit: cover;
+      margin-top: 5%;
+    }
+  }
+
+.descript {
+    padding: 0% 10% 0% 10%;
+    margin-left: 18% ;
+    margin-bottom: 0%;
+    margin-right: 18%;
+}
+
+.cartButton .cart{
+    margin-bottom: 4%;
+}
+
+.cart {
+    font-size: 14px;
+    background-color: red; 
+    padding: 6px 20px; 
+    border: none; 
+    cursor: pointer; 
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin: 0 auto;
+    margin-top: -10px;
+}
+
+@media screen and (max-width: 768px) {
+    .cart {
+      font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+      padding: 6px 12px; 
+      margin-top: -5px;
+    }
+  }
 /* footer */
 #footer {
     background-color: #818181;
