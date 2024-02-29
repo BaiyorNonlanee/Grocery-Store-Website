@@ -1,7 +1,3 @@
-body {
-    margin: 0%;
-}
-
 /* Navigator */
 #Navigator {
     background-color: #145124; 
@@ -87,136 +83,6 @@ body {
       height: 100%;
     }
   }
-
-/*Account Page*/
-.acc1 {
-    margin-top: 20px;
-    background-color: hsla(40, 100%, 74%, 0.178);
-    margin-left: 3%;
-
-}
-.acc2 {
-    margin-top: 20px;
-    background-color: hsla(40, 100%, 74%, 0.178);
-    padding-top: 48px;
-}
-.multi {
-    color: red;
-}
-.heading {
-    margin-left: 11%;
-    margin-bottom: 15px;
-}
-.formatText {
-    margin-left: 5%;
-    margin-top: 3%;
-}
-
-.headingshop {
-    margin-left: 14%;
-    margin-bottom: 15px;
-}
-
-.nameSurname {
-    display: flex;
-    align-items: center; /* จัดให้เนื้อหาอยู่กึ่งกลางแนวตั้ง */
-}
-
-.nameSurname label {
-    margin-right: 10px; /* เพิ่มระยะห่างด้านขวาของชื่อ */
-}
-
-.textbox {
-    font-size: 16px;
-    background-color: white; 
-    border-radius: 10px;
-    padding: 10px 30px; 
-    border: 2px solid black; 
-    cursor: pointer; 
-    color: white;
-    margin-left: 5%;
-    margin-bottom: 3%;
-}
-@media screen and (max-width: 768px) {
-    .textbox {
-        font-size: 14px; /* ปรับขนาดตัวหนังสือเล็กลง */
-        padding: 8px 16px; /* ปรับขนาด padding เพื่อให้กล่องข้อความเล็กลง */
-        margin-left: 3%; /* ปรับการจัดตำแหน่งของกล่องข้อความ */
-    }
-}
-.textboxAdd {
-    font-size: 16px;
-    background-color: white; 
-    border-radius: 10px;
-    padding: 10px 100px; 
-    border: 2px solid black; 
-    cursor: pointer; 
-    color: white;
-    margin-left: 5%;
-    margin-bottom: 3%;
-}
-@media screen and (max-width: 768px) {
-    .textboxAdd {
-        font-size: 14px; /* ปรับขนาดตัวหนังสือเล็กลง */
-        padding: 8px 16px; /* ปรับขนาด padding เพื่อให้กล่องข้อความเล็กลง */
-        margin-left: 3%; /* ปรับการจัดตำแหน่งของกล่องข้อความ */
-    }
-}
-.saveBut {
-    font-size: 16px;
-    background-color: #81818152; 
-    border-radius: 10px;
-    padding: 10px 200px; 
-    border: 2px solid black; 
-    cursor: pointer; 
-    color: black;
-    margin-bottom: 34%;
-}
-.centered-btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px; 
-}
-.saveButBus {
-    font-size: 16px;
-    background-color: #81818152; 
-    border-radius: 10px;
-    padding: 10px 200px; 
-    border: 2px solid black; 
-    cursor: pointer; 
-    color: black;
-    margin-bottom: 51%;
-}
-.createAcc {
-    font-size: 16px;
-    background-color: #81818152; 
-    border-radius: 10px;
-    padding: 10px 200px; 
-    border: 2px solid black; 
-    cursor: pointer; 
-    color: black;
-    margin-bottom: 4%;
-}
-/* ปรับปุ่ม เมื่อจอเล็กลง*/
-@media screen and (max-width: 768px) {
-    .saveBut {
-        font-size: 14px; 
-        padding: 8px 100px; 
-        margin-left: 3%;
-    }
-    .saveButBus {
-        font-size: 14px; 
-        padding: 8px 100px; 
-        margin-left: 3%; 
-
-    }
-    .createAcc {
-        font-size: 14px; 
-        padding: 8px 100px; 
-        margin-left: 3%; 
-
-    }
-}
 
 /* Home For Customer*/
 .page {
@@ -350,8 +216,6 @@ body {
     }
 }
 
-/*Promotion*/
-
 @media (max-width: 991px) {
     /* Small screens */
     .text-overlay p {
@@ -443,4 +307,3 @@ body {
     color: white;
     font-size: 14px;
 }
-
