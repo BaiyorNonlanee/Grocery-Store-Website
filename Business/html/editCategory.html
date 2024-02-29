@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/Business/css/editCategory.css">
+</head>
+<body>
+    <nav>
+
+    </nav>
+
+    <section class="feature">
+        <div class="categoryinfo">
+            <p>CATEGORY INFORMATION</p>
+            <div class="edit">
+                <form>
+                    Category name: 
+                    <input name="name" type="text" class="feedback-input"/>
+                </form>
+            </div>
+            <div class="savebutton">
+                <a href="/Business/html/categoriesBusiness.html"><b>SAVE</b><i class="fa fa-angle-right"></i></a>
+            </div>  
+        </div>
+       
+    </section>
+    <script src="/Business/app.js"></script>
+    <script>
+       // เมื่อกดปุ่ม SAVE
+       document.getElementById('saveButton').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            // ดึงค่าชื่อหมวดหมู่ที่แก้ไขจากฟอร์ม
+            var updatedCategoryName = document.querySelector('#editForm input[name="name"]').value;
+
+            // Redirect กลับไปยังหน้า categoryBusiness.html พร้อมส่งค่าชื่อหมวดหมู่ที่แก้ไขไว้ด้วย
+            window.location.href = "/Business/categoriesBusiness.html?updatedCategoryName=" + encodeURIComponent(updatedCategoryName);
+        });
+    </script>
+</body>
+</html>
