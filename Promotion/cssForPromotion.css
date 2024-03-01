@@ -86,13 +86,62 @@
 
   /*Promotion*/
 
+h1{
+    font-family: "Mansalva",sans-serif;
+    text-align: center;
+    padding-top: 80px; 
+    padding-bottom: 4%;
+}
+
+@media (max-width: 767px) {
+  .line {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .line p {
+    text-align: center;
+  }
+  #carouselExample{
+      border-radius: 0;
+  }
+
+  .carousel-container {
+      margin: 20px;
+  }
+  .carousel-item img{
+    height: 200px;
+  }
+  
+
+}
+#carouselExample ,#boxesCarousel ,#boxesCarousel2{
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  max-height: 400px;
+  position: relative;
+}
+.carousel-item{
+  width: 100%;
+  flex: 0 0 auto;
+  /* border-radius: 20px; */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-sizing: border-box;
+ 
+}
+
 @media (max-width: 991px) {
     /* Small screens */
     .text-overlay p {
         font-size: 45px; /* ปรับขนาดเล็กลงเมื่อหน้าจอเล็กลง */
     }
 }
-
 
 /* Custom CSS for Carousel */
 .topPromotion img {
@@ -244,12 +293,37 @@
     }
 }
 
+@media (max-width: 768px) {
+
+  .carousel-item .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+  }
+
+  .carousel-item .row .col-md-2 {
+      flex-basis: 90%;
+      max-width: 90%;
+      margin: 2% 15% 2% 52%; 
+  }
+
+  .rectangle1 , .rectangle2 ,.rectangle3 {
+      width: 200px;
+      height: 230px;
+      border: 1.5px solid black;
+      border-radius: 20px;
+      margin-bottom: 5%;
+  }
+}
+
   /* footer */
 #footer {
     background-color: #818181;
     color: white;
     font-size: 16px;
     margin-bottom: 0%;
+    margin-top: 5%;
 }
 .list-unstyled.custom-list li a {
     text-decoration: none; 
