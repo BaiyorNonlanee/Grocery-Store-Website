@@ -1,88 +1,89 @@
 /* Navigator */
 #Navigator {
-    background-color: #145124; 
-    width: 100%;
-    justify-content: space-between;
+  background-color: #145124; 
+  width: 100%;
+  justify-content: space-between;
 }
 
 .navbar-brand {
-    margin-right: auto; 
-    margin-left: 3px;
-    margin-top: 0px;
-    padding: 0px;
+  margin-right: auto; 
+  margin-left: 3px;
+  margin-top: 0px;
+  padding: 0px;
 }
 
 .navbar-nav {
-    justify-content: center;
-    align-items: center;
-    margin-right: auto ;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto ;
 }
 
 .navbar-nav .nav-item {
-    margin-right: 2%;
+  margin-right: 2%;
 }
 
 .navbar-nav .nav-link {
-    font-family: "Montserrat", sans-serif;
-    color: white;
-    font-size: 16px;
-    font-weight: 200;
-    text-decoration: none;
-    margin-right: 80px;
-    margin-left: 80px;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 16px;
+  font-weight: 200;
+  text-decoration: none;
+  margin-right: 80px;
+  margin-left: 80px;
 }
 
 .navbar-nav .nav-link:hover {
-    border-bottom: 2px solid white; 
+  border-bottom: 2px solid white; 
 }
 
 .login {
-    font-size: 16px;
-    background-color: #F7AE40; 
-    border-radius: 10px;
-    padding: 10px 20px; 
-    border: none; 
-    cursor: pointer; 
-    color: white;
-    margin-left: auto;
+  font-size: 16px;
+  background-color: #F7AE40; 
+  border-radius: 10px;
+  padding: 10px 20px; 
+  border: none; 
+  cursor: pointer; 
+  color: white;
+  margin-left: 5%;
+  margin-right: 3%;
 }
 @media screen and (max-width: 768px) {
-    .login {
-      font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
-      padding: 6px 12px; 
-    }
+  .login {
+    font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+    padding: 6px 12px; 
   }
+}
 
 .login:hover {
-    background-color: #c6831e; 
+  background-color: #c6831e; 
 }
 .dropdown-menu {
-    color: white;
-    background-color:#8181818c ;
-    border-bottom: 1px solid #818181;
+  color: white;
+  background-color:#8181818c ;
+  border-bottom: 1px solid #818181;
 
 }
 .navbar-toggler {
-    font-size: 0.75rem; /* ปรับขนาดเล็กลง เช่น 0.75rem */
-    color: #ffffff; /* เปลี่ยนสีข้อความเป็นสีขาว */
-  }
+  font-size: 0.75rem; /* ปรับขนาดเล็กลง เช่น 0.75rem */
+  color: #ffffff; /* เปลี่ยนสีข้อความเป็นสีขาว */
+}
 
-  /* สีของ Navbar Toggler เมื่อ hover */
-  .navbar-toggler:hover {
-    background-color: white; /* เปลี่ยนสีพื้นหลังเมื่อ hover เป็นสีน้ำเงินเข้ม */
-    border-color: white; /* เปลี่ยนสีเส้นขอบเมื่อ hover เป็นสีน้ำเงินเข้ม */
-  }
-  .navbar-collapse {
-    width: 100%;
-    display: flex;
-  }
+/* สีของ Navbar Toggler เมื่อ hover */
+.navbar-toggler:hover {
+  background-color: white; /* เปลี่ยนสีพื้นหลังเมื่อ hover เป็นสีน้ำเงินเข้ม */
+  border-color: white; /* เปลี่ยนสีเส้นขอบเมื่อ hover เป็นสีน้ำเงินเข้ม */
+}
+.navbar-collapse {
+  width: 100%;
+  display: flex;
+}
 
-  @media screen and (max-width: 768px) {
-    .navbar-brand img {
-      width: 100%; 
-      height: 100%;
-    }
+@media screen and (max-width: 768px) {
+  .navbar-brand img {
+    width: 100%; 
+    height: 100%;
   }
+}
 
   /*Promotion*/
 
@@ -204,6 +205,7 @@ h1{
     }
 
     #carouselExample1 .carousel-control-prev,
+    #carouselExample1 .carousel-control-next,
     #boxesCarousel2 .carousel-control-next,
     #boxesCarousel2 .carousel-control-prev,
     #boxesCarousel3 .carousel-control-next,
@@ -222,6 +224,7 @@ h1{
     border-radius: 20px;
     margin-bottom: 5%;
     background-color: #F7F4EF;
+
   }
   .rectangle2 {
     width: 150px;
@@ -229,6 +232,7 @@ h1{
     border: 1.5px solid black;
     border-radius: 20px;
     background-color: #FFD37A;
+    margin-bottom: 5%;
   }
   .rectangle3 {
     width: 150px;
@@ -236,6 +240,7 @@ h1{
     border: 1.5px solid black;
     border-radius: 20px;
     background-color: #FFB6B6;
+    margin-bottom: 5%;
   }
 
 @media (max-width: 768px) {
@@ -305,7 +310,7 @@ h1{
   .carousel-item .row .col-md-2 {
       flex-basis: 90%;
       max-width: 90%;
-      margin: 2% 15% 2% 52%; 
+      margin: auto; 
   }
 
   .rectangle1 , .rectangle2 ,.rectangle3 {
