@@ -148,7 +148,7 @@ body{
     #box1{
         padding: 20px;
     }
-    img {
+    #leftBox1 img {
         width: 250px; 
         height: auto;
         display: inline-block;
@@ -171,7 +171,7 @@ body{
     }
     #addCart{
         margin-right: 30px;
-        font-size: 15px;
+        font-size: 12px;
     }
 }
 /* quantity */
