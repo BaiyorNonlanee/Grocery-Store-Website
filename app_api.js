@@ -1,6 +1,4 @@
-function initMap() {
-
-    
+function initMap() {   
     const markers = [
         {
             locationName: 'PPG Grocery Store',
