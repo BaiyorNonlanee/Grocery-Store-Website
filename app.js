@@ -1,6 +1,6 @@
 function initMap() {
 
-    // Location Maker
+    
     const markers = [
         {
             locationName: 'PPG Grocery Store',
@@ -46,3 +46,5 @@ function initMap() {
     
      createInfoWindow()
 }
+
+
