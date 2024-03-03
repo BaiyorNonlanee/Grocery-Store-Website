@@ -21,3 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
         quantityInput.value = quantity;
     }
 });
+
+
+  
