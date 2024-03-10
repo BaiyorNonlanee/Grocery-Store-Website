@@ -309,12 +309,13 @@ hr {
     justify-content: center;
   }
   
-/* shopping cart */
+
 .cart-icon-container {
     position: relative;
     display: inline-block; /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
- }
- .cart-count {
+}
+
+.cart-count {
     position: absolute;
     top: -7px; /* ปรับตำแหน่งตามต้องการ */
     right: -10px; /* ปรับตำแหน่งตามต้องการ */
@@ -328,4 +329,4 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
- }
+}
