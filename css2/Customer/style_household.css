@@ -246,6 +246,36 @@ hr {
     }
   }
 
+  /*Pagination*/
+  .pagination {
+    display: inline-block;
+  }
+  
+  .pagination li {
+    display: inline;
+    margin: 0 5px;
+  }
+  
+  .pagination li a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination li a:hover {
+    background-color: #ddd;
+  }
+  
+  .pagination .active a {
+    background-color: #145124;
+    color: white;
+  }
+
+  #pagination {
+    display: flex;
+    justify-content: center;
+  }
+
 /* footer */
 #footer {
     background-color: #818181;
@@ -260,3 +290,23 @@ hr {
     font-size: 14px;
 }
 
+.cart-icon-container {
+    position: relative;
+    display: inline-block; /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
+}
+
+.cart-count {
+    position: absolute;
+    top: -7px; /* ปรับตำแหน่งตามต้องการ */
+    right: -10px; /* ปรับตำแหน่งตามต้องการ */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 10px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
