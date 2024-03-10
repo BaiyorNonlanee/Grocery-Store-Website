@@ -178,7 +178,7 @@ h1{
 hr {
     flex: 1;
     height: 5px;
-    background-color: green;
+    background-color: blue;
 }
 
 .box{
@@ -312,13 +312,13 @@ hr {
 
 .cart-icon-container {
     position: relative;
-    display: inline-block; /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
+    display: inline-block; 
 }
 
 .cart-count {
     position: absolute;
-    top: -7px; /* ปรับตำแหน่งตามต้องการ */
-    right: -10px; /* ปรับตำแหน่งตามต้องการ */
+    top: -7px; 
+    right: -10px; 
     background-color: red;
     color: white;
     border-radius: 50%;

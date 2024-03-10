@@ -114,15 +114,16 @@
 }
 
 input[type="text"]{
-    width: 40%;
+    width: 200px;
     padding: 8px;
     border: 1px solid black; 
     border-radius: 5px; 
     outline: none; 
     margin-left: 20px;
 }
-#name ,#surname, #city, #province, #code, #mobile, #date, #idCard{
-    width: 200px;
+input[name="shopname"]{
+    width: 300px;
+    margin-left: 40px;
 }
 #address{
     width: 85%;
@@ -185,12 +186,12 @@ input[type="text"]{
     font-size: 16px;
     background-color: #81818152; 
     border-radius: 10px;
-    padding: 10px 200px; 
+    padding: 10px 240px; 
     border: 2px solid black; 
     cursor: pointer; 
     color: black;
     margin-bottom: 30%;
-    margin-left: 18%;
+    margin-left: 14%;
     margin-top: 10%;
 }
 .centered-btn {
@@ -222,8 +223,8 @@ input[type="text"]{
 @media screen and (max-width: 768px) {
     #saveButton {
         font-size: 14px; 
-        padding: 8px 100px; 
-        margin-left: 3%;
+        padding: 8px 130px; 
+        margin-left: 35px;
     }
     #saveButBus {
         font-size: 14px; 
@@ -235,6 +236,10 @@ input[type="text"]{
         font-size: 14px; 
         padding: 8px 100px; 
         margin-left: 3%; 
-
     }
+    input[id="shopname"]{
+        width: 250px;
+        margin-left: 30px;
+    }
+   
 }
