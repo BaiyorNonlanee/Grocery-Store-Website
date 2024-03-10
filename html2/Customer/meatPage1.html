@@ -99,7 +99,7 @@
          <br>
          <div id="box-container" class="container">
             <div class="row">
-              <div class="col-6 col-md-3">
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                     <div class="img-container">
                         <img class="imageFoecate" src="..\outlineCategory\images\Meet&Seafoods\Angua Australian tenderloin with grains, 150 days, 250 grams, 580 baht per pack..png" alt="Angua Australian tenderloin with grains">
@@ -112,8 +112,8 @@
                       <button class="cart">ADD TO CART</button>
                     </div>
                 </div>
-              </div>       
-              <div class="col-6 col-md-3">
+              </div>        -->
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                     <div class="img-container">
                         <img class="imageFoecate" src="..\outlineCategory\images\Meet&Seafoods\Tajima Australian Wagyu sirloin MBS4 to 5 1020฿ per pack.png" alt="Tajima Australian Wagyu sirloin MBS4 to 5">
@@ -126,8 +126,8 @@
                       <button class="cart">ADD TO CART</button>
                     </div>
                 </div>
-              </div>       
-              <div class="col-6 col-md-3">
+              </div>        -->
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                     <div class="img-container">
                         <img class="imageFoecate" src="..\outlineCategory\images\Meet&Seafoods\Australian lamb shank, 400 grams, 250 baht per pack.png" alt="Australian lamb shank, 400 grams">
@@ -141,8 +141,8 @@
                       <button class="cart">ADD TO CART</button>
                     </div>
                 </div>
-              </div>       
-              <div class="col-6 col-md-3">
+              </div>        -->
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                     <div class="img-container">
                         <img class="imageFoecate" src="..\outlineCategory\images\Meet&Seafoods\Lamb sirloin with Australian ribs, 180 grams, 345 baht per pack..png" alt="Lamb sirloin with Australian ribs, 180 grams">
@@ -155,7 +155,7 @@
                       <button class="cart">ADD TO CART</button>
                     </div>
                 </div>
-              </div>       
+              </div>        -->
               <div class="col-6 col-md-3">
                 <div class="box">
                     <div class="img-container">
@@ -222,7 +222,7 @@
      <br>
      <div id="box-container2" class="container">
         <div class="row">
-          <div class="col-6 col-md-3">
+          <!-- <div class="col-6 col-md-3">
             <div class="box">
                 <div class="img-container">
                     <img class="imageFoecate" src="..\outlineCategory\images\Meet&Seafoods\Fresh Norwegian salmon fillet, 230 grams, 380 baht per piece.png" alt="Fresh Norwegian salmon fillet, 230 grams">
@@ -235,8 +235,8 @@
                   <button class="cart">ADD TO CART</button>
                 </div>
             </div>
-          </div>       
-          <div class="col-6 col-md-3">
+          </div>        -->
+          <!-- <div class="col-6 col-md-3">
             <div class="box">
                 <div class="img-container">
                     <img class="imageFoecate" src="..\outlineCategory\images\Meet&Seafoods\Frozen river shrimp 300 grams 259 baht per pack.png" alt="Frozen river shrimp 300 grams">
@@ -249,8 +249,8 @@
                   <button class="cart">ADD TO CART</button>
                 </div>
             </div>
-          </div>       
-          <div class="col-6 col-md-3">
+          </div>        -->
+          <!-- <div class="col-6 col-md-3">
             <div class="box">
                 <div class="img-container">
                     <img class="imageFoecate" src="..\outlineCategory\images\Meet&Seafoods\Frozen Taraba Giant Crab Tai Ooi 4700 baht per pack.png" alt="Frozen Taraba Giant Crab Tai Ooi">
@@ -263,8 +263,8 @@
                   <button class="cart">ADD TO CART</button>
                 </div>
             </div>
-          </div>       
-          <div class="col-6 col-md-3">
+          </div>        -->
+          <!-- <div class="col-6 col-md-3">
             <div class="box">
                 <div class="img-container">
                     <img class="imageFoecate" src="..\outlineCategory\images\Meet&Seafoods\Frozen tuna steak, 400 grams, 590 baht per piece..png" alt="Frozen tuna steak, 400 grams">
@@ -277,7 +277,7 @@
                   <button class="cart">ADD TO CART</button>
                 </div>
             </div>
-          </div>       
+          </div>        -->
           <div class="col-6 col-md-3">
             <div class="box">
                 <div class="img-container">
@@ -339,6 +339,17 @@
       </div>
     </section>
 
+    <section>
+      <div id="pagination" class="text-center">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#" onclick="goToPage(1)">1</a></li>
+            <li class="page-item"><a class="page-link" href="#" onclick="goToPage(2)">2</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
     <section id="footer">
         <div class="container-fluid">
             <div class="row">
@@ -363,7 +374,21 @@
             </div>
         </div>
     </section>
+
+    <script>
+
+    function goToPage(pageNumber) {
+      if (pageNumber === 1 && window.location.href !== "/html2/Customer/meatPage1.html") {
+        window.location.href = "/html2/Customer/meatPage1.html";
+      } else if (pageNumber === 2 && window.location.href !== "/html2/Customer/meatPage2.html") {
+        window.location.href = "/html2/Customer/meatPage2.html";
+      }
+    }
+
+    </script>
+
     <script src="https://kit.fontawesome.com/752c6ea0dd.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

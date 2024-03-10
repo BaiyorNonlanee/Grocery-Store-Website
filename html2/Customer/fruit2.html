@@ -96,7 +96,7 @@
          <br>
          <div id="box-container" class="container">
             <div class="row">
-              <div class="col-6 col-md-3">
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                     <div class="img-container">
                         <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Apple Envy Pack 6 198B per pack.png" alt="Apple Envy Pack 6">
@@ -109,8 +109,8 @@
                       <button class="cart">ADD TO CART</button>
                     </div>
                 </div>
-              </div>            
-              <div class="col-6 col-md-3">
+              </div>             -->
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                   <div class="img-container">
                       <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\red cherry 399B per pack.png" alt="red cherry">
@@ -123,8 +123,8 @@
                     <button class="cart">ADD TO CART</button>
                   </div>
                 </div>
-              </div>
-              <div class="col-6 col-md-3">
+              </div> -->
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                   <div class="img-container">
                       <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Green Mango 119B per kg.png" alt="Green Mango">
@@ -137,8 +137,8 @@
                     <button class="cart">ADD TO CART</button>
                   </div>
                 </div>
-              </div>
-              <div class="col-6 col-md-3">
+              </div> -->
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                   <div class="img-container">
                       <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Special Siam Ruby Pomelo 339B.png" alt="Special Siam Ruby Pomelo">
@@ -151,7 +151,7 @@
                     <button class="cart">ADD TO CART</button>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="col-6 col-md-3">
                 <div class="box">
                   <div class="img-container">
@@ -217,7 +217,7 @@
      <br>
      <div id="box-container2" class="container">
         <div class="row">
-          <div class="col-6 col-md-3">
+          <!-- <div class="col-6 col-md-3">
             <div class="box">
               <div class="img-container">
                   <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Kale shoots 100 grams 19 baht per pack.png" alt="Kale shoots 100 grams">
@@ -230,8 +230,8 @@
                 <button class="cart">ADD TO CART</button>
               </div>
             </div>
-          </div>
-          <div class="col-6 col-md-3">
+          </div> -->
+          <!-- <div class="col-6 col-md-3">
             <div class="box">
               <div class="img-container">
                   <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Potatoes 55 baht per kilo.png" alt="Potatoes">
@@ -244,8 +244,8 @@
                 <button class="cart">ADD TO CART</button>
               </div>
             </div>
-          </div>
-          <div class="col-6 col-md-3">
+          </div> -->
+          <!-- <div class="col-6 col-md-3">
             <div class="box">
               <div class="img-container">
                   <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Red chilli 19 baht per pack.png" alt="Red chilli">
@@ -258,8 +258,8 @@
                 <button class="cart">ADD TO CART</button>
               </div>
             </div>
-          </div>
-          <div class="col-6 col-md-3">
+          </div> -->
+          <!-- <div class="col-6 col-md-3">
             <div class="box">
               <div class="img-container">
                   <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Australian carrots 49 baht per kilogram.png" alt="Australian carrots">
@@ -272,7 +272,7 @@
                 <button class="cart">ADD TO CART</button>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="col-6 col-md-3">
             <div class="box">
               <div class="img-container">
@@ -333,6 +333,17 @@
       </div>
     </section>
 
+    <section>
+      <div id="pagination" class="text-center">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#" onclick="goToPage(1)">1</a></li>
+            <li class="page-item"><a class="page-link" href="#" onclick="goToPage(2)">2</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
     <section id="footer">
         <div class="container-fluid">
             <div class="row">
@@ -357,10 +368,20 @@
             </div>
         </div>
     </section>
+
+    <script>
+      
+      function goToPage(pageNumber) {
+      if (pageNumber === 1 && window.location.href !== "/html2/Customer/fruit1.html") {
+        window.location.href = "/html2/Customer/fruit1.html";
+      } else if (pageNumber === 2 && window.location.href !== "/html2/Customer/fruit12.html") {
+        window.location.href = "/html2/Customer/fruit2.html";
+      }
+    }
+    </script>
     
      <script src="https://kit.fontawesome.com/752c6ea0dd.js" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 </body>
 <footer>
     <script src="fruits.js" charset="utf-8"></script>

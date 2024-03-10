@@ -96,7 +96,7 @@
          <br>
          <div id="box-container" class="container">
             <div class="row">
-              <div class="col-6 col-md-3">
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                   <div class="img-container">
                       <img class="imageFoecate" src="..\outlineCategory\images\Beverages\Bok Ford Concentrated Thai Lime Flavored Water 750ml 133 baht per bottle.png" alt="Bok Ford Concentrated Thai Lime Flavored Water 750ml">
@@ -151,8 +151,8 @@
                     <button class="cart">ADD TO CART</button>
                   </div>
                 </div>
-              </div>
-              <div class="col-6 col-md-3">
+              </div> -->
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                   <div class="img-container">
                       <img class="imageFoecate" src="..\outlineCategory\images\Beverages\Manobusha Chrysanthemum 350ml 26 baht per piece.png" alt="Manobusha Chrysanthemum 350ml">
@@ -165,8 +165,8 @@
                     <button class="cart">ADD TO CART</button>
                   </div>
                 </div>
-              </div>
-              <div class="col-6 col-md-3">
+              </div> -->
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                   <div class="img-container">
                       <img class="imageFoecate" src="..\outlineCategory\images\Beverages\Shiny Aomori Apple Juice 100 percent 1000 ml 315 baht per bottle.png" alt="Shiny Aomori Apple Juice 100 percent 1000 ml">
@@ -179,8 +179,8 @@
                     <button class="cart">ADD TO CART</button>
                   </div>
                 </div>
-              </div>
-              <div class="col-6 col-md-3">
+              </div> -->
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                   <div class="img-container">
                       <img class="imageFoecate" src="..\outlineCategory\images\Beverages\Splash Minimate orange juice 250 ml 13 baht per bottle.png" alt="Splash Minimate orange juice 250 ml">
@@ -193,8 +193,8 @@
                     <button class="cart">ADD TO CART</button>
                   </div>
                 </div>
-              </div>
-              <div class="col-6 col-md-3">
+              </div> -->
+              <!-- <div class="col-6 col-md-3">
                 <div class="box">
                   <div class="img-container">
                       <img class="imageFoecate" src="..\outlineCategory\images\Beverages\Sunquick concentrated berry juice 800 ml 209 baht per bottle.png" alt="Sunquick concentrated berry juice 800 ml">
@@ -207,7 +207,7 @@
                     <button class="cart">ADD TO CART</button>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="col-6 col-md-3">
                 <div class="box">
                   <div class="img-container">
@@ -269,6 +269,19 @@
    
     </section>
 
+    <section>
+        <div id="pagination" class="text-center">
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#" onclick="goToPage(1)">1</a></li>
+              <li class="page-item"><a class="page-link" href="#" onclick="goToPage(2)">2</a></li>
+              <li class="page-item"><a class="page-link" href="#" onclick="goToPage(3)">3</a></li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+  
+
     <section id="footer">
         <div class="container-fluid">
             <div class="row">
@@ -293,6 +306,22 @@
             </div>
         </div>
     </section>
+
+    <script>
+
+        function goToPage(pageNumber) {
+        if (pageNumber === 1 && window.location.href !== "/html2/Customer/beverage1.html") {
+          window.location.href = "/html2/Customer/beverage1.html";
+        }
+        else if (pageNumber === 2 && window.location.href !== "/html2/Customer/beverage2.html") {
+          window.location.href = "/html2/Customer/beverage2.html";
+        }
+         else if (pageNumber === 3 && window.location.href !== "/html2/Customer/beverage3.html") {
+          window.location.href = "/html2/Customer/beverage3.html";
+        }
+      }
+  
+      </script>
     
      <script src="https://kit.fontawesome.com/752c6ea0dd.js" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
