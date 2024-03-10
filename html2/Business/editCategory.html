@@ -30,23 +30,34 @@
                 </form>
             </div>
             <div class="savebutton">
-                <a href="/Business/html/categoriesBusiness.html">SAVE<i class="fa fa-angle-right"></i></a>
+                <button href="/Business/html/categoriesBusiness.html">SAVE<i class="fa fa-angle-right"></i></button>
             </div>  
         </div>
        
     </section>
-    <script src="/Business/app.js"></script>
+    <script src="/connect.js"></script>
     <script>
-       // เมื่อกดปุ่ม SAVE
-       document.getElementById('saveButton').addEventListener('click', function(event) {
+        document.getElementById('saveButton').addEventListener('click', function(event) {
             event.preventDefault();
-
-            // ดึงค่าชื่อหมวดหมู่ที่แก้ไขจากฟอร์ม
-            var updatedCategoryName = document.querySelector('#editForm input[name="name"]').value;
-
-            // Redirect กลับไปยังหน้า categoryBusiness.html พร้อมส่งค่าชื่อหมวดหมู่ที่แก้ไขไว้ด้วย
-            window.location.href = "/Business/categoriesBusiness.html?updatedCategoryName=" + encodeURIComponent(updatedCategoryName);
+        
+            // ดึงค่าชื่อหมวดหมู่ที่ผู้ใช้กรอกจากฟอร์ม
+            var updatedCategoryName = document.querySelector('input[name="name"]').value;
+        
+            // ส่งข้อมูลไปยังเซิร์ฟเวอร์โดยใช้ AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Category', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    console.log('Data added successfully');
+                    // หลังจากเพิ่มข้อมูลสำเร็จ สามารถทำการ redirect หรือแสดงข้อความยืนยันได้ตามต้องการ
+                } else {
+                    console.error('Error adding data:', xhr.statusText);
+                }
+            };
+            xhr.send(JSON.stringify({ category_name: updatedCategoryName }));
         });
-    </script>
+    </script>      
+
 </body>
 </html>
