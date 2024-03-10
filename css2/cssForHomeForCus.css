@@ -44,7 +44,8 @@
     border: none; 
     cursor: pointer; 
     color: white;
-    margin-left: auto;
+    margin-left: 5%;
+    margin-right: 3%;
 }
 @media screen and (max-width: 768px) {
     .login {
@@ -132,10 +133,10 @@
 /* ปรับปุ่ม เมื่อจอเล็กลง*/
 @media screen and (max-width: 768px) {
     .TextForHead {
-        font-size: 12px;
+        font-size: 15px;
     }
     .TextForHeadPri {
-        font-size: 6px;
+        font-size: 9px;
     }
 }
 .rectangle1 {
@@ -292,6 +293,30 @@
 
         width: 40px;
         height: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .carousel-item .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .carousel-item .row .col-md-2 {
+        flex-basis: 90%;
+        max-width: 90%;
+        margin: 2% 15% 2% 52%; 
+    }
+
+    .rectangle1 , .rectangle2 {
+        width: 200px;
+        height: 230px;
+        border: 1.5px solid black;
+        border-radius: 20px;
+        margin-bottom: 5%;
     }
 }
 
