@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css2/cssForPagintation.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jockey+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Jockey+One&family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet">
+    
+    <title>Pagintation</title>
+
+</head>
+<body>
+
+    <section>
+        <div id="pagination" class="text-center">
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#" onclick="goToPage(1)">1</a></li>
+              <li class="page-item"><a class="page-link" href="#" onclick="goToPage(2)">2</a></li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+
+      <script>
+        // ฟังก์ชันเพื่อไปยังหน้าที่กำหนดโดยตำแหน่งหมายเลขหน้า
+        function goToPage(pageNumber) {
+          window.location.href = "/html2/Customer/meatPage1.html";
+          window.location.href = "/html2/Customer/meatPage2.html";
+           // ใส่ URL ของหน้าที่ต้องการลิงค์ไปที่นี่
+          // ในที่นี้คุณสามารถใส่ URL ของหน้าที่ต้องการลิงค์ไป
+          // ตัวอย่างเช่น window.location.href = "page2.html";
+        }
+      </script>
+
+<script src="https://kit.fontawesome.com/752c6ea0dd.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>
