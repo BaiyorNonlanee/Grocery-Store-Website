@@ -1,3 +1,90 @@
+/* Navigator */
+#Navigator {
+    background-color: #145124; 
+    width: 100%;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    margin-right: auto; 
+    margin-left: 3px;
+    margin-top: 0px;
+    padding: 0px;
+}
+
+.navbar-nav {
+    justify-content: center;
+    align-items: center;
+    margin-right: auto ;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 2%;
+}
+
+.navbar-nav .nav-link {
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+    text-decoration: none;
+    margin-right: 80px;
+    margin-left: 80px;
+}
+
+.navbar-nav .nav-link:hover {
+    border-bottom: 2px solid white; 
+}
+
+.login {
+    font-size: 16px;
+    background-color: #F7AE40; 
+    border-radius: 10px;
+    padding: 10px 20px; 
+    border: none; 
+    cursor: pointer; 
+    color: white;
+    margin-left: 5%;
+    margin-right: 3%;
+}
+@media screen and (max-width: 768px) {
+    .login {
+      font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+      padding: 6px 12px; 
+    }
+  }
+
+.login:hover {
+    background-color: #c6831e; 
+}
+.dropdown-menu {
+    color: white;
+    background-color:#8181818c ;
+    border-bottom: 1px solid #818181;
+
+}
+.navbar-toggler {
+    font-size: 0.75rem; /* ปรับขนาดเล็กลง เช่น 0.75rem */
+    color: #ffffff; /* เปลี่ยนสีข้อความเป็นสีขาว */
+  }
+
+  /* สีของ Navbar Toggler เมื่อ hover */
+  .navbar-toggler:hover {
+    background-color: white; /* เปลี่ยนสีพื้นหลังเมื่อ hover เป็นสีน้ำเงินเข้ม */
+    border-color: white; /* เปลี่ยนสีเส้นขอบเมื่อ hover เป็นสีน้ำเงินเข้ม */
+  }
+  .navbar-collapse {
+    width: 100%;
+    display: flex;
+  }
+
+  @media screen and (max-width: 768px) {
+    .navbar-brand img {
+      width: 100%; 
+      height: 100%;
+    }
+  }
+
 body {
     display: grid;
     grid-template-rows: 1fr auto; 
@@ -26,6 +113,7 @@ body {
 .carousel-item{
     width: 100%;
     flex: 0 0 auto;
+    /* border-radius: 20px; */
 }
 
 .carousel-item img {
@@ -34,14 +122,13 @@ body {
     object-fit: cover;
     border-radius: 20px;
     box-sizing: border-box;
-    object-position: center center;
    
 }
 
 h1{
     font-family: "Mansalva",sans-serif;
     text-align: center;
-    padding-top: 150px; 
+    padding-top: 80px; 
 }
 
 #footer {
@@ -74,8 +161,7 @@ h1{
   .line p {
     text-align: center;
   }
-  #carouselExample,
-  #boxesCarousel, #boxesCarousel2{
+  #carouselExample{
       border-radius: 0;
   }
 
@@ -86,17 +172,18 @@ h1{
     height: 200px;
   }
   
+
 }
 
 hr {
     flex: 1;
     height: 5px;
-    background-color: rgb(51, 0, 255);
+    background-color: green;
 }
 
 .box{
     background-color: antiquewhite;
-    height: 300px;
+    height: 325px;
     border: 1px solid black;
     margin-bottom: 10px;
     border-radius: 20px;
@@ -104,8 +191,136 @@ hr {
     align-items: center;
     display: flex;
     box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
-    
+    display: block;
 }
-#box-container{
+
+#box-container, #box-container2{
     margin-bottom: 50px;
+}
+
+.img-container {
+    text-align: center;
+    display: block; 
+    margin: auto;
+}
+
+.imageFoecate {
+    object-fit: cover;
+    width: 50%;
+    height: auto;
+    margin:auto;
+    padding-top: 5%;
+    display: inline-block;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+    .imageFoecate {
+      width: 50%; 
+      height: auto;
+      object-fit: cover;
+      padding-top: 5%;
+      display: inline-block;
+      object-fit: cover;
+      margin-top: 5%;
+    }
+  }
+
+.descript {
+    padding: 0% 10% 0% 10%;
+    margin-left: 18% ;
+    margin-bottom: 0%;
+    margin-right: 18%;
+}
+
+.cartButton .cart{
+    margin-bottom: 4%;
+}
+
+.cart {
+    font-size: 14px;
+    background-color: red; 
+    padding: 6px 20px; 
+    border: none; 
+    cursor: pointer; 
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin: 0 auto;
+    margin-top: -10px;
+}
+
+@media screen and (max-width: 768px) {
+    .cart {
+      font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+      padding: 6px 12px; 
+      margin-top: -5px;
+    }
+  }
+  
+/* footer */
+#footer {
+    background-color: #818181;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 0%;
+}
+.list-unstyled.custom-list li a {
+    text-decoration: none; 
+    color: white;
+    font-size: 14px;
+}
+
+/**/
+
+/**/
+.pagination {
+    display: inline-block;
+  }
+  
+  .pagination li {
+    display: inline;
+    margin: 0 5px;
+  }
+  
+  .pagination li a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination li a:hover {
+    background-color: #ddd;
+  }
+  
+  .pagination .active a {
+    background-color: #145124;
+    color: white;
+  }
+
+  #pagination {
+    display: flex;
+    justify-content: center;
+  }
+  
+
+.cart-icon-container {
+    position: relative;
+    display: inline-block; /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
+}
+
+.cart-count {
+    position: absolute;
+    top: -7px; /* ปรับตำแหน่งตามต้องการ */
+    right: -10px; /* ปรับตำแหน่งตามต้องการ */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 10px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
