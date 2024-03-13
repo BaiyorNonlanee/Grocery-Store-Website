@@ -139,40 +139,45 @@
         font-size: 9px;
     }
 }
-.rectangle1 {
-    width: 150px;
-    height: 180px;
-    border: 1.5px solid black;
+.box{
+    background-color: antiquewhite;
+    height: 325px;
+    border: 1px solid black;
+    margin-bottom: 10px;
     border-radius: 20px;
-    margin-bottom: 5%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
+    display: block;
+}
+
+.rectangle1 {
+    /* width: 150px; */
+    height: 310px;
+    width: 295px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin:0% 2% 5% 1%;
     background-color: #F7F4EF;
   }
   .rectangle2 {
-    width: 150px;
-    height: 180px;
-    border: 1.5px solid black;
+    width: 295px;
+    height: 310px;
+    border: 1px solid black;
     border-radius: 20px;
+    margin:2% 2% 5% 1%;
     background-color: #FFD37A;
   }
   .rectangle3 {
-    width: 150px;
-    height: 180px;
-    border: 1.5px solid black;
+    width: 295px;
+    height: 310px;
+    border: 1px solid black;
     border-radius: 20px;
+    margin:2% 2% 5% 1%;
     background-color: #FFB6B6;
   }
 
-@media (max-width: 768px) {
-    .rectangle1, .rectangle2, .rectangle3 {
-        width: 75px; 
-        height: 90px;
-    }
-
-    .col-md-2 {
-        flex: 0 0 25%; 
-        max-width: 25%; 
-    }
-}
 #carouselExample .carousel-control-prev,
 #carouselExample .carousel-control-next{
   top: 50%;
@@ -182,6 +187,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin-left: 0%;
  
 }
 
@@ -296,7 +302,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
     .carousel-item .row {
         display: flex;
@@ -305,20 +311,23 @@
         flex-wrap: wrap;
     }
 
-    .carousel-item .row .col-md-2 {
+    .carousel-item .row .col-md-3 {
         flex-basis: 90%;
         max-width: 90%;
-        margin: 2% 15% 2% 52%; 
+        /* margin: 2% 15% 2% 52%;  */
+        margin: 5px auto; 
+        
     }
 
     .rectangle1 , .rectangle2 {
-        width: 200px;
-        height: 230px;
+        width: 250px;
+        height: 270px;
         border: 1.5px solid black;
         border-radius: 20px;
-        margin-bottom: 5%;
     }
+
 }
+
 
 /* footer */
 #footer {

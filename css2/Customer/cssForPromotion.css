@@ -218,41 +218,44 @@ h1{
 
 
 .rectangle1 {
-    width: 150px;
-    height: 180px;
-    border: 1.5px solid black;
-    border-radius: 20px;
-    margin-bottom: 5%;
-    background-color: #F7F4EF;
-
-  }
-  .rectangle2 {
-    width: 150px;
-    height: 180px;
-    border: 1.5px solid black;
-    border-radius: 20px;
-    background-color: #FFD37A;
-    margin-bottom: 5%;
-  }
-  .rectangle3 {
-    width: 150px;
-    height: 180px;
-    border: 1.5px solid black;
-    border-radius: 20px;
-    background-color: #FFB6B6;
-    margin-bottom: 5%;
-  }
+  /* width: 150px; */
+  height: 310px;
+  width: 295px;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin:0% 2% 5% -12%;
+  background-color: #F7F4EF;
+}
+.rectangle2 {
+  width: 295px;
+  height: 310px;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin:0% 2% 5% -12%;
+  background-color: #FFD37A;
+}
+.rectangle3 {
+  width: 295px;
+  height: 310px;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin:0% 2% 5% -12%;
+  background-color: #FFB6B6;
+}
 
 @media (max-width: 768px) {
-    .rectangle1, .rectangle2, .rectangle3 {
-        width: 75px; 
-        height: 90px;
-    }
+  .rectangle1, .rectangle2, .rectangle3 {
+      width: 150px; 
+      height: 120px;
+  }
 
-    .col-md-2 {
-        flex: 0 0 25%; 
-        max-width: 25%; 
-    }
+  .col-md-3 {
+      flex: 0 0 25%; 
+      max-width: 25%; 
+  }
+  .row.justify-content-center {
+    justify-content: center; /* จัดให้กล่องสี่เหลี่ยมอยู่ตรงกลาง */
+}
 }
 #carouselExample .carousel-control-prev,
 #carouselExample .carousel-control-next{
