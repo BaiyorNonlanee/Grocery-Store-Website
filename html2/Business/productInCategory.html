@@ -34,6 +34,7 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
     <nav></nav>
     <section id="feature">
@@ -184,49 +185,74 @@
 
           // Add product details to the div
           productDiv.innerHTML = `
-        <div class="row">
-            <div class="col-3 col-sm-3 col-lg-3">
-                <div class="productimage">
-                    <img src="${
-                      product.image || "default-image-url"
-                    }" class="img-fluid rounded-3" style="width: 120px;" alt="picture">
-                </div>
+    <div class="row">
+        <div class="col-3 col-sm-3 col-lg-3">
+            <div class="productimage">
+                <img src="${
+                  product.imagesrc || "default-image-url"
+                }" class="img-fluid rounded-3" style="width: 120px;" alt="picture">
             </div>
-            <div class="col-9 col-sm-9 col-lg-9">
-                <div class="productinfo">
-                    <span>Name: <p id="name${product.product_ID}">${
-            product.product_Name
-          }</p></span>
-                    <div id="name-form${product.product_ID}"></div>
-                    <span>Price: <p id="price${product.product_ID}">${
-            product.price
-          }</p></span>
-                    <div id="price-form${product.product_ID}"></div>
-                    <span>Promotion: <p id="promotion${product.product_ID}">${
-            product.promotion
-          }</p></span>
-                    <div id="promotion-form${product.product_ID}"></div>
-                    <span>Description: <p id="description${
+        </div>
+        <div class="col-9 col-sm-9 col-lg-9">
+            <div class="productinfo">
+                <div class="row">
+                    <div class="col-3 col-sm-3 col-lg-3">
+                        <span style="display: flex; flex-direction: row; gap: 5px">Name: <p id="name${
+                          product.product_ID
+                        }">${product.product_Name}</p></span>
+                    </div>
+                    <div class="col-6 col-sm-6 col-lg-6" id="name-form${
                       product.product_ID
-                    }">${product.description}</p></span>
-                    <div id="description-form${product.product_ID}"></div>
+                    }"></div>
+                </div>
+                <div class="row">
+                    <div class="col-3 col-sm-3 col-lg-3">
+                        <span style="display: flex; flex-direction: row; gap: 5px">Price: <p id="price${
+                          product.product_ID
+                        }">${product.price}</p></span>
+                    </div>
+                    <div class="col-6 col-sm-6 col-lg-6" id="price-form${
+                      product.product_ID
+                    }"></div>
+                </div>
+                <div class="row">
+                    <div class="col-3 col-sm-3 col-lg-3">
+                        <span style="display: flex; flex-direction: row; gap: 5px">Promotion: <p id="promotion${
+                          product.product_ID
+                        }">${product.promotion}</p></span>
+                    </div>
+                    <div class="col-6 col-sm-6 col-lg-6" id="promotion-form${
+                      product.product_ID
+                    }"></div>
+                </div>
+                <div class="row">
+                    <div class="col-3 col-sm-3 col-lg-3">
+                        <span style="display: flex; flex-direction: row; gap: 5px">Description: <p id="description${
+                          product.product_ID
+                        }">${product.description}</p></span>
+                    </div>
+                    <div class="col-6 col-sm-6 col-lg-6" id="description-form${
+                      product.product_ID
+                    }"></div>
                 </div>
             </div>
         </div>
-        <div class="editbutton">
-            <p style="color: red;" onclick="editProduct(${
-              product.product_ID
-            })">Edit</p>
-        </div>
-        <div class="savebutton" style="display: none;">
-            <a href="#" onclick="saveProduct(${product.product_ID})">SAVE</a>
-        </div>
-        <div class="deletebutton">
-            <a href="#" style="color: red;" onclick="deleteProduct(${
-              product.product_ID
-            })">Delete</a>
-        </div>
-      `;
+    </div>
+    <div class="editbutton">
+        <p style="color: red;" onclick="editProduct(${
+          product.product_ID
+        })">Edit</p>
+    </div>
+    <div class="savebutton" style="display: none;">
+        <a href="#" onclick="saveProduct(${product.product_ID})">SAVE</a>
+    </div>
+    <div class="deletebutton">
+        <a href="#" style="color: red;" onclick="deleteProduct(${
+          product.product_ID
+        })">Delete</a>
+    </div>
+`;
+
           // Append the new div to the productList container
           productList.appendChild(productDiv);
         });
@@ -237,7 +263,9 @@
         var name = document.getElementById(`name${id}`).textContent;
         var price = document.getElementById(`price${id}`).textContent;
         var promotion = document.getElementById(`promotion${id}`).textContent;
-        var description = document.getElementById(`description${id}`).textContent;
+        var description = document.getElementById(
+          `description${id}`
+        ).textContent;
 
         document.getElementById(`name${id}`).style.display = `none`;
         document.getElementById(`price${id}`).style.display = `none`;
@@ -247,7 +275,9 @@
         document.getElementById(`name-form${id}`).style.display = `block`;
         document.getElementById(`price-form${id}`).style.display = `block`;
         document.getElementById(`promotion-form${id}`).style.display = `block`;
-        document.getElementById(`description-form${id}`).style.display = `block`;
+        document.getElementById(
+          `description-form${id}`
+        ).style.display = `block`;
 
         // เปลี่ยน <p> เป็น input เพื่อให้ผู้ใช้แก้ไข
         document.getElementById(
@@ -358,7 +388,6 @@
           });
       }
 
-      
       document.addEventListener(".DOMContentLoaded", function () {
         fetch("http://localhost:3003/product", {
           method: "GET",
