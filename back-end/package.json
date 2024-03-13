@@ -12,5 +12,12 @@
     "express-session": "^1.18.0",
     "mysql2": "^3.9.2",
     "nodemon": "^3.1.0"
-  }
+  },
+  "name": "back-end",
+  "version": "1.0.0",
+  "main": "app.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

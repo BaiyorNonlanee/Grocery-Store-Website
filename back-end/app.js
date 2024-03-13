@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const mysql = require("mysql2");
-
 const session = require("express-session");
 
 const app = express();
@@ -335,3 +334,7 @@ app.delete("/product/:id", ensureAuthenticated, function (req, res, next) {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+app.get('/beverage',(req,res)=>{
+  res.render('beverage1');
+})
