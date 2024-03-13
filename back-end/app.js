@@ -335,6 +335,4 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-app.get('/beverage',(req,res)=>{
-  res.render('beverage1');
-})
+

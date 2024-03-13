@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Empty cart Page</title>
 
     <title>Checkout Page</title>
     <!-- Bootstrap CSS -->
@@ -11,7 +11,7 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
 
     <!-- custom CSS -->
-    <link rel="stylesheet" href="/public/css2/Customer/cartempty.css" />
+    <link rel="stylesheet" href="/css2/Customer/cartempty.css" />
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -26,6 +26,8 @@
 
 </head>
 <body>
+  <%- include('../partials/navigator')  %>
+
   <div class="stepper-wrapper">
     <div class="stepper-item active">
       <div class="step-counter">1</div>
@@ -48,14 +50,13 @@
                 <div class="cartempty">
                     <div class="item">
                         <div>
-                            <img src="/image/emptycart.png" alt="" style="width: 100px;">
+                            <img class="cartEmpty" src="/image/emptycart.png" alt="" style="width: 100px;">
                          </div>
                          <h5 class="text-center" style="color: gray;">Your shopping cart is empty</h1>
                              <div class="continuebutton">
                                  <a href="#" class="btn btn-warning" style="color: white;"><b>Continue shopping</b></a>
                              </div>
                     </div>
-                    
                 </div>
             </div>
               
@@ -92,6 +93,7 @@
       </div>
         </div>
     </section>
+    <%- include('../partials/footer')  %>
     
 </body>
 </html>
