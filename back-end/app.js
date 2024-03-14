@@ -20,8 +20,8 @@ const connection = mysql.createConnection({
 });
 
 // Middleware to parse JSON bodies
-app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.json());
 
 app.use(
   session({
@@ -313,26 +313,57 @@ app.get("/cart/:id", function (req, res, next) {
 app.post("/cart", function (req, res, next) {
   // Extract user data from request body
   const { product_id, user_id, amount } = req.body;
-
-  // SQL query to insert a new user
-  const query =
-    "INSERT INTO `cart` (product_id, user_id, amount) VALUES (?,?,?)";
-  const values = [product_id, user_id, amount];
-
-  // Execute the query
-  connection.query(query, values, function (err, results) {
-    if (err) {
-      // If there's an error, send a 500 response
-      res.status(500).json({
-        message: err,
-        error: "Can't create cart",
-      });
-    } else {
-      // If successful, send a 201 response with the inserted user's ID
-      res.status(201).json({ message: "Cart created successfully.", results });
-    }
+ 
+  // SQL query to check if the product exists in the cart for the user
+  const selectQuery = "SELECT * FROM `cart` WHERE product_id = ? AND user_id = ?";
+  const selectValues = [product_id, user_id];
+ 
+  // Execute the select query
+  connection.query(selectQuery, selectValues, function (err, results) {
+     if (err) {
+       // If there's an error, send a 500 response
+       res.status(500).json({
+         message: err,
+         error: "Can't check cart",
+       });
+     } else {
+       // If the product exists in the cart, update the quantity
+       if (results.length > 0) {
+         const updateQuery = "UPDATE `cart` SET amount = amount + ? WHERE product_id = ? AND user_id = ?";
+         const updateValues = [amount, product_id, user_id];
+ 
+         // Execute the update query
+         connection.query(updateQuery, updateValues, function (err, results) {
+           if (err) {
+             res.status(500).json({
+               message: err,
+               error: "Can't update cart",
+             });
+           } else {
+             res.status(200).json({ message: "Cart updated successfully.", results });
+           }
+         });
+       } else {
+         // If the product does not exist in the cart, insert a new record
+         const insertQuery = "INSERT INTO `cart` (product_id, user_id, amount) VALUES (?, ?, ?)";
+         const insertValues = [product_id, user_id, amount];
+ 
+         // Execute the insert query
+         connection.query(insertQuery, insertValues, function (err, results) {
+           if (err) {
+             res.status(500).json({
+               message: err,
+               error: "Can't create cart",
+             });
+           } else {
+             res.status(201).json({ message: "Cart created successfully.", results });
+           }
+         });
+       }
+     }
   });
-});
+ });
+ 
 
 app.put("/cart/:id", function (req, res, next) {
   // Extract product data from request body

@@ -125,6 +125,7 @@
               .then((response) => response.json())
               .then((data) => {
                 if (data.message === "Logged in successfully") {
+                  document.cookie = `user_id=${data.data.user_id}; path=/`;
                   // Redirect based on role using the defined variables
                   if (data.data.role === "business") {
                     window.location.href = '/html2/Business/homeBusiness.html'

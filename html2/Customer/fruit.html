@@ -18,6 +18,95 @@
     rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet">
+  <style>
+    /* Container for the product */
+.box {
+  background-color: antiquewhite;
+    height: 320px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
+    display: block;
+}
+
+/* Image container */
+.img-container {
+  text-align: center;
+    display: block;
+    margin: auto;
+}
+
+
+/* Image */
+.imageFoecate {
+ object-fit: cover; /* Ensures the image covers the container without stretching */
+ width: 60%; /* Adjust the width as needed */
+ height: 150px; /* Adjust the height as needed */
+ margin: auto;
+ display: block; /* Ensures the image is centered */
+}
+
+@media screen and (max-width: 768px) {
+ .imageFoecate {
+    width: 100%; /* Adjust the width as needed for smaller screens */
+    height: 150px; /* Adjust the height as needed for smaller screens */
+    object-fit: cover;
+    margin-top: 5%;
+ }
+}
+
+
+/* Description */
+.descript {
+  padding: 0% 10% 0% 10%;
+    margin-left: 18% ;
+    margin-bottom: 0%;
+    margin-right: 18%;
+    font-family: "Josefin Sans", sans-serif; 
+    text-align: center;
+}
+
+/* Price */
+.descript p span {
+  font-family: "Jockey One", sans-serif;
+    font-size: 20px;
+    margin: 0 30px;
+}
+
+/* Add to cart button */
+.cartButton {
+ margin-top: 10px;
+}
+
+.cart {
+  font-size: 14px;
+    background-color: red;
+    padding: 6px 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin: 0 auto;
+    margin-top: -10px;
+}
+ 
+@media screen and (max-width: 768px) {
+    .cart {
+      font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+      padding: 6px 12px;
+      margin-top: -5px;
+    }
+  }
+.cart:hover {
+ background-color: #6e7174;
+}
+
+  </style>
 </head>
 
 <body>
@@ -107,7 +196,7 @@
     <div id="box-container" class="container" style="display: inline-block;">
       <div class="row" style="display: inline;">
 
-        <div id="productList"></div>
+        <div id="productList" class="row"></div>
 
       </div>
     </div>
@@ -420,6 +509,32 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // Usage
+    const userId = getCookie('user_id');
+
+    fetch(`http://localhost:3003/cart/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success cart:", data);
+        const cartCountElement = document.querySelector('.cart-count');
+        cartCountElement.textContent = data.length;
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
     fetch("http://localhost:3003/product", {
       method: "GET",
       headers: {
@@ -428,7 +543,7 @@
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        console.log("Success product:", data);
         displayProducts(data); // แก้ไขเป็น displayProducts(data)
       })
       .catch((error) => {
@@ -440,11 +555,10 @@
 
       products.forEach((product) => {
         const productDiv = document.createElement("div");
-        productDiv.className = "productbox";
+        productDiv.className = "productbox col-6 col-md-3";
         productDiv.dataset.productId = product.product_ID;
 
         productDiv.innerHTML = `
-      <div class="col-6 col-md-3">
         <div class="box">
           <div class="img-container">
             <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
@@ -457,7 +571,7 @@
             <button class="cart">ADD TO CART</button>
           </div>
         </div>
-      </div>
+        
     `;
 
         // เพิ่ม event listener ให้กับปุ่ม "ADD TO CART"
@@ -472,29 +586,56 @@
       });
     }
 
-    let cartItems = []; // ตัวแปรเพื่อเก็บรายการสินค้าที่มีอยู่ในตะกร้า
 
     function addToCart(productId, productDiv) {
- // ตรวจสอบว่าสินค้านี้มีอยู่ในตะกร้าหรือไม่
- if (!cartItems.includes(productId)) {
-    console.log(`Product ID: ${productId} added to cart.`);
-    cartItems.push(productId); // เพิ่มสินค้าลงในตะกร้า
-    updateCartCount(); // อัปเดตจำนวนสินค้าในตะกร้า
+      // ตรวจสอบว่าสินค้านี้มีอยู่ในตะกร้าหรือไม่
+      console.log(`Product ID: ${productId} added to cart.`);
 
-    // เปลี่ยนสีของปุ่ม "ADD TO CART" ที่ถูกคลิก
-    const addToCartButton = productDiv.querySelector('.cart');
-    addToCartButton.style.backgroundColor = 'white'; // เปลี่ยนสีพื้นหลังเป็นสีขาว
-    addToCartButton.style.color = 'red'; // เปลี่ยนสีตัวอักษรเป็นสีแดง
- } else {
-    console.log(`Product ID: ${productId} is already in the cart.`);
- }
-}
+      const productData = {
+        product_id: Number(productId),
+          user_id: Number(userId),
+          amount: 1
+            };
 
 
-function updateCartCount() {
- const cartCountElement = document.querySelector('.cart-count');
- cartCountElement.textContent = cartItems.length; // อัปเดตตัวเลขใน UI
-}
+
+      fetch(`http://localhost:3003/cart`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(productData)
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success product:", data);
+          updateCartCount(); // อัปเดตจำนวนสินค้าในตะกร้า
+        })
+        .catch((error) => {
+          console.log("Error:", error);
+        });
+
+
+    }
+
+
+    function updateCartCount() {
+      fetch(`http://localhost:3003/cart/${userId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success cart:", data);
+          const cartCountElement = document.querySelector('.cart-count');
+          cartCountElement.textContent = data.length;
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
 
 
 
