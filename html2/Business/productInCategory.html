@@ -157,106 +157,105 @@
 
     <script src="/Business/app.js"></script>
     <script>
-      fetch("http://localhost:3003/product", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Success:", data);
-          displayProducts(data); // Call the function to display products
+      // fetch("http://localhost:3003/product", {
+      //   method: "GET",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // })
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     console.log("Success:", data);
+      //     displayProducts(data); // Call the function to display products
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error:", error);
+      //   });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // ดึง category_ID จาก URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryID = urlParams.get("category_ID");
+
+        // เรียก API ที่มีการกรองตาม category_ID
+        fetch(`http://localhost:3003/product-category/${categoryID}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+          .then((response) => response.json())
+          .then((data) => {
+            displayProducts(data); // แสดงสินค้าที่ได้รับมา
+          })
+          .catch((error) => console.error("Error:", error));
+      });
 
       function displayProducts(products) {
-        const productList = document.getElementById("productList");
-        productList.innerHTML = ""; // Clear the container
+    const productList = document.getElementById("productList");
+    // Clear the container
+    while (productList.firstChild) {
+        productList.removeChild(productList.firstChild);
+    }
 
-        products.forEach((product) => {
-          // Create a new div for each product
-          const productDiv = document.createElement("div");
-          productDiv.className = "productbox";
-          // Add product_ID as a data attribute
-          productDiv.dataset.productId = product.product_ID;
+    products.forEach((product) => {
+        // Create a new div for each product
+        const productDiv = document.createElement("div");
+        productDiv.className = "productbox";
+        // Add product_ID as a data attribute
+        productDiv.dataset.productId = product.product_ID;
 
-          // Add product details to the div
-          productDiv.innerHTML = `
-    <div class="row">
-        <div class="col-3 col-sm-3 col-lg-3">
-            <div class="productimage">
-                <img src="${
-                  product.imagesrc || "default-image-url"
-                }" class="img-fluid rounded-3" style="width: 120px;" alt="picture">
-            </div>
-        </div>
-        <div class="col-9 col-sm-9 col-lg-9">
-            <div class="productinfo">
-                <div class="row">
-                    <div class="col-3 col-sm-3 col-lg-3">
-                        <span style="display: flex; flex-direction: row; gap: 5px">Name: <p id="name${
-                          product.product_ID
-                        }">${product.product_Name}</p></span>
+        // Add product details to the div
+        productDiv.innerHTML = `
+            <div class="row">
+                <div class="col-3 col-sm-3 col-lg-3">
+                    <div class="productimage">
+                        <img src="${product.imagesrc || "default-image-url"}" class="img-fluid rounded-3" style="width: 120px;" alt="picture">
                     </div>
-                    <div class="col-6 col-sm-6 col-lg-6" id="name-form${
-                      product.product_ID
-                    }"></div>
                 </div>
-                <div class="row">
-                    <div class="col-3 col-sm-3 col-lg-3">
-                        <span style="display: flex; flex-direction: row; gap: 5px">Price: <p id="price${
-                          product.product_ID
-                        }">${product.price}</p></span>
+                <div class="col-9 col-sm-9 col-lg-9">
+                    <div class="productinfo">
+                        <div class="row">
+                            <div class="col-3 col-sm-3 col-lg-3">
+                                <span style="display: flex; flex-direction: row; gap: 5px">Name: <p id="name${product.product_ID}">${product.product_Name}</p></span>
+                            </div>
+                            <div class="col-6 col-sm-6 col-lg-6" id="name-form${product.product_ID}"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 col-sm-3 col-lg-3">
+                                <span style="display: flex; flex-direction: row; gap: 5px">Price: <p id="price${product.product_ID}">${product.price}</p></span>
+                            </div>
+                            <div class="col-6 col-sm-6 col-lg-6" id="price-form${product.product_ID}"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 col-sm-3 col-lg-3">
+                                <span style="display: flex; flex-direction: row; gap: 5px">Promotion: <p id="promotion${product.product_ID}">${product.promotion}</p></span>
+                            </div>
+                            <div class="col-6 col-sm-6 col-lg-6" id="promotion-form${product.product_ID}"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 col-sm-3 col-lg-3">
+                                <span style="display: flex; flex-direction: row; gap: 5px">Description: <p id="description${product.product_ID}">${product.description}</p></span>
+                            </div>
+                            <div class="col-6 col-sm-6 col-lg-6" id="description-form${product.product_ID}"></div>
+                        </div>
                     </div>
-                    <div class="col-6 col-sm-6 col-lg-6" id="price-form${
-                      product.product_ID
-                    }"></div>
-                </div>
-                <div class="row">
-                    <div class="col-3 col-sm-3 col-lg-3">
-                        <span style="display: flex; flex-direction: row; gap: 5px">Promotion: <p id="promotion${
-                          product.product_ID
-                        }">${product.promotion}</p></span>
-                    </div>
-                    <div class="col-6 col-sm-6 col-lg-6" id="promotion-form${
-                      product.product_ID
-                    }"></div>
-                </div>
-                <div class="row">
-                    <div class="col-3 col-sm-3 col-lg-3">
-                        <span style="display: flex; flex-direction: row; gap: 5px">Description: <p id="description${
-                          product.product_ID
-                        }">${product.description}</p></span>
-                    </div>
-                    <div class="col-6 col-sm-6 col-lg-6" id="description-form${
-                      product.product_ID
-                    }"></div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="editbutton">
-        <p style="color: red;" onclick="editProduct(${
-          product.product_ID
-        })">Edit</p>
-    </div>
-    <div class="savebutton" style="display: none;">
-        <a href="#" onclick="saveProduct(${product.product_ID})">SAVE</a>
-    </div>
-    <div class="deletebutton">
-        <a href="#" style="color: red;" onclick="deleteProduct(${
-          product.product_ID
-        })">Delete</a>
-    </div>
-`;
-
-          // Append the new div to the productList container
-          productList.appendChild(productDiv);
-        });
-      }
+            <div class="editbutton">
+                <p style="color: red;" onclick="editProduct(${product.product_ID})">Edit</p>
+            </div>
+            <div class="savebutton" style="display: none;">
+                <a href="#" onclick="saveProduct(${product.product_ID})">SAVE</a>
+            </div>
+            <div class="deletebutton">
+                <a href="#" style="color: red;" onclick="deleteProduct(${product.product_ID})">Delete</a>
+            </div>
+        `;
+        // Append the new div to the productList container
+        productList.appendChild(productDiv);
+    });
+}
 
       function editProduct(id) {
         // ดึงข้อมูลจาก <p> และเก็บไว้ในตัวแปร
@@ -387,22 +386,6 @@
             console.error("Error deleting product:", error);
           });
       }
-
-      document.addEventListener(".DOMContentLoaded", function () {
-        fetch("http://localhost:3003/product", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            displayProducts(data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      });
     </script>
   </body>
 </html>
