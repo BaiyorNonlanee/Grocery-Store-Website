@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     />
-
+ 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Jockey+One&display=swap"
       rel="stylesheet"
     />
-
+ 
     <link
       href="https://fonts.googleapis.com/css2?family=Calistoga&family=Jockey+One&family=Luckiest+Guy&display=swap"
       rel="stylesheet"
@@ -30,7 +30,7 @@
           <!-- left content -->
           <div class="happy">
             <h1>Where there is good food,</h1>
-            <h1>there is happiness :)</h1>
+            <h1>there is happiness :</h1>
           </div>
           <img class="grocery" src="/public/image/grocery2.png" />
           <img class="fish" src="/public/image/fish.png" />
@@ -41,7 +41,7 @@
           <img class="pumpkin" src="/public/image/pumpkin.png" />
           <img class="milk" src="/public/image/milk.png" />
         </div>
-
+ 
         <div class="col-md-6 right-content">
           <!-- right content -->
           <p class="top">
@@ -72,16 +72,16 @@
         </div>
       </div>
     </div>
-
+ 
     <script>
       // document.getElementById("username").addEventListener("input",handleInput);
       // document.getElementById("password").addEventListener("input",handleInput);
-
+ 
       // function handleInput(){
       //     const username = document.getElementById("username").value;
       //     const password = document.getElementById('password').value;
       //     const loginButton = document.getElementById('loginButton');
-
+ 
       //     //completed fill username and password
       //     if (username.trim() !== '' && password.trim() !== '') {
       //             loginButton.style.backgroundColor = 'red';
@@ -93,19 +93,19 @@
       //             loginButton.disabled = true; // can not click
       //         }
       //     }
-
+ 
       // Define URLs for redirection
     //   const homeForBusinessUrl = "./html2/Business/HomeForBusiness.html";
     //   const homeForCustomerUrl = "./html2/Customer/HomeForCustomer.html";
-
+ 
       document
         .getElementById("loginButton")
         .addEventListener("click", function (event) {
           event.preventDefault(); // Prevent the default form submission behavior
-
+ 
           const username = document.getElementById("username").value;
           const password = document.getElementById("password").value;
-
+ 
           // Check if username and password are not empty
           if (username.trim() !== "" && password.trim() !== "") {
             // Prepare the data to be sent to the server
@@ -113,7 +113,7 @@
               username: username,
               password: password,
             };
-
+ 
             // Send a POST request to the server
             fetch("http://localhost:3003/login", {
               method: "POST",
@@ -125,9 +125,10 @@
               .then((response) => response.json())
               .then((data) => {
                 if (data.message === "Logged in successfully") {
+                  document.cookie = `user_id=${data.data.user_id}; path=/`;
                   // Redirect based on role using the defined variables
                   if (data.data.role === "business") {
-                    window.location.href = '/html2/Business/productInCategory.html'
+                    window.location.href = '/html2/Business/homeBusiness.html'
                   } else if (data.data.role === "individual") {
                     window.location.href = '/html2/Customer/HomeForCustomer.html';
                   }
@@ -143,7 +144,6 @@
             alert("Please fill in both username and password fields.");
           }
         });
-   
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>

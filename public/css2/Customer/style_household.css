@@ -249,6 +249,7 @@ hr {
   /*Pagination*/
   .pagination {
     display: inline-block;
+    margin-top: 50px;
   }
   
   .pagination li {
@@ -310,3 +311,4 @@ hr {
     justify-content: center;
     align-items: center;
 }
+

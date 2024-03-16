@@ -3,13 +3,15 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const mysql = require("mysql2");
+ 
 const session = require("express-session");
-
+ 
 const app = express();
 const port = 3003;
-
+ 
 const bcrypt = require("bcrypt");
 
+ 
 // Connection MySQL
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -17,11 +19,11 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
 });
-
+ 
 // Middleware to parse JSON bodies
-app.use(bodyParser.json());
 app.use(cors());
-
+app.use(bodyParser.json());
+ 
 app.use(
   session({
     secret: "@secretEiEi",
@@ -30,10 +32,10 @@ app.use(
     cookie: { secure: false },
   })
 );
-
+ 
 app.post("/register", (req, res) => {
   const { username, password, role } = req.body;
-
+ 
   // Check if the username already exists
   const query = "SELECT * FROM `users` WHERE username = ?";
   connection.query(query, [username], function (err, results) {
@@ -42,12 +44,12 @@ app.post("/register", (req, res) => {
         .status(500)
         .json({ message: err, error: "An error occurred while registering." });
     }
-
+ 
     // If the username already exists, send a 400 response
     if (results.length > 0) {
       return res.status(400).json({ message: "Username already exists" });
     }
-
+ 
     // Hash the password
     bcrypt.hash(password, 10, function (err, hash) {
       if (err) {
@@ -58,7 +60,7 @@ app.post("/register", (req, res) => {
             error: "An error occurred while registering.",
           });
       }
-
+ 
       // Insert the new user into the database
       const insertQuery =
         "INSERT INTO `users` (username, password, role) VALUES (?, ?, ?)";
@@ -74,7 +76,7 @@ app.post("/register", (req, res) => {
                 error: "An error occurred while registering.",
               });
           }
-
+ 
           // If successful, send a 201 response
           res.status(201).json({ message: "User registered successfully" });
         }
@@ -82,10 +84,10 @@ app.post("/register", (req, res) => {
     });
   });
 });
-
+ 
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
-
+ 
   // SQL query to find the user by username
   const query = "SELECT * FROM `users` WHERE username = ?";
   connection.query(query, [username], function (err, results) {
@@ -95,12 +97,12 @@ app.post("/login", (req, res) => {
         .status(500)
         .json({ message: err, error: "An error occurred while logging in." });
     }
-
+ 
     // If no user is found, send a 401 response
     if (results.length === 0) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-
+ 
     // Compare the provided password with the hashed password stored in the database
     bcrypt.compare(password, results[0].password, function (err, isMatch) {
       if (err) {
@@ -125,7 +127,7 @@ app.post("/login", (req, res) => {
     });
   });
 });
-
+ 
 app.post("/logout", (req, res) => {
   // Destroy the session
   req.session.destroy((err) => {
@@ -135,7 +137,7 @@ app.post("/logout", (req, res) => {
     res.status(200).json({ message: "Logged out successfully" });
   });
 });
-
+ 
 // role: Individual & Business
 function ensureAuthenticated(req, res, next) {
   if (req.session.user) {
@@ -143,7 +145,7 @@ function ensureAuthenticated(req, res, next) {
   }
   res.status(401).json({ message: "Unauthorized" });
 }
-
+ 
 // role: Business
 function ensureAuthenBusiness(req, res, next) {
   if (req.session.user) {
@@ -158,10 +160,10 @@ function ensureAuthenBusiness(req, res, next) {
   }
   // If the user is not authenticated, deny access
   res.status(401).json({ message: "Unauthorized" });
- }
+}
  
 // example hello express.js
-app.get("/", ensureAuthenticated, (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello! Node.js");
 });
 //User login
@@ -171,7 +173,7 @@ app.get("/users", ensureAuthenBusiness, function (req, res, next) {
     res.json(results);
   });
 });
-
+ 
 app.get("/user", ensureAuthenticated, function (req, res, next) {
   const { userId } = req.query;
   // simple query
@@ -193,14 +195,14 @@ app.get("/user", ensureAuthenticated, function (req, res, next) {
     }
   );
 });
-
+ 
 app.post("/user", ensureAuthenticated, function (req, res, next) {
   // Extract user data from request body
   const { username } = req.body;
-
+ 
   // SQL query to insert a new user
   const query = "INSERT INTO `users` (username) VALUES (?)";
-
+ 
   // Execute the query
   connection.query(query, [username], function (err, results) {
     if (err) {
@@ -217,7 +219,7 @@ app.post("/user", ensureAuthenticated, function (req, res, next) {
     }
   });
 });
-
+ 
 //Edit Product
 app.get("/product", function (req, res, next) {
   // simple query
@@ -225,16 +227,16 @@ app.get("/product", function (req, res, next) {
     res.json(results);
   });
 });
-
+ 
 app.post("/product",  function (req, res, next) {
   // Extract user data from request body
-  const { productName, price, promotion, description } = req.body;
-
+  const { productName, price, promotion, description, imagesrc } = req.body;
+ 
   // SQL query to insert a new user
   const query =
-    "INSERT INTO `Product` (product_Name, price, promotion, description  ) VALUES (?,?,?,?)";
-  const values = [productName, price, promotion, description];
-
+    "INSERT INTO `Product` (product_Name, price, promotion, description, imagesrc  ) VALUES (?,?,?,?,?)";
+  const values = [productName, price, promotion, description, imagesrc];
+ 
   // Execute the query
   connection.query(query, values, function (err, results) {
     if (err) {
@@ -249,17 +251,17 @@ app.post("/product",  function (req, res, next) {
     }
   });
 });
-
+ 
 app.put("/product/:id", function (req, res, next) {
   // Extract product data from request body
   const { productName, price, promotion, description } = req.body;
   const { id } = req.params; // Get the product ID from the URL parameters
-
+ 
   // SQL query to update the product
   const query =
     "UPDATE `Product` SET product_Name = ?, price = ?, promotion = ?, description = ? WHERE product_ID = ?";
   const values = [productName, price, promotion, description, id];
-
+ 
   // Execute the query
   connection.query(query, values, function (err, results) {
     if (err) {
@@ -274,16 +276,16 @@ app.put("/product/:id", function (req, res, next) {
     }
   });
 });
-
+ 
 //Delete Product
-app.delete("/product/:id", ensureAuthenticated, function (req, res, next) {
+app.delete("/product/:id",function (req, res, next) {
   // Extract product ID from the URL parameters
   const { id } = req.params; // Get the product ID from the URL parameters
-
+ 
   // SQL query to delete the product
   const query = "DELETE FROM `Product` WHERE product_ID = ?";
   const values = [id];
-
+ 
   // Execute the query
   connection.query(query, values, function (err, results) {
     if (err) {
@@ -298,7 +300,122 @@ app.delete("/product/:id", ensureAuthenticated, function (req, res, next) {
     }
   });
 });
-
+ 
+app.get("/cart/:id", function (req, res, next) {
+  // simple query
+  const { id } = req.params;
+  const values = [id];
+  connection.query("SELECT * FROM `cart` JOIN `product` ON `cart`.`product_id` = `product`.`product_id` WHERE `cart`.`user_id` = ?",values, function (err, results, fields) {
+    console.log(results);
+    res.json(results);
+  });
+});
+ 
+app.post("/cart", function (req, res, next) {
+  // Extract user data from request body
+  const { product_id, user_id, amount } = req.body;
+ 
+  // SQL query to check if the product exists in the cart for the user
+  const selectQuery = "SELECT * FROM `cart` WHERE product_id = ? AND user_id = ?";
+  const selectValues = [product_id, user_id];
+ 
+  // Execute the select query
+  connection.query(selectQuery, selectValues, function (err, results) {
+     if (err) {
+       // If there's an error, send a 500 response
+       res.status(500).json({
+         message: err,
+         error: "Can't check cart",
+       });
+     } else {
+       // If the product exists in the cart, update the quantity
+       if (results.length > 0) {
+         const updateQuery = "UPDATE `cart` SET amount = amount + ? WHERE product_id = ? AND user_id = ?";
+         const updateValues = [amount, product_id, user_id];
+ 
+         // Execute the update query
+         connection.query(updateQuery, updateValues, function (err, results) {
+           if (err) {
+             res.status(500).json({
+               message: err,
+               error: "Can't update cart",
+             });
+           } else {
+             res.status(200).json({ message: "Cart updated successfully.", results });
+           }
+         });
+       } else {
+         // If the product does not exist in the cart, insert a new record
+         const insertQuery = "INSERT INTO `cart` (product_id, user_id, amount) VALUES (?, ?, ?)";
+         const insertValues = [product_id, user_id, amount];
+ 
+         // Execute the insert query
+         connection.query(insertQuery, insertValues, function (err, results) {
+           if (err) {
+             res.status(500).json({
+               message: err,
+               error: "Can't create cart",
+             });
+           } else {
+             res.status(201).json({ message: "Cart created successfully.", results });
+           }
+         });
+       }
+     }
+  });
+});
+ 
+ 
+app.put("/cart/:id", function (req, res, next) {
+  // Extract product data from request body
+  const { amount } = req.body;
+  const { id } = req.params; // Get the product ID from the URL parameters
+ 
+  // SQL query to update the product
+  const query =
+    "UPDATE `cart` SET amount = ? WHERE cart_id = ?";
+  const values = [amount,id];
+ 
+  // Execute the query
+  connection.query(query, values, function (err, results) {
+    if (err) {
+      // If there's an error, send a 500 response
+      res.status(500).json({
+        message: err,
+        error: "An error occurred while updating the cart.",
+      });
+    } else {
+      // If successful, send a 200 response indicating success
+      res.status(200).json({ message: "Cart updated successfully.", results });
+    }
+  });
+});
+ 
+//Delete Cart
+app.delete("/cart/:id", function (req, res, next) {
+  // Extract product ID from the URL parameters
+  const { id } = req.params; // Get the product ID from the URL parameters
+ 
+  // SQL query to delete the product
+  const query = "DELETE FROM `cart` WHERE cart_id = ?";
+  const values = [id];
+ 
+  // Execute the query
+  connection.query(query, values, function (err, results) {
+    if (err) {
+      // If there's an error, send a 500 response
+      res.status(500).json({
+        message: err,
+        error: "An error occurred while deleting the product.",
+      });
+    } else {
+      // If successful, send a 200 response indicating success
+      res.status(200).json({ message: "Cart deleted successfully." });
+    }
+  });
+});
+ 
+ 
 //  //Add new
 //  app.get("/product", function (req, res, next) {
 //   // simple query
@@ -306,14 +423,14 @@ app.delete("/product/:id", ensureAuthenticated, function (req, res, next) {
 //     res.json(results);
 //   });
 // });
-
+ 
 // app.post("/product", function (req, res, next) {
 //   // Extract user data from request body
 //   const { username } = req.body;
-
+ 
 //   // SQL query to insert a new user
 //   const query = "INSERT INTO `users` (username) VALUES (?)";
-
+ 
 //   // Execute the query
 //   connection.query(query, [username], function (err, results) {
 //     if (err) {
@@ -329,10 +446,34 @@ app.delete("/product/:id", ensureAuthenticated, function (req, res, next) {
 //     }
 //   });
 // });
+ 
+app.set('view engine', 'ejs');
+
+app.set('views', __dirname + '/views');
+
+// CSS, images
+app.use(express.static(__dirname + '/public'));
+
+app.get('/beverage1', (req, res) => {res.render('customer/beverage1')});
+app.get('/beverage2', (req, res) => { res.render('customer/beverage2')});
+app.get('/beverage3', (req, res) => {res.render('customer/beverage3')});
+app.get('/fruit1', (req, res) => {res.render('customer/fruit1')});
+app.get('/fruit2', (req, res) => {res.render('customer/fruit2')});
+app.get('/empty', (req, res) => {res.render('customer/cartEmptyPage')});
+app.get('/completed', (req, res) => {res.render('customer/completePage')});
+app.get('/contact', (req, res) => {res.render('customer/contactPage')});
+app.get('/household1', (req, res) => {res.render('customer/household1')});
+app.get('/household2', (req, res) => {res.render('customer/household2')});
+app.get('/household3', (req, res) => {res.render('customer/household3')});
+app.get('/meat1', (req, res) => {res.render('customer/meatPage1')});
+app.get('/meat2', (req, res) => {res.render('customer/meatPage2')});
+app.get('/information', (req, res) => {res.render('customer/outlineInfo')});
+app.get('/payment', (req, res) => {res.render('customer/paymentPage')});
+app.get('/productList', (req, res) => {res.render('customer/productListPage')});
+app.get('/promotion', (req, res) => {res.render('customer/PromotionPage')});
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
 
