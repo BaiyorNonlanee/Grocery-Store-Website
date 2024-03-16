@@ -20,92 +20,108 @@
   <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet">
   <style>
     /* Container for the product */
-.box {
-  background-color: antiquewhite;
-    height: 320px;
-    border: 1px solid black;
-    margin-bottom: 10px;
-    border-radius: 20px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
-    display: block;
-}
-
-/* Image container */
-.img-container {
-  text-align: center;
-    display: block;
-    margin: auto;
-}
-
-
-/* Image */
-.imageFoecate {
- object-fit: cover; /* Ensures the image covers the container without stretching */
- width: 60%; /* Adjust the width as needed */
- height: 150px; /* Adjust the height as needed */
- margin: auto;
- display: block; /* Ensures the image is centered */
-}
-
-@media screen and (max-width: 768px) {
- .imageFoecate {
-    width: 100%; /* Adjust the width as needed for smaller screens */
-    height: 150px; /* Adjust the height as needed for smaller screens */
-    object-fit: cover;
-    margin-top: 5%;
- }
-}
-
-
-/* Description */
-.descript {
-  padding: 0% 10% 0% 10%;
-    margin-left: 18% ;
-    margin-bottom: 0%;
-    margin-right: 18%;
-    font-family: "Josefin Sans", sans-serif; 
-    text-align: center;
-}
-
-/* Price */
-.descript p span {
-  font-family: "Jockey One", sans-serif;
-    font-size: 20px;
-    margin: 0 30px;
-}
-
-/* Add to cart button */
-.cartButton {
- margin-top: 10px;
-}
-
-.cart {
-  font-size: 14px;
-    background-color: red;
-    padding: 6px 20px;
-    border: none;
-    cursor: pointer;
-    color: white;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    display: block;
-    margin: 0 auto;
-    margin-top: -10px;
-}
- 
-@media screen and (max-width: 768px) {
-    .cart {
-      font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
-      padding: 6px 12px;
-      margin-top: -5px;
+    .box {
+      background-color: antiquewhite;
+      height: 320px;
+      border: 1px solid black;
+      margin-bottom: 10px;
+      border-radius: 20px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
+      display: block;
     }
-  }
-.cart:hover {
- background-color: #6e7174;
-}
 
+    .productbox {
+      align-items: center;
+      text-align: center;
+    }
+
+    .productlist {
+      margin-left: 60px;
+    }
+
+    /* Image container */
+    .img-container {
+      text-align: center;
+      display: block;
+      margin: auto;
+    }
+
+
+    /* Image */
+    .imageFoecate {
+      object-fit: cover;
+      /* Ensures the image covers the container without stretching */
+      width: 60%;
+      /* Adjust the width as needed */
+      height: 150px;
+      /* Adjust the height as needed */
+      margin: auto;
+      display: block;
+      /* Ensures the image is centered */
+    }
+
+    @media screen and (max-width: 768px) {
+      .imageFoecate {
+        width: 100%;
+        /* Adjust the width as needed for smaller screens */
+        height: 150px;
+        /* Adjust the height as needed for smaller screens */
+        object-fit: cover;
+        margin-top: 5%;
+      }
+    }
+
+
+    /* Description */
+    .descript {
+      padding: 0% 10% 0% 10%;
+      margin-left: 18%;
+      margin-bottom: 0%;
+      margin-right: 18%;
+      font-family: "Josefin Sans", sans-serif;
+      text-align: center;
+    }
+
+    /* Price */
+    .descript p span {
+      font-family: "Jockey One", sans-serif;
+      font-size: 20px;
+      margin: 0 30px;
+    }
+
+    /* Add to cart button */
+    .cartButton {
+      margin-top: 10px;
+    }
+
+    .cart {
+      font-size: 14px;
+      background-color: red;
+      padding: 6px 20px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      display: block;
+      margin: 0 auto;
+      margin-top: -10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .cart {
+        font-size: 12px;
+        /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+        padding: 6px 12px;
+        margin-top: -5px;
+      }
+    }
+
+    .cart:hover {
+      background-color: #6e7174;
+    }
   </style>
 </head>
 
@@ -149,10 +165,11 @@
             </li>
           </ul>
         </div>
-        <button class="login" type="button" aria-expanded="false">login</button>
+        <button  class="login" type="button" aria-expanded="false">login</button>
         <!-- Cart -->
         <div>
-          <a class="nav-item nav-link cart-icon-container" href="#" style="margin-right: 2%;">
+          <a class="nav-item nav-link cart-icon-container" href="/html2/Customer/productListPage.html"
+            style="margin-right: 2%;">
             <i class="fas fa-shopping-cart" style="color: white;"></i>
             <div class="cart-count">0</div>
           </a>
@@ -550,35 +567,57 @@
         console.error("Error:", error);
       });
 
+    // ฟังก์ชันเพื่อดึงสินค้าตามหมวดหมู่
+    function fetchProductsByCategory(categoryId) {
+      fetch(`/product-category/${categoryId}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('การตอบกลับจากเครือข่ายไม่ถูกต้อง');
+          }
+          return response.json();
+        })
+        .then(products => {
+          displayProducts(products);
+        })
+        .catch(error => {
+          console.error('มีปัญหาในการดึงข้อมูล:', error);
+        });
+    }
+
+    // ฟังก์ชันเพื่อแสดงสินค้า
     function displayProducts(products) {
       const productList = document.getElementById("productList");
 
       products.forEach((product) => {
+        // ตรวจสอบว่า category_ID เท่ากับ 5 หรือไม่
+        if (product.category_ID !== 5) {
+          // ถ้าไม่เท่ากับ 5 ข้ามไปสินค้าถัดไป
+          return;
+        }
+
         const productDiv = document.createElement("div");
         productDiv.className = "productbox col-6 col-md-3";
         productDiv.dataset.productId = product.product_ID;
 
         productDiv.innerHTML = `
-        <div class="box">
-          <div class="img-container">
-            <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
-          </div>
-          <div class="descript">
-            <p><blockquote>${product.product_Name}</blockquote></p>
-          </div>
-          <div class="cartButton">
-            <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
-            <button class="cart">ADD TO CART</button>
-          </div>
-        </div>
-        
+    <div class="box">
+      <div class="img-container">
+        <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
+      </div>
+      <div class="descript">
+        <p><blockquote>${product.product_Name}</blockquote></p>
+      </div>
+      <div class="cartButton">
+        <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
+        <button class="cart">ADD TO CART</button>
+      </div>
+    </div>
     `;
-
         // เพิ่ม event listener ให้กับปุ่ม "ADD TO CART"
         const addToCartButton = productDiv.querySelector('.cart');
         addToCartButton.addEventListener('click', function () {
           const productId = productDiv.dataset.productId;
-          // ทำการเพิ่มสินค้าลงในตะกร้าและอัปเดตจำนวนสินค้าในตะกร้า
+          // เรียกฟังก์ชันเพื่อเพิ่มสินค้าลงในตะกร้าและอัปเดตจำนวนสินค้าในตะกร้า
           addToCart(productId, productDiv);
         });
 
@@ -587,15 +626,18 @@
     }
 
 
+
+
+
     function addToCart(productId, productDiv) {
       // ตรวจสอบว่าสินค้านี้มีอยู่ในตะกร้าหรือไม่
       console.log(`Product ID: ${productId} added to cart.`);
 
       const productData = {
         product_id: Number(productId),
-          user_id: Number(userId),
-          amount: 1
-            };
+        user_id: Number(userId),
+        amount: 1
+      };
 
 
 
@@ -617,8 +659,6 @@
 
 
     }
-
-
     function updateCartCount() {
       fetch(`http://localhost:3003/cart/${userId}`, {
         method: "GET",
@@ -636,11 +676,6 @@
           console.error("Error:", error);
         });
     }
-
-
-
-
-
 
   </script>
 </body>
