@@ -23,7 +23,7 @@ const connection = mysql.createConnection({
 // Middleware to parse JSON bodies
 app.use(cors());
 app.use(bodyParser.json());
- 
+
 app.use(
   session({
     secret: "@secretEiEi",
@@ -219,7 +219,86 @@ app.post("/user", ensureAuthenticated, function (req, res, next) {
     }
   });
 });
- 
+
+app.get("/category", function (req, res, next) {
+  // simple query
+  connection.query("SELECT * FROM `Category`", function (err, results, fields) {
+    res.json(results);
+  });
+});
+
+app.post("/category",  function (req, res, next) {
+  // Extract user data from request body
+  const { category_type } = req.body;
+
+  // SQL query to insert a new user
+  const query =
+    "INSERT INTO `Category` (category_type) VALUES (?)";
+  const values = [category_type];
+
+  // Execute the query
+  connection.query(query, values, function (err, results) {
+    if (err) {
+      // If there's an error, send a 500 response
+      res.status(500).json({
+        message: err,
+        error: "An error occurred while creating the Category.",
+      });
+    } else {
+      // If successful, send a 201 response with the inserted user's ID
+      res.status(201).json({ message: "Category created successfully." });
+    }
+  });
+});
+
+app.put("/category/:id", function (req, res, next) {
+  // Extract product data from request body
+  const { category_type } = req.body;
+  const { id } = req.params; // Get the product ID from the URL parameters
+
+  // SQL query to update the product
+  const query =
+    "UPDATE `Category` SET category_type = ? WHERE category_ID = ?";
+  const values = [category_type,id];
+
+  // Execute the query
+  connection.query(query, values, function (err, results) {
+    if (err) {
+      // If there's an error, send a 500 response
+      res.status(500).json({
+        message: err,
+        error: "An error occurred while updating the Category.",
+      });
+    } else {
+      // If successful, send a 200 response indicating success
+      res.status(200).json({ message: "Category updated successfully.", results });
+    }
+  });
+});
+
+app.delete("/category/:id", function (req, res, next) {
+  // Extract product ID from the URL parameters
+  const { id } = req.params; // Get the product ID from the URL parameters
+
+  // SQL query to delete the product
+  const query = "DELETE FROM `Category` WHERE category_ID = ?";
+  const values = [id];
+
+  // Execute the query
+  connection.query(query, values, function (err, results) {
+    if (err) {
+      // If there's an error, send a 500 response
+      res.status(500).json({
+        message: err,
+        error: "An error occurred while deleting the category.",
+      });
+    } else {
+      // If successful, send a 200 response indicating success
+      res.status(200).json({ message: "Category deleted successfully." });
+    }
+  });
+});
+
 //Edit Product
 app.get("/product", function (req, res, next) {
   // simple query
@@ -227,16 +306,61 @@ app.get("/product", function (req, res, next) {
     res.json(results);
   });
 });
+
+app.get("/products", async function (req, res, next) {
+  try {
+     // Step 1: Fetch all categories
+     const categories = await new Promise((resolve, reject) => {
+       connection.query("SELECT * FROM `Category`", (err, results, fields) => {
+         if (err) reject(err);
+         else resolve(results);
+       });
+     });
  
+     // Function to fetch products for a given category
+     const fetchProductsForCategory = async (category) => {
+       return new Promise((resolve, reject) => {
+         connection.query("SELECT * FROM `Product` WHERE `category_ID` = ?", [category.category_ID], (err, products, fields) => {
+           if (err) reject(err);
+           else {
+             // Add products to the category object
+             category.products = products;
+             resolve(category);
+           }
+         });
+       });
+     };
+ 
+     // Step 2: Fetch products for each category and combine results
+     const categoriesWithProducts = await Promise.all(categories.map(fetchProductsForCategory));
+ 
+     // Send the combined results as the response
+     res.json(categoriesWithProducts);
+  } catch (err) {
+     console.error(err);
+     res.status(500).json({ error: 'An error occurred while fetching categories or products.' });
+  }
+ });
+ 
+
+app.get("/product-category/:id", function (req, res, next) {
+  const { id } = req.params;
+  const values = [id]
+  // simple query
+  connection.query("SELECT * FROM `Product` WHERE category_ID = ?", values,function (err, results, fields) {
+    res.json(results);
+  });
+});
+
 app.post("/product",  function (req, res, next) {
   // Extract user data from request body
   const { productName, price, promotion, description, imagesrc } = req.body;
- 
+
   // SQL query to insert a new user
   const query =
     "INSERT INTO `Product` (product_Name, price, promotion, description, imagesrc  ) VALUES (?,?,?,?,?)";
   const values = [productName, price, promotion, description, imagesrc];
- 
+
   // Execute the query
   connection.query(query, values, function (err, results) {
     if (err) {
@@ -300,17 +424,24 @@ app.delete("/product/:id",function (req, res, next) {
     }
   });
 });
- 
+
 app.get("/cart/:id", function (req, res, next) {
   // simple query
   const { id } = req.params;
   const values = [id];
-  connection.query("SELECT * FROM `cart` JOIN `product` ON `cart`.`product_id` = `product`.`product_id` WHERE `cart`.`user_id` = ?",values, function (err, results, fields) {
+  connection.query("SELECT * FROM `cart` JOIN `Product` ON `cart`.`product_ID` = `Product`.`product_ID` WHERE `cart`.`user_id` = ?",values, function (err, results, fields) {
     console.log(results);
+    if (err) {
+      // If there's an error, send a 500 response
+      res.status(500).json({
+        message: err,
+        error: "Can't check cart",
+      });
+    }
     res.json(results);
   });
 });
- 
+
 app.post("/cart", function (req, res, next) {
   // Extract user data from request body
   const { product_id, user_id, amount } = req.body;
@@ -363,19 +494,18 @@ app.post("/cart", function (req, res, next) {
        }
      }
   });
-});
- 
+ });
  
 app.put("/cart/:id", function (req, res, next) {
   // Extract product data from request body
   const { amount } = req.body;
   const { id } = req.params; // Get the product ID from the URL parameters
- 
+
   // SQL query to update the product
   const query =
     "UPDATE `cart` SET amount = ? WHERE cart_id = ?";
   const values = [amount,id];
- 
+
   // Execute the query
   connection.query(query, values, function (err, results) {
     if (err) {
@@ -390,16 +520,15 @@ app.put("/cart/:id", function (req, res, next) {
     }
   });
 });
- 
-//Delete Cart
+
 app.delete("/cart/:id", function (req, res, next) {
   // Extract product ID from the URL parameters
   const { id } = req.params; // Get the product ID from the URL parameters
- 
+
   // SQL query to delete the product
   const query = "DELETE FROM `cart` WHERE cart_id = ?";
   const values = [id];
- 
+
   // Execute the query
   connection.query(query, values, function (err, results) {
     if (err) {
@@ -414,8 +543,8 @@ app.delete("/cart/:id", function (req, res, next) {
     }
   });
 });
- 
- 
+
+
 //  //Add new
 //  app.get("/product", function (req, res, next) {
 //   // simple query

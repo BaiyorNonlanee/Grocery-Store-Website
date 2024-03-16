@@ -26,6 +26,14 @@
                 <!-- left content -->
                 <h1>I'm on a feeding frenzy</h1>
                 <!-- Your images here -->
+                <img class="grocery" src="/image/grocery2.png">
+                <img class="fish" src="/image/fish.png">
+                <img class="bread" src="/image/bread.png">
+                <img class="tomato" src="/image/tomato.png">
+                <img class="meat" src="/image/meat.png">
+                <img class="juice" src="/image/orange.png">
+                <img class="pumpkin" src="/image/pumpkin.png">
+                <img class="milk" src="/image/milk.png">
             </div>
 
             <div class="col-md-6 right-content">
@@ -34,11 +42,11 @@
                             Login</a></span></p>
                 <br>
                 <h3>Registration</h3>
-                <img class="logo" src="images/ppg black.png">
+                <img class="logo" src="/image/ppg black.png">
                 <div class="registration-type">
-                    <button type="button" class="btn btn-outline-danger" data-role="individual"><i
+                    <button id="individualsBtn" type="button" class="btn btn-outline-danger"><i
                             class="fas fa-user-alt"></i> Individual</button>
-                    <button type="button" class="btn btn-outline-danger" data-role="business"><i
+                    <button id="businessBtn" type="button" class="btn btn-outline-danger"><i
                             class="fas fa-building"></i> Business</button>
                 </div>
                 <form id="registrationForm">
@@ -63,6 +71,39 @@
         document.getElementById("password").addEventListener("input", handleInput);
         document.getElementById("email").addEventListener("input", handleInput);
         document.getElementById("confirm").addEventListener("input", handleInput);
+        document.getElementById("signUpButton").addEventListener("click", function (event) {
+            event.preventDefault();
+            sendDataToServer()
+        })
+
+        let roleSelected = false; // ตัวแปรเพื่อเก็บสถานะว่าผู้ใช้ได้เลือก role หรือไม่
+
+        // เพิ่ม Event Listener ให้กับปุ่ม "Individual"
+        document.getElementById("individualsBtn").addEventListener("click", function () {
+            document.getElementById("role").value = "individual"; // ตั้งค่า role เป็น "individual"
+            roleSelected = true; // ตั้งสถานะว่าผู้ใช้ได้เลือก role
+
+            // เพิ่ม class และลบ class เดิมออก
+            document.getElementById("businessBtn").classList.remove("btn-outline-danger"); // ลบ class "selected" ออกจากปุ่ม "Business"
+            this.classList.add("btn-danger"); // เพิ่ม class "selected" ให้กับปุ่มที่กด
+
+            document.getElementById("individualsBtn").classList.remove("btn-danger"); // ลบ class "selected" ออกจากปุ่ม "Individual"
+            this.classList.add("btn-outline-danger"); // เพิ่ม class "selected" ให้กับปุ่มที่กด
+        });
+
+        // เพิ่ม Event Listener ให้กับปุ่ม "Business"
+        document.getElementById("businessBtn").addEventListener("click", function () {
+            document.getElementById("role").value = "business"; // ตั้งค่า role เป็น "business"
+            roleSelected = true; // ตั้งสถานะว่าผู้ใช้ได้เลือก role
+
+            // เพิ่ม class และลบ class เดิมออก
+            document.getElementById("individualsBtn").classList.remove("btn-outline-danger"); // ลบ class "selected" ออกจากปุ่ม "Individual"
+            this.classList.add("btn-danger"); // เพิ่ม class "selected" ให้กับปุ่มที่กด
+
+            document.getElementById("businessBtn").classList.remove("btn-danger"); // ลบ class "selected" ออกจากปุ่ม "Business"
+            this.classList.add("btn-outline-danger"); // เพิ่ม class "selected" ให้กับปุ่มที่กด
+        });
+
 
         function handleInput() {
             const username = document.getElementById("username").value;
@@ -71,55 +112,76 @@
             const confirm = document.getElementById('confirm').value;
             const signUpButton = document.getElementById('signUpButton');
 
-            //completed fill username and password
-            if (username.trim() !== '' && password.trim() !== '' && email.trim() !== '' && confirm.trim() !== '') {
-                signUpButton.style.backgroundColor = 'red';
-                signUpButton.style.color = 'white';
-                signUpButton.disabled = false; // can click
-            } else {
+            // ตรวจสอบว่าผู้ใช้ได้เลือก role หรือไม่
+            if (!roleSelected) {
                 signUpButton.style.backgroundColor = '#d9d9d9';
                 signUpButton.style.color = '#818181';
-                signUpButton = true; // can not click
+                signUpButton.disabled = true; // ปิดการใช้งานปุ่ม
+            } else {
+                signUpButton.style.backgroundColor = 'red';
+                signUpButton.style.color = 'white';
+                signUpButton.disabled = false; // เปิดการใช้งานปุ่ม
+            }
+
+            // ตรวจสอบว่าฟิลด์ที่จำเป็นได้รับค่า
+            if (username.trim() !== '' && password.trim() !== '' && email.trim() !== '' && confirm.trim() !== '') {
+                signUpButton.disabled = false; // เปิดการใช้งานปุ่ม
+            } else {
+                signUpButton.disabled = true; // ปิดการใช้งานปุ่ม
             }
         }
 
+        function sendDataToServer() {
+            // ตรวจสอบว่าผู้ใช้ได้เลือก role หรือไม่
+            if (!roleSelected) {
+                alert("กรุณาเลือกประเภทผู้ใช้ (Individual หรือ Business)");
+                return;
+            }
 
-        document.getElementById('registrationForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
+            // รับข้อมูลจากฟอร์ม
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const confirm = document.getElementById("confirm").value;
+            const role = document.getElementById("role").value; // รับ role จาก hidden input field
 
-            // Gather form data
-            const formData = new FormData(event.target);
+            console.log("Role:", role); // ตรวจสอบค่า role
+            console.log("Data to send:", { username, password, role }); // ตรวจสอบข้อมูลที่จะส่ง
 
-            // Convert form data to JSON
-            const data = Object.fromEntries(formData.entries());
+            // ตรวจสอบว่ารหัสผ่านและการยืนยันรหัสผ่านตรงกัน
+            if (password !== confirm) {
+                alert("รหัสผ่านและการยืนยันรหัสผ่านไม่ตรงกัน");
+                return;
+            }
 
-            // Send data to server
-            fetch('/register', {
+            // ส่งข้อมูลไปยัง server โดยใช้ fetch
+            fetch("http://localhost:3003/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({ username, password, role }),
             })
-                .then(response => response.json())
+                .then(response => {
+                    console.log("Response:", response); // ตรวจสอบการตอบกลับจาก server
+                    return response.json();
+                })
                 .then(data => {
-                    if (data.message === "User registered successfully") {
-                        // Redirect based on role
-                        if (data.data.role === 'individual') {
-                            window.location.href = './html2/Customer/HomeforCustomer';
-                        } else if (data.data.role === 'business') {
-                            window.location.href = './html2/Business/HomeforBusiness';
-                        }
-                    } else {
-                        // Handle error
-                        console.error(data.message);
+                    console.log('Success:', data);
+                    // ทำการแจ้งให้ผู้ใช้ทราบว่าลงทะเบียนสำเร็จ
+                    if(data.message === 'Username already exists'){
+                        
+                        alert('Username already exists');
+                    }else {
+
+                        alert('ลงทะเบียนสำเร็จ');
                     }
                 })
                 .catch((error) => {
                     console.error('Error:', error);
+                    // ทำการแจ้งให้ผู้ใช้ทราบว่าเกิดข้อผิดพลาด
+                    alert('เกิดข้อผิดพลาดในการลงทะเบียน');
                 });
-        });
-
+        }
 
 
     </script>
