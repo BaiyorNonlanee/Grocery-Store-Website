@@ -601,7 +601,7 @@ app.set('view engine', 'ejs');
 
 // CSS, images
 // app.use(express.static(path.join(__dirname, '../public')));
-
+app.get('/home', (req, res) => {res.render('customer/HomeForCustomer')});
 app.get('/beverage1', (req, res) => {res.render('customer/beverage1')});
 app.get('/beverage2', (req, res) => { res.render('customer/beverage2')});
 app.get('/beverage3', (req, res) => {res.render('customer/beverage3')});
@@ -624,6 +624,9 @@ app.get('/edit', (req, res) => {res.render('business/editCategory')});
 app.get('/homeBusiness', (req, res) => {res.render('business/homeBusiness')});
 app.get('/productCategory', (req, res) => {res.render('business/productInCategory')});
 app.get('/productInfo', (req, res) => {res.render('business/productInformation')});
+app.get('/best', (req, res) => {res.render('business/bestSeller')});
+app.get('/details', (req, res) => {res.render('business/billDetail')});
+app.get('/summary', (req, res) => {res.render('business/billSummary')});
 
 
 // Start the server
