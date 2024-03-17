@@ -5,16 +5,17 @@
     flex-direction: column;
 }
 .productbox, .product2box{
-    width: 90%;
+    width: 100%;
     background-color: antiquewhite;
-    border-radius: 5px;
-    margin-top: 120px; 
+    border-radius: 15px;
     padding-top: 15px;  
     padding-left: 20px;
     padding-bottom: 50px;
+    margin:5% auto;
     position: relative;
     font-family: "Josefin Sans", sans-serif;
     font-size: 1em;
+    
 }
 .product2box{
     margin-top: 20px;
@@ -22,11 +23,12 @@
 .editbutton{
     position: absolute;
     bottom: 5px;
+    text-decoration: underline red;
 }
 .deletebutton{
     position: absolute;
     right: 20px;
-    bottom: 5px;
+    bottom: 20px;
 }
 .savebutton{
     margin-top: 30px;
@@ -50,7 +52,7 @@
 .addnewbox{
     width: 90%;
     background-color: antiquewhite;
-    border-radius: 5px;
+    border-radius: 15px;
     margin-top: 20px;
     display: flex;
     align-items: center;
