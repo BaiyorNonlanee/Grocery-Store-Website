@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const mysql = require("mysql2");
+const path = require('path');
+
 
 const session = require("express-session");
 
@@ -11,13 +13,13 @@ const port = 3003;
 
 const bcrypt = require("bcrypt");
 
+
 // Connection MySQL
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  multipleStatements: true,
 });
 
 // Middleware to parse JSON bodies
@@ -53,10 +55,12 @@ app.post("/register", (req, res) => {
     // Hash the password
     bcrypt.hash(password, 10, function (err, hash) {
       if (err) {
-        return res.status(500).json({
-          message: err,
-          error: "An error occurred while registering.",
-        });
+        return res
+          .status(500)
+          .json({
+            message: err,
+            error: "An error occurred while registering.",
+          });
       }
 
       // Insert the new user into the database
@@ -67,10 +71,12 @@ app.post("/register", (req, res) => {
         [username, hash, role],
         function (err, results) {
           if (err) {
-            return res.status(500).json({
-              message: err,
-              error: "An error occurred while registering.",
-            });
+            return res
+              .status(500)
+              .json({
+                message: err,
+                error: "An error occurred while registering.",
+              });
           }
 
           // If successful, send a 201 response
@@ -80,7 +86,7 @@ app.post("/register", (req, res) => {
     });
   });
 });
-
+app.use(express.static(path.join(__dirname, '../public')));
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
@@ -147,23 +153,20 @@ function ensureAuthenBusiness(req, res, next) {
   if (req.session.user) {
     console.log(req.session);
     // Check if the user's role is 'business'
-    if (req.session.user.role === "business") {
+    if (req.session.user.role === 'business') {
       return next();
     } else {
       // If the user's role is not 'business', deny access
-      return res.status(403).json({
-        message:
-          "Access denied. You must be a business user to access this route.",
-      });
+      return res.status(403).json({ message: "Access denied. You must be a business user to access this route." });
     }
   }
   // If the user is not authenticated, deny access
   res.status(401).json({ message: "Unauthorized" });
 }
+app.use(express.static(path.join(__dirname, '../html2')));
 
-// example hello express.js
-app.get("/", (req, res) => {
-  res.send("Hello! Node.js");
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/login.html'));
 });
 //User login
 app.get("/users", ensureAuthenBusiness, function (req, res, next) {
@@ -218,20 +221,23 @@ app.post("/user", ensureAuthenticated, function (req, res, next) {
     }
   });
 });
-
+app.get('/category', (req, res) => { res.render('business/CategoriesBusiness') });
 app.get("/category", function (req, res, next) {
   // simple query
   connection.query("SELECT * FROM `Category`", function (err, results, fields) {
     res.json(results);
   });
+
 });
+
 
 app.post("/category", function (req, res, next) {
   // Extract user data from request body
   const { category_type } = req.body;
 
   // SQL query to insert a new user
-  const query = "INSERT INTO `Category` (category_type) VALUES (?)";
+  const query =
+    "INSERT INTO `Category` (category_type) VALUES (?)";
   const values = [category_type];
 
   // Execute the query
@@ -255,7 +261,8 @@ app.put("/category/:id", function (req, res, next) {
   const { id } = req.params; // Get the product ID from the URL parameters
 
   // SQL query to update the product
-  const query = "UPDATE `Category` SET category_type = ? WHERE category_ID = ?";
+  const query =
+    "UPDATE `Category` SET category_type = ? WHERE category_ID = ?";
   const values = [category_type, id];
 
   // Execute the query
@@ -268,9 +275,7 @@ app.put("/category/:id", function (req, res, next) {
       });
     } else {
       // If successful, send a 200 response indicating success
-      res
-        .status(200)
-        .json({ message: "Category updated successfully.", results });
+      res.status(200).json({ message: "Category updated successfully.", results });
     }
   });
 });
@@ -306,63 +311,83 @@ app.get("/product", function (req, res, next) {
   });
 });
 
-app.get("/product/:id", function (req, res, next) {
-  const { id } = req.params; 
-  const values = [id]
+app.get("/product-popular", function (req, res, next) {
   // simple query
-  connection.query("SELECT * FROM `Product` WHERE category_ID = ?",values, function (err, results, fields) {
+  connection.query("SELECT * FROM `Product` ORDER BY sold_count DESC LIMIT 8;", function (err, results, fields) {
     res.json(results);
   });
 });
 
-app.get("/product-category/:id", function (req, res, next) {
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 8; // Default limit to 8 items per page
-  const offset = (page - 1) * limit; // Corrected offset calculation
- 
-  const { id } = req.params;
-  const query = "SELECT * FROM `Product` WHERE category_ID = ? LIMIT ? OFFSET ?";
-  const values = [id, limit, offset];
- 
-  // Fetch products
-  connection.query(query, values, function (err, results) {
-     if (err) {
-       res.status(500).json({
-         message: err,
-         error: "An error occurred while fetching products.",
-       });
-     } else {
-       // Count total products
-       const countQuery = "SELECT COUNT(*) as totalProducts FROM Product WHERE category_ID = ?";
-       connection.query(countQuery, [id], function (err, countResult) {
-         if (err) {
-           res.status(500).json({
-             message: err,
-             error: "An error occurred while counting products.",
-           });
-         } else {
-           const totalProducts = countResult[0].totalProducts;
-           const totalPages = Math.ceil(totalProducts / limit);
-           res.status(200).json({
-             products: results,
-             totalPages: totalPages,
-             currentPage: page
-           });
-         }
-       });
-     }
+app.get("/product-new", function (req, res, next) {
+  // simple query
+  connection.query("SELECT * FROM `Product` ORDER BY product_ID DESC LIMIT 8;", function (err, results, fields) {
+    res.json(results);
   });
- });
- 
-app.post("/product/:id", function (req, res, next) {
+});
+
+app.get("/product/:id", function (req, res, next) {
+  const { id } = req.params;
+  const values = [id]
+  // simple query
+  connection.query("SELECT * FROM `Product` WHERE category_ID = ?", values, function (err, results, fields) {
+    res.json(results);
+  });
+});
+
+
+app.get("/products", async function (req, res, next) {
+  try {
+    // Step 1: Fetch all categories
+    const categories = await new Promise((resolve, reject) => {
+      connection.query("SELECT * FROM `Category`", (err, results, fields) => {
+        if (err) reject(err);
+        else resolve(results);
+      });
+    });
+
+    // Function to fetch products for a given category
+    const fetchProductsForCategory = async (category) => {
+      return new Promise((resolve, reject) => {
+        connection.query("SELECT * FROM `Product` WHERE `category_ID` = ?", [category.category_ID], (err, products, fields) => {
+          if (err) reject(err);
+          else {
+            // Add products to the category object
+            category.products = products;
+            resolve(category);
+          }
+        });
+      });
+    };
+
+    // Step 2: Fetch products for each category and combine results
+    const categoriesWithProducts = await Promise.all(categories.map(fetchProductsForCategory));
+
+    // Send the combined results as the response
+    res.json(categoriesWithProducts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'An error occurred while fetching categories or products.' });
+  }
+});
+
+
+app.get("/product-category/:id", function (req, res, next) {
+  const { id } = req.params;
+  const values = [id]
+  // simple query
+  connection.query("SELECT * FROM `Product` WHERE category_ID = ?", values, function (err, results, fields) {
+    res.json(results);
+  });
+});
+
+app.post("/product", function (req, res, next) {
   // Extract user data from request body
   const { productName, price, promotion, description, imagesrc } = req.body;
-  const { id } = req.params; // Get the product ID from the URL parameters
 
   // SQL query to insert a new user
   const query =
-    "INSERT INTO `Product` (product_Name, price, promotion, description, imagesrc, category_ID  ) VALUES (?,?,?,?,?,?)";
-  const values = [productName, price, promotion, description, imagesrc, id];
+    "INSERT INTO `Product` (product_Name, price, promotion, description, imagesrc  ) VALUES (?,?,?,?,?)";
+  const values = [productName, price, promotion, description, imagesrc];
 
   // Execute the query
   connection.query(query, values, function (err, results) {
@@ -432,21 +457,83 @@ app.get("/cart/:id", function (req, res, next) {
   // simple query
   const { id } = req.params;
   const values = [id];
-  connection.query(
-    "SELECT * FROM `cart` JOIN `Product` ON `cart`.`product_ID` = `Product`.`product_ID` WHERE `cart`.`user_id` = ?",
-    values,
-    function (err, results, fields) {
-      console.log(results);
-      if (err) {
-        // If there's an error, send a 500 response
+  connection.query("SELECT * FROM `cart` JOIN `Product` ON `cart`.`product_ID` = `Product`.`product_ID` WHERE `cart`.`user_id` = ?", values, function (err, results, fields) {
+    console.log(results);
+    if (err) {
+      // If there's an error, send a 500 response
+      res.status(500).json({
+        message: err,
+        error: "Can't check cart",
+      });
+    }
+    res.json(results);
+  });
+});
+
+app.put('/cart-update/:id', function (req, res, next) {
+  const { id } = req.params; // This is now the user_id
+
+  // Prepare the SQL query to fetch products and their amounts from the cart for the user
+  const selectSql = `SELECT Product.product_ID, cart.amount FROM cart JOIN Product ON cart.product_ID = Product.product_ID WHERE cart.user_id = ?`;
+  const selectValues = [id];
+
+  // Execute the query to fetch the products and their amounts
+  connection.query(selectSql, selectValues, function (err, results) {
+    if (err) {
+      // If there's an error, send a 500 response
+      return res.status(500).json({
+        message: err,
+        error: 'Can\'t fetch cart items',
+      });
+    }
+
+    // Prepare to update the sold_count for each product
+    const updatePromises = results.map(item => {
+      const updateSql = `UPDATE Product SET sold_count = sold_count + ? WHERE product_ID = ?`;
+      const updateValues = [item.amount, item.product_ID];
+      return new Promise((resolve, reject) => {
+        connection.query(updateSql, updateValues, function (err, updateResults) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(updateResults);
+          }
+        });
+      });
+    });
+
+    // Execute all update promises
+    Promise.all(updatePromises)
+      .then(updateResults => {
+        // If all updates are successful, proceed to delete the cart items for the user
+        const deleteSql = `DELETE FROM cart WHERE user_id = ?`;
+        const deleteValues = [id];
+        return new Promise((resolve, reject) => {
+          connection.query(deleteSql, deleteValues, function (err, deleteResults) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve({ updateResults, deleteResults });
+            }
+          });
+        });
+      })
+      .then(({ updateResults, deleteResults }) => {
+        // If all operations are successful, send a 200 response
+        res.status(200).json({
+          message: 'Sold count updated and cart items removed successfully',
+          updatedRows: updateResults.reduce((sum, result) => sum + result.affectedRows, 0),
+          deletedRows: deleteResults.affectedRows,
+        });
+      })
+      .catch(err => {
+        // If there's an error in any of the operations, send a 500 response
         res.status(500).json({
           message: err,
-          error: "Can't check cart",
+          error: 'Can\'t update sold count or remove cart items',
         });
-      }
-      res.json(results);
-    }
-  );
+      });
+  });
 });
 
 app.post("/cart", function (req, res, next) {
@@ -454,8 +541,7 @@ app.post("/cart", function (req, res, next) {
   const { product_id, user_id, amount } = req.body;
 
   // SQL query to check if the product exists in the cart for the user
-  const selectQuery =
-    "SELECT * FROM `cart` WHERE product_id = ? AND user_id = ?";
+  const selectQuery = "SELECT * FROM `cart` WHERE product_id = ? AND user_id = ?";
   const selectValues = [product_id, user_id];
 
   // Execute the select query
@@ -469,8 +555,7 @@ app.post("/cart", function (req, res, next) {
     } else {
       // If the product exists in the cart, update the quantity
       if (results.length > 0) {
-        const updateQuery =
-          "UPDATE `cart` SET amount = amount + ? WHERE product_id = ? AND user_id = ?";
+        const updateQuery = "UPDATE `cart` SET amount = amount + ? WHERE product_id = ? AND user_id = ?";
         const updateValues = [amount, product_id, user_id];
 
         // Execute the update query
@@ -481,15 +566,12 @@ app.post("/cart", function (req, res, next) {
               error: "Can't update cart",
             });
           } else {
-            res
-              .status(200)
-              .json({ message: "Cart updated successfully.", results });
+            res.status(200).json({ message: "Cart updated successfully.", results });
           }
         });
       } else {
         // If the product does not exist in the cart, insert a new record
-        const insertQuery =
-          "INSERT INTO `cart` (product_id, user_id, amount) VALUES (?, ?, ?)";
+        const insertQuery = "INSERT INTO `cart` (product_id, user_id, amount) VALUES (?, ?, ?)";
         const insertValues = [product_id, user_id, amount];
 
         // Execute the insert query
@@ -500,9 +582,7 @@ app.post("/cart", function (req, res, next) {
               error: "Can't create cart",
             });
           } else {
-            res
-              .status(201)
-              .json({ message: "Cart created successfully.", results });
+            res.status(201).json({ message: "Cart created successfully.", results });
           }
         });
       }
@@ -516,7 +596,8 @@ app.put("/cart/:id", function (req, res, next) {
   const { id } = req.params; // Get the product ID from the URL parameters
 
   // SQL query to update the product
-  const query = "UPDATE `cart` SET amount = ? WHERE cart_id = ?";
+  const query =
+    "UPDATE `cart` SET amount = ? WHERE cart_id = ?";
   const values = [amount, id];
 
   // Execute the query
@@ -557,6 +638,7 @@ app.delete("/cart/:id", function (req, res, next) {
   });
 });
 
+
 //  //Add new
 //  app.get("/product", function (req, res, next) {
 //   // simple query
@@ -588,7 +670,45 @@ app.delete("/cart/:id", function (req, res, next) {
 //   });
 // });
 
+app.use(express.static(path.join(__dirname, '../views/')));
+
+app.set('views', path.join(__dirname, '../views/'));
+
+app.set('view engine', 'ejs');
+
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../views/login.html'));
+// });
+
+// CSS, images
+// app.use(express.static(path.join(__dirname, '../public')));
+app.get('/home', (req, res) => { res.render('customer/HomeForCustomer') });
+app.get('/beverage1', (req, res) => { res.render('customer/beverage1') });
+app.get('/beverage2', (req, res) => { res.render('customer/beverage2') });
+app.get('/beverage3', (req, res) => { res.render('customer/beverage3') });
+app.get('/fruit', (req, res) => { res.render('customer/fruit') });
+app.get('/fruit2', (req, res) => { res.render('customer/fruit2') });
+app.get('/empty', (req, res) => { res.render('customer/cartEmptyPage') });
+app.get('/completed', (req, res) => { res.render('customer/completePage') });
+app.get('/contact', (req, res) => { res.render('customer/contactPage') });
+app.get('/household1', (req, res) => { res.render('customer/household1') });
+app.get('/household2', (req, res) => { res.render('customer/household2') });
+app.get('/household3', (req, res) => { res.render('customer/household3') });
+app.get('/meat1', (req, res) => { res.render('customer/meatPage1') });
+app.get('/meat2', (req, res) => { res.render('customer/meatPage2') });
+app.get('/information', (req, res) => { res.render('customer/outlineInfo') });
+app.get('/payment', (req, res) => { res.render('customer/paymentPage') });
+app.get('/productList', (req, res) => { res.render('customer/productListPage') });
+app.get('/promotion', (req, res) => { res.render('customer/PromotionPage') });
+app.get('/register', (req, res) => { res.sendFile(path.join(__dirname, '../views/register.html')); });
+app.get('/edit', (req, res) => { res.render('business/editCategory') });
+app.get('/homeBusiness', (req, res) => { res.render('business/homeBusiness') });
+app.get('/productCategory', (req, res) => { res.render('business/productInCategory') });
+app.get('/productInfo', (req, res) => { res.render('business/productInformation') });
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+

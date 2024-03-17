@@ -148,7 +148,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-
+    let grandTotals = 0;
     function getCookie(name) {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
@@ -164,6 +164,7 @@
           tableBody.innerHTML = ''; // Clear the table body
 
           let grandTotal = 0; // Initialize grand total
+          grandTotals = 0;
 
           data.forEach(item => {
             const row = tableBody.insertRow();
@@ -188,6 +189,7 @@
             const totalPrice = parseFloat(item.price) * item.amount;
             totalCell.innerHTML = `<p class="mb-0" style="font-weight: 500;">${totalPrice.toFixed(2)}</p>`;
             grandTotal += totalPrice; // Add to grand total
+            grandTotals += totalPrice
 
             const quantityInput = quantityCell.querySelector('input');
             let timeoutId = null;
@@ -201,6 +203,7 @@
 
           // Update the Grand Total section
           document.querySelector('#summaryList li:last-child span:last-child').textContent = grandTotal.toFixed(2) + ' Bath';
+          updateGrandTotalAndLink();
         })
         .catch(error => console.error('Error:', error));
     };
@@ -219,9 +222,19 @@
         .then(data => console.log('Quantity updated successfully:', data))
         .catch(error => console.error('Error updating quantity:', error));
     };
-
     // Initial fetch and render
     fetchAndRenderCart();
+
+    function updateGrandTotalAndLink() {
+      // สร้างลิงค์ใหม่ที่มี grandTotal ที่ถูกอัปเดต
+      const newLink = `/html2/Customer/paymentPage.html?grandTotal=${grandTotals}`;
+      // หาลิงค์เก่าและอัปเดต href ของมัน
+      const oldLink = document.querySelector('.btn-warning');
+      oldLink.href = newLink;
+    }
+
+
+   
   </script>
 </body>
 
