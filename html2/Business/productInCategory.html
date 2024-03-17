@@ -212,100 +212,6 @@
   <body>
     <nav></nav>
     <section id="feature">
-      <!-- <div class="productbox">
-        <div class="row">
-          <div class="col-3 col-sm-3 col-lg-3">
-            <div class="productimage">
-              <img
-                src=""
-                class="img-fluid rounded-3"
-                style="width: 120px"
-                alt="picture"
-              />
-            </div>
-          </div>
-          <div class="col-9 col-sm-9 col-lg-9">
-            <div class="productinfo">
-              <div class="row">
-                <div class="col-3 col-sm-3 col-lg-3">
-                  <span style="display: flex; flex-direction: row; gap: 5px"
-                    >Name:
-                    <p id="name">Kiwi</p></span
-                  >
-                </div>
-                <div class="col-6 col-sm-6 col-lg-6" id="name-form">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3 col-sm-3 col-lg-3">
-                  <span style="display: flex; flex-direction: row; gap: 5px"
-                    >Price:
-                    <p id="price">109</p></span
-                  >
-                </div>
-                <div class="col-6 col-sm-6 col-lg-6" id="price-form">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3 col-sm-3 col-lg-3">
-                  <span style="display: flex; flex-direction: row; gap: 5px"
-                    >Promotion:
-                    <p id="promotion"></p
-                  ></span>
-                </div>
-                <div class="col-6 col-sm-6 col-lg-6" id="promotion-form">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3 col-sm-3 col-lg-3">
-                  <span style="display: flex; flex-direction: row; gap: 5px"
-                    >Description:
-                    <p id="description"></p
-                  ></span>
-                </div>
-                <div class="col-6 col-sm-6 col-lg-6" id="description-form">
-                </div>
-              </div>
-              <p>Sale Count:</p>
-            </div>
-          </div>
-        </div>
-        <div class="editbutton">
-          <a href="#" style="color: red" onclick="editProduct()">Edit</a>
-        </div>
-        <div class="deletebutton">
-          <a href="#" style="color: red">Delete</a>
-        </div>
-        <div class="savebutton">
-          <a href="#" onclick="saveProduct()">SAVE</a>
-        </div>
-      </div> -->
-      <!-- <div class="product2box">
-            <div class="row">
-                <div class="col-3 col-sm-3 col-lg-3">
-                    <div class="productimage">
-                        <img src="" class="img-fluid rounded-3" style="width: 120px;" alt="picture">
-                    </div>
-                </div>
-                <div class="col-9 col-sm-9 col-lg-9">
-                    <div class="productinfo">
-                        <p>Name: </p><input type="text" name="Name" id="name">
-                        <p>Price: </p>
-                        <p>Promotion: </p>
-                        <p>Sale Count: </p>
-                        <p>Description: </p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="editbutton">
-                <a href="#" style="color: red;">Edit</a>
-            </div>
-            <div class="deletebutton">
-                <a href="#" style="color: red;">Delete</a>
-            </div>
-        </div> -->
-
       <div class="addnewbox">
         <div  onclick="redirectToProductInCategory()">
           <img src="/image/addnewicon.png" alt="" />
@@ -331,21 +237,6 @@
 
     <script src="/Business/app.js"></script>
     <script>
-      // fetch("http://localhost:3003/product", {
-      //   method: "GET",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // })
-      //   .then((response) => response.json())
-      //   .then((data) => {
-      //     console.log("Success:", data);
-      //     displayProducts(data); // Call the function to display products
-      //   })
-      //   .catch((error) => {
-      //     console.error("Error:", error);
-      //   });
-
       document.addEventListener("DOMContentLoaded", function () {
         // ดึง category_ID จาก URL
         const urlParams = new URLSearchParams(window.location.search);
