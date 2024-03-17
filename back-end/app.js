@@ -3,14 +3,17 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const mysql = require("mysql2");
+const path = require('path');
 
+ 
 const session = require("express-session");
-
+ 
 const app = express();
 const port = 3003;
-
+ 
 const bcrypt = require("bcrypt");
 
+ 
 // Connection MySQL
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -19,7 +22,7 @@ const connection = mysql.createConnection({
   database: process.env.DB_DATABASE,
   multipleStatements: true,
 });
-
+ 
 // Middleware to parse JSON bodies
 app.use(cors());
 app.use(bodyParser.json());
@@ -32,10 +35,10 @@ app.use(
     cookie: { secure: false },
   })
 );
-
+ 
 app.post("/register", (req, res) => {
   const { username, password, role } = req.body;
-
+ 
   // Check if the username already exists
   const query = "SELECT * FROM `users` WHERE username = ?";
   connection.query(query, [username], function (err, results) {
@@ -44,12 +47,12 @@ app.post("/register", (req, res) => {
         .status(500)
         .json({ message: err, error: "An error occurred while registering." });
     }
-
+ 
     // If the username already exists, send a 400 response
     if (results.length > 0) {
       return res.status(400).json({ message: "Username already exists" });
     }
-
+ 
     // Hash the password
     bcrypt.hash(password, 10, function (err, hash) {
       if (err) {
@@ -58,7 +61,7 @@ app.post("/register", (req, res) => {
           error: "An error occurred while registering.",
         });
       }
-
+ 
       // Insert the new user into the database
       const insertQuery =
         "INSERT INTO `users` (username, password, role) VALUES (?, ?, ?)";
@@ -72,7 +75,7 @@ app.post("/register", (req, res) => {
               error: "An error occurred while registering.",
             });
           }
-
+ 
           // If successful, send a 201 response
           res.status(201).json({ message: "User registered successfully" });
         }
@@ -80,10 +83,10 @@ app.post("/register", (req, res) => {
     });
   });
 });
-
+app.use(express.static(path.join(__dirname, '../public')));
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
-
+ 
   // SQL query to find the user by username
   const query = "SELECT * FROM `users` WHERE username = ?";
   connection.query(query, [username], function (err, results) {
@@ -93,12 +96,12 @@ app.post("/login", (req, res) => {
         .status(500)
         .json({ message: err, error: "An error occurred while logging in." });
     }
-
+ 
     // If no user is found, send a 401 response
     if (results.length === 0) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-
+ 
     // Compare the provided password with the hashed password stored in the database
     bcrypt.compare(password, results[0].password, function (err, isMatch) {
       if (err) {
@@ -123,7 +126,7 @@ app.post("/login", (req, res) => {
     });
   });
 });
-
+ 
 app.post("/logout", (req, res) => {
   // Destroy the session
   req.session.destroy((err) => {
@@ -133,7 +136,7 @@ app.post("/logout", (req, res) => {
     res.status(200).json({ message: "Logged out successfully" });
   });
 });
-
+ 
 // role: Individual & Business
 function ensureAuthenticated(req, res, next) {
   if (req.session.user) {
@@ -141,7 +144,7 @@ function ensureAuthenticated(req, res, next) {
   }
   res.status(401).json({ message: "Unauthorized" });
 }
-
+ 
 // role: Business
 function ensureAuthenBusiness(req, res, next) {
   if (req.session.user) {
@@ -160,10 +163,10 @@ function ensureAuthenBusiness(req, res, next) {
   // If the user is not authenticated, deny access
   res.status(401).json({ message: "Unauthorized" });
 }
+app.use(express.static(path.join(__dirname, '../html2')));
 
-// example hello express.js
-app.get("/", (req, res) => {
-  res.send("Hello! Node.js");
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/login.html'));
 });
 //User login
 app.get("/users", ensureAuthenBusiness, function (req, res, next) {
@@ -172,7 +175,7 @@ app.get("/users", ensureAuthenBusiness, function (req, res, next) {
     res.json(results);
   });
 });
-
+ 
 app.get("/user", ensureAuthenticated, function (req, res, next) {
   const { userId } = req.query;
   // simple query
@@ -194,14 +197,14 @@ app.get("/user", ensureAuthenticated, function (req, res, next) {
     }
   );
 });
-
+ 
 app.post("/user", ensureAuthenticated, function (req, res, next) {
   // Extract user data from request body
   const { username } = req.body;
-
+ 
   // SQL query to insert a new user
   const query = "INSERT INTO `users` (username) VALUES (?)";
-
+ 
   // Execute the query
   connection.query(query, [username], function (err, results) {
     if (err) {
@@ -218,15 +221,17 @@ app.post("/user", ensureAuthenticated, function (req, res, next) {
     }
   });
 });
-
+app.get('/category', (req, res) => {res.render('business/CategoriesBusiness')});
 app.get("/category", function (req, res, next) {
   // simple query
   connection.query("SELECT * FROM `Category`", function (err, results, fields) {
     res.json(results);
   });
+
 });
 
-app.post("/category", function (req, res, next) {
+
+app.post("/category",  function (req, res, next) {
   // Extract user data from request body
   const { category_type } = req.body;
 
@@ -378,17 +383,17 @@ app.post("/product/:id", function (req, res, next) {
     }
   });
 });
-
+ 
 app.put("/product/:id", function (req, res, next) {
   // Extract product data from request body
   const { productName, price, promotion, description } = req.body;
   const { id } = req.params; // Get the product ID from the URL parameters
-
+ 
   // SQL query to update the product
   const query =
     "UPDATE `Product` SET product_Name = ?, price = ?, promotion = ?, description = ? WHERE product_ID = ?";
   const values = [productName, price, promotion, description, id];
-
+ 
   // Execute the query
   connection.query(query, values, function (err, results) {
     if (err) {
@@ -403,16 +408,16 @@ app.put("/product/:id", function (req, res, next) {
     }
   });
 });
-
+ 
 //Delete Product
 app.delete("/product/:id", function (req, res, next) {
   // Extract product ID from the URL parameters
   const { id } = req.params; // Get the product ID from the URL parameters
-
+ 
   // SQL query to delete the product
   const query = "DELETE FROM `Product` WHERE product_ID = ?";
   const values = [id];
-
+ 
   // Execute the query
   connection.query(query, values, function (err, results) {
     if (err) {
@@ -564,14 +569,14 @@ app.delete("/cart/:id", function (req, res, next) {
 //     res.json(results);
 //   });
 // });
-
+ 
 // app.post("/product", function (req, res, next) {
 //   // Extract user data from request body
 //   const { username } = req.body;
-
+ 
 //   // SQL query to insert a new user
 //   const query = "INSERT INTO `users` (username) VALUES (?)";
-
+ 
 //   // Execute the query
 //   connection.query(query, [username], function (err, results) {
 //     if (err) {
@@ -588,7 +593,44 @@ app.delete("/cart/:id", function (req, res, next) {
 //   });
 // });
 
+app.use(express.static(path.join(__dirname, '../views')));
+
+app.set('views', path.join(__dirname, '../views'));
+
+app.set('view engine', 'ejs');
+
+// CSS, images
+// app.use(express.static(path.join(__dirname, '../public')));
+app.get('/home', (req, res) => {res.render('customer/HomeForCustomer')});
+app.get('/beverage1', (req, res) => {res.render('customer/beverage1')});
+app.get('/beverage2', (req, res) => { res.render('customer/beverage2')});
+app.get('/beverage3', (req, res) => {res.render('customer/beverage3')});
+app.get('/fruit', (req, res) => {res.render('customer/fruit')});
+app.get('/fruit2', (req, res) => {res.render('customer/fruit2')});
+app.get('/empty', (req, res) => {res.render('customer/cartEmptyPage')});
+app.get('/completed', (req, res) => {res.render('customer/completePage')});
+app.get('/contact', (req, res) => {res.render('customer/contactPage')});
+app.get('/household1', (req, res) => {res.render('customer/household1')});
+app.get('/household2', (req, res) => {res.render('customer/household2')});
+app.get('/household3', (req, res) => {res.render('customer/household3')});
+app.get('/meat1', (req, res) => {res.render('customer/meatPage1')});
+app.get('/meat2', (req, res) => {res.render('customer/meatPage2')});
+app.get('/information', (req, res) => {res.render('customer/outlineInfo')});
+app.get('/payment', (req, res) => {res.render('customer/paymentPage')});
+app.get('/productList', (req, res) => {res.render('customer/productListPage')});
+app.get('/promotion', (req, res) => {res.render('customer/PromotionPage')});
+app.get('/register', (req, res) => {res.sendFile(path.join(__dirname, '../views/register.html'));});
+app.get('/edit', (req, res) => {res.render('business/editCategory')});
+app.get('/homeBusiness', (req, res) => {res.render('business/homeBusiness')});
+app.get('/productCategory', (req, res) => {res.render('business/productInCategory')});
+app.get('/productInfo', (req, res) => {res.render('business/productInformation')});
+app.get('/best', (req, res) => {res.render('business/bestSeller')});
+app.get('/details', (req, res) => {res.render('business/billDetail')});
+app.get('/summary', (req, res) => {res.render('business/billSummary')});
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+

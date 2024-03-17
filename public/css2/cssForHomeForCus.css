@@ -1,0 +1,364 @@
+/* Navigator */
+#Navigator {
+    background-color: #145124; 
+    width: 100%;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    margin-right: auto; 
+    margin-left: 3px;
+    margin-top: 0px;
+    padding: 0px;
+}
+
+.navbar-nav {
+    justify-content: center;
+    align-items: center;
+    margin-right: auto ;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 2%;
+}
+
+.navbar-nav .nav-link {
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+    text-decoration: none;
+    margin-right: 80px;
+    margin-left: 80px;
+}
+
+.navbar-nav .nav-link:hover {
+    border-bottom: 2px solid white; 
+}
+
+.login {
+    font-size: 16px;
+    background-color: #F7AE40; 
+    border-radius: 10px;
+    padding: 10px 20px; 
+    border: none; 
+    cursor: pointer; 
+    color: white;
+    margin-left: 5%;
+    margin-right: 3%;
+}
+@media screen and (max-width: 768px) {
+    .login {
+      font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+      padding: 6px 12px; 
+    }
+  }
+
+.login:hover {
+    background-color: #c6831e; 
+}
+.dropdown-menu {
+    color: white;
+    background-color:#8181818c ;
+    border-bottom: 1px solid #818181;
+
+}
+.navbar-toggler {
+    font-size: 0.75rem; /* ปรับขนาดเล็กลง เช่น 0.75rem */
+    color: #ffffff; /* เปลี่ยนสีข้อความเป็นสีขาว */
+  }
+
+  /* สีของ Navbar Toggler เมื่อ hover */
+  .navbar-toggler:hover {
+    background-color: white; /* เปลี่ยนสีพื้นหลังเมื่อ hover เป็นสีน้ำเงินเข้ม */
+    border-color: white; /* เปลี่ยนสีเส้นขอบเมื่อ hover เป็นสีน้ำเงินเข้ม */
+  }
+  .navbar-collapse {
+    width: 100%;
+    display: flex;
+  }
+
+  @media screen and (max-width: 768px) {
+    .navbar-brand img {
+      width: 100%; 
+      height: 100%;
+    }
+  }
+
+/* Home For Customer*/
+.page {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    height: 30vh; /* takes up the full height of the viewport */
+    width: 100%;
+}
+  
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers the flex items (the text and image) horizontally */
+    justify-content: center; /* centers the flex items (the text and image) vertically */
+    background-color: #54b20c3d;
+}
+ 
+.LittleBoy {
+    width: 50%; 
+    height: auto;
+    margin-top: 2%;
+}
+/* ปรับขนาด เมื่อจอเล็กลง*/
+@media screen and (max-width: 768px) {
+    .LittleBoy {
+    width: 60%; 
+    height: auto;
+    }
+}
+
+.bottom {
+    flex: 1; /* takes up any remaining space */
+}
+
+.TextForHead {
+    margin: 0% 0% 4% 15%;
+    font-size: 2.5em;
+    padding-left: 28%;
+    font-weight: bold;
+}
+.TextForHeadPri {
+    margin: 0% 0% 2% 15%;
+    padding-left: 28%;
+    font-size: 19px;
+}
+/* ปรับปุ่ม เมื่อจอเล็กลง*/
+@media screen and (max-width: 768px) {
+    .TextForHead {
+        font-size: 15px;
+    }
+    .TextForHeadPri {
+        font-size: 9px;
+    }
+}
+.box{
+    background-color: antiquewhite;
+    height: 325px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
+    display: block;
+}
+
+.rectangle1 {
+    /* width: 150px; */
+    height: 310px;
+    width: 295px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin:0% 2% 5% 1%;
+    background-color: #F7F4EF;
+  }
+  .rectangle2 {
+    width: 295px;
+    height: 310px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin:2% 2% 5% 1%;
+    background-color: #FFD37A;
+  }
+  .rectangle3 {
+    width: 295px;
+    height: 310px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin:2% 2% 5% 1%;
+    background-color: #FFB6B6;
+  }
+
+#carouselExample .carousel-control-prev,
+#carouselExample .carousel-control-next{
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 91, 5, 0.734);
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 0%;
+ 
+}
+
+#boxesCarousel1 .carousel-control-prev,
+#boxesCarousel1 .carousel-control-next {
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 91, 5, 0.734);
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+ 
+}
+.container #carouselExample{
+    margin-bottom: 50px;
+}
+.container #boxesCarousel1{
+    margin-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+    .carousel-inner .carousel-item .col-md-2 {
+        flex: 0 0 16%; /* เปลี่ยนเป็น 48% เพื่อให้มีระยะห่างเล็กน้อย */
+        max-width: 48%; /* เปลี่ยนเป็น 48% เพื่อให้มีระยะห่างเล็กน้อย */
+        margin: 0% 0% 6% 0%; /* เพิ่ม margin เล็กน้อยด้านซ้ายและขวา */
+    }
+    
+    .list-unstyled.custom-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center; /* ให้รูปสี่เหลี่ยมอยู่ตรงกลางของหน้าจอ */
+    }
+}
+
+@media (max-width: 991px) {
+    /* Small screens */
+    .text-overlay p {
+        font-size: 45px; /* ปรับขนาดเล็กลงเมื่อหน้าจอเล็กลง */
+    }
+}
+
+
+/* Custom CSS for Carousel */
+.topPromotion img {
+    height: 200px; 
+    width: 100%; 
+    border-radius: 20px;
+    margin: 2% 0% 2% 0%;
+}
+/* CSS for adjusting image size based on screen size */
+@media (max-width: 767px) {
+    .topPromotion img {
+        width: 100%; /* ปรับความกว้างของรูปให้เล็กลงเมื่อหน้าจอเล็กลง */
+        height: 80px; /* รักษาสัดส่วนของรูป */
+    }
+}
+
+#carouselExample1 .carousel-control-prev,
+#carouselExample1 .carousel-control-next{
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 91, 5, 0.734);
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+ 
+}
+
+#boxesCarousel2 .carousel-control-prev,
+#boxesCarousel2 .carousel-control-next {
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 91, 5, 0.734);
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+ 
+}
+
+#boxesCarousel3 .carousel-control-prev,
+#boxesCarousel3 .carousel-control-next {
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 91, 5, 0.734);
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+ 
+}
+/* CSS for reducing the size of carousel control buttons on smaller screens */
+@media (max-width: 767px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        /* Set the font size to be smaller */
+        font-size: 0.1rem;
+        /* Set the padding to be smaller */
+        padding: 0.25rem 0.5rem;
+    }
+
+    #carouselExample1 .carousel-control-prev,
+    #boxesCarousel2 .carousel-control-next,
+    #boxesCarousel2 .carousel-control-prev,
+    #boxesCarousel3 .carousel-control-next,
+    #boxesCarousel3 .carousel-control-prev {
+
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .carousel-item .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .carousel-item .row .col-md-3 {
+        flex-basis: 90%;
+        max-width: 90%;
+        /* margin: 2% 15% 2% 52%;  */
+        margin: 5px auto; 
+        
+    }
+
+    .rectangle1 , .rectangle2 {
+        width: 250px;
+        height: 270px;
+        border: 1.5px solid black;
+        border-radius: 20px;
+    }
+
+}
+
+
+/* footer */
+#footer {
+    background-color: #818181;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 0%;
+}
+.list-unstyled.custom-list li a {
+    text-decoration: none; 
+    color: white;
+    font-size: 14px;
+}
+
+.cart-icon-container {
+    position: relative;
+    display: inline-block; /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
+}
+
+.cart-count {
+    position: absolute;
+    top: -7px; /* ปรับตำแหน่งตามต้องการ */
+    right: -10px; /* ปรับตำแหน่งตามต้องการ */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 10px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
