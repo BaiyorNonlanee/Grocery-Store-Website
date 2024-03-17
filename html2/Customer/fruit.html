@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fruits&Vegetables</title>
-
+ 
   <link rel="stylesheet" href="/css2/Customer/style_fruit.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-
+ 
   <!-- font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jockey+One&display=swap" rel="stylesheet">
-
+ 
   <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Jockey+One&family=Luckiest+Guy&display=swap"
     rel="stylesheet">
-
+ 
   <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet">
   <style>
     /* Container for the product */
     .box {
       background-color: antiquewhite;
       height: 320px;
+      width: auto;
       border: 1px solid black;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       border-radius: 20px;
       justify-content: center;
       align-items: center;
@@ -32,24 +33,24 @@
       box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
       display: block;
     }
-
+ 
     .productbox {
       align-items: center;
       text-align: center;
     }
-
+ 
     .productlist {
       margin-left: 60px;
     }
-
+ 
     /* Image container */
     .img-container {
       text-align: center;
       display: block;
       margin: auto;
     }
-
-
+ 
+ 
     /* Image */
     .imageFoecate {
       object-fit: cover;
@@ -62,7 +63,7 @@
       display: block;
       /* Ensures the image is centered */
     }
-
+ 
     @media screen and (max-width: 768px) {
       .imageFoecate {
         width: 100%;
@@ -73,30 +74,28 @@
         margin-top: 5%;
       }
     }
-
-
+ 
     /* Description */
     .descript {
       padding: 0% 10% 0% 10%;
-      margin-left: 18%;
       margin-bottom: 0%;
-      margin-right: 18%;
+      margin: auto;
       font-family: "Josefin Sans", sans-serif;
       text-align: center;
     }
-
+ 
     /* Price */
     .descript p span {
       font-family: "Jockey One", sans-serif;
       font-size: 20px;
       margin: 0 30px;
     }
-
+ 
     /* Add to cart button */
     .cartButton {
       margin-top: 10px;
     }
-
+ 
     .cart {
       font-size: 14px;
       background-color: red;
@@ -109,24 +108,87 @@
       margin: 0 auto;
       margin-top: -10px;
     }
-
+ 
+   
     @media screen and (max-width: 768px) {
-      .cart {
+  /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+  .box {
+    height: 260px; /* ปรับความสูงให้เล็กลง */
+    width: 160px;
+    border-radius: 10px; /* ลดขนาดของขอบ */
+  }
+ 
+  .imageFoecate {
+    width: 80%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+    height: 120px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+  }
+ 
+  .descript {
+    font-size: 14px; /* ปรับขนาดข้อความให้เล็กลง */
+    margin:auto; /* ปรับระยะห่างของข้อความ */
+  }
+  .cart {
         font-size: 12px;
         /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
         padding: 6px 12px;
         margin-top: -5px;
-      }
-    }
-
+  }
+ 
     .cart:hover {
       background-color: #6e7174;
     }
+}
+ 
+@media screen and (max-width: 375px) {
+  /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+  .box {
+    height: 230px; /* ปรับความสูงให้เล็กลง */
+    width: 130px;
+    border-radius: 10px; /* ลดขนาดของขอบ */
+  }
+ 
+  .imageFoecate {
+    width: 80%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+    height: 120px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+  }
+ 
+  .descript ,span {
+    font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
+    margin:auto; /* ปรับระยะห่างของข้อความ */
+  }
+ 
+  p {
+    margin-bottom: 0%;
+  }
+  .cart {
+    font-size: 8px; /* ปรับขนาดของปุ่มให้เล็กลง */
+    padding: 4px 10px; /* ปรับขนาดของปุ่มให้เล็กลง */
+    margin-top: 0%; /* ปรับระยะห่างของปุ่ม */
+  }
+  #productList {
+    margin-right: 5%;
+  }
+}
+ 
+ 
+    /* @media screen and (max-width: 768px) {
+      .cart {
+        font-size: 12px;
+       
+        padding: 6px 12px;
+        margin-top: -5px;
+      }
+    }
+ 
+    .cart:hover {
+      background-color: #6e7174;
+    } */
+ 
   </style>
 </head>
-
+ 
 <body>
-
+ 
   <section id="Navigator">
     <div class="container-fluid ">
       <nav class="navbar navbar-expand-lg navbar-light" style="margin: 0% 3.5% 0% 0%;">
@@ -139,7 +201,7 @@
           data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
         </button>
-
+ 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
@@ -165,7 +227,7 @@
             </li>
           </ul>
         </div>
-        <button  class="login" type="button" aria-expanded="false">login</button>
+        <button class="login" type="button" aria-expanded="false">login</button>
         <!-- Cart -->
         <div>
           <a class="nav-item nav-link cart-icon-container" href="/html2/Customer/productListPage.html"
@@ -178,7 +240,7 @@
       </nav>
     </div>
   </section>
-
+ 
   <section id="content">
     <h1>Fruits and Vegetables</h1>
     <div class="carousel-container">
@@ -210,281 +272,41 @@
       <hr>
     </div>
     <br>
-    <div id="box-container" class="container" style="display: inline-block;">
-      <div class="row" style="display: inline;">
-
-        <div id="productList" class="row"></div>
-
-      </div>
-    </div>
-
-
-    <!-- <div class="row">
-              <div class="col-6 col-md-3">
-                <div class="box">
-                    <div class="img-container">
-                        <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Apple Envy Pack 6 198B per pack.png" alt="Apple Envy Pack 6">
-                    </div>
-                    <div class="descript">
-                        <p><blockquote>Apple Envy Pack 6</blockquote></p>
-                    </div>
-                    <div class="cartButton">
-                      <p><span style="color: red; margin-left: 4%;">฿198.00/Pack</span></p>
-                      <button class="cart">ADD TO CART</button>
-                    </div>
-                </div>
-              </div>            
-              <div class="col-6 col-md-3">
-                <div class="box">
-                  <div class="img-container">
-                      <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\red cherry 399B per pack.png" alt="red cherry">
-                  </div>
-                  <div class="descript">
-                      <p><blockquote>Red cherry</blockquote></p>
-                  </div>
-                  <div class="cartButton">
-                    <p><span style="color: red; margin-left: 4%;">฿399.00/Pack</span></p>
-                    <button class="cart">ADD TO CART</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="box">
-                  <div class="img-container">
-                      <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Green Mango 119B per kg.png" alt="Green Mango">
-                  </div>
-                  <div class="descript">
-                      <p><blockquote>Green Mango</blockquote></p>
-                  </div>
-                  <div class="cartButton">
-                    <p><span style="color: red; margin-left: 4%;">฿119.00/KG.</span></p>
-                    <button class="cart">ADD TO CART</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="box">
-                  <div class="img-container">
-                      <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Special Siam Ruby Pomelo 339B.png" alt="Special Siam Ruby Pomelo">
-                  </div>
-                  <div class="descript">
-                      <p>Special Siam Ruby Pomelo</p>
-                  </div>
-                  <div class="cartButton">
-                    <p><span style="color: red; margin-left: 4%;">฿339.00/Piece</span></p>
-                    <button class="cart">ADD TO CART</button>
-                  </div>
-                </div>
-              </div> -->
-    <!-- <div class="col-6 col-md-3">
-                <div class="box">
-                  <div class="img-container">
-                      <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Golden banana 42b per pack.png" alt="Golden banana">
-                  </div>
-                  <div class="descript">
-                      <p><blockquote>Golden banana</blockquote></p>
-                  </div>
-                  <div class="cartButton">
-                    <p><span style="color: red; margin-left: 4%;">฿42.00/Pack</span></p>
-                    <button class="cart">ADD TO CART</button>
-                  </div>
-                </div>
-              </div> -->
-    <!-- <div class="col-6 col-md-3">
-                <div class="box">
-                  <div class="img-container">
-                      <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Holy basil leaves 19 baht per pack.png" alt="Holy basil leaves">
-                  </div>
-                  <div class="descript">
-                      <p><blockquote>Holy basil leaves</blockquote></p>
-                  </div>
-                  <div class="cartButton">
-                    <p><span style="color: red; margin-left: 4%;">฿19.00/Pack</span></p>
-                    <button class="cart">ADD TO CART</button>
-                  </div>
-                </div>
-              </div> -->
-    <!-- <div class="col-6 col-md-3">
-                <div class="box">
-                  <div class="img-container">
-                      <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\indian pomegranate 129b per 1 piece.png" alt="indian pomegranate">
-                  </div>
-                  <div class="descript">
-                      <p>Indian pomegranate</p>
-                  </div>
-                  <div class="cartButton">
-                    <p><span style="color: red; margin-left: 4%;">฿129.00/Piece</span></p>
-                    <button class="cart">ADD TO CART</button>
-                  </div>
-                </div>
-              </div> -->
-    <!-- <div class="col-6 col-md-3">
-                <div class="box">
-                  <div class="img-container">
-                      <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Korean strawberries 330g. 339B.png" alt="Korean strawberries 330g.">
-                  </div>
-                  <div class="descript">
-                      <p>Korean strawberries 330g.</p>
-                  </div>
-                  <div class="cartButton">
-                    <p><span style="color: red; margin-left: 4%;">฿339.00/Pack</span></p>
-                    <button class="cart">ADD TO CART</button>
-                  </div>
-                </div>
-              </div> -->
-    <!-- </div> -->
-
-
-
-    <div class="line">
-      <hr>
-      <p>ALL VEGETABLES</p>
-      <hr>
-    </div>
-    <br>
-    <div id="box-container2" class="container">
-      <div class="row">
-        <div class="col-6 col-md-3">
-          <div class="box">
-            <div class="img-container">
-              <img class="imageFoecate"
-                src="..\outlineCategory\images\Fruits&Vegetables\Kale shoots 100 grams 19 baht per pack.png"
-                alt="Kale shoots 100 grams">
-            </div>
-            <div class="descript">
-              <p>
-              <blockquote>Kale shoots 100g.</blockquote>
-              </p>
-            </div>
-            <div class="cartButton">
-              <p><span style="color: red; margin-left: 4%;">฿19.00/Pack</span></p>
-              <button class="cart">ADD TO CART</button>
-            </div>
+    <!-- <div id="box-container" class="container" style="display: inline-block;">
+        <div class="row" style="display: inline;">
+ 
+          <div class="col-lg-12" style="padding: 0% 2% 0% 10%;">
+ 
+            <div id="productList" class="row" style="margin: auto;"></div>
+ 
           </div>
+ 
         </div>
-        <div class="col-6 col-md-3">
-          <div class="box">
-            <div class="img-container">
-              <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Potatoes 55 baht per kilo.png"
-                alt="Potatoes">
-            </div>
-            <div class="descript">
-              <p>
-              <blockquote>Potatoes</blockquote>
-              </p>
-            </div>
-            <div class="cartButton">
-              <p><span style="color: red; margin-left: 4%;">฿55.00/KG.</span></p>
-              <button class="cart">ADD TO CART</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="box">
-            <div class="img-container">
-              <img class="imageFoecate"
-                src="..\outlineCategory\images\Fruits&Vegetables\Red chilli 19 baht per pack.png" alt="Red chilli">
-            </div>
-            <div class="descript">
-              <p>
-              <blockquote>Red chilli</blockquote>
-              </p>
-            </div>
-            <div class="cartButton">
-              <p><span style="color: red; margin-left: 4%;">฿19.00/Pack</span></p>
-              <button class="cart">ADD TO CART</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="box">
-            <div class="img-container">
-              <img class="imageFoecate"
-                src="..\outlineCategory\images\Fruits&Vegetables\Australian carrots 49 baht per kilogram.png"
-                alt="Australian carrots">
-            </div>
-            <div class="descript">
-              <p>
-              <blockquote>Australian carrots</blockquote>
-              </p>
-            </div>
-            <div class="cartButton">
-              <p><span style="color: red; margin-left: 4%;">฿49.00/KG.</span></p>
-              <button class="cart">ADD TO CART</button>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="col-6 col-md-3">
-            <div class="box">
-              <div class="img-container">
-                  <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Yellow lemon 35 baht per piece.png" alt="Yellow lemon">
-              </div>
-              <div class="descript">
-                  <p><blockquote>Yellow lemon</blockquote></p>
-              </div>
-              <div class="cartButton">
-                <p><span style="color: red; margin-left: 4%;">฿35.00/Piece</span></p>
-                <button class="cart">ADD TO CART</button>
-              </div>
-            </div>
-          </div> -->
-        <!-- <div class="col-6 col-md-3">
-            <div class="box">
-              <div class="img-container">
-                  <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Holy basil leaves 19 baht per pack.png" alt="Holy basil leaves">
-              </div>
-              <div class="descript">
-                  <p><blockquote>Holy basil leaves</blockquote></p>
-              </div>
-              <div class="cartButton">
-                <p><span style="color: red; margin-left: 4%;">฿19.00/Pack</span></p>
-                <button class="cart">ADD TO CART</button>
-              </div>
-            </div>
-          </div> -->
-        <!-- <div class="col-6 col-md-3">
-            <div class="box">
-              <div class="img-container">
-                  <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Bean sprouts 200 grams 28 baht per piece.png" alt="Bean sprouts 200 grams">
-              </div>
-              <div class="descript">
-                  <p><blockquote>Bean sprout 200g.</blockquote></p>
-              </div>
-              <div class="cartButton">
-                <p><span style="color: red; margin-left: 4%;">฿28.00/Piece</span></p>
-                <button class="cart">ADD TO CART</button>
-              </div>
-            </div>
-          </div> -->
-        <!-- <div class="col-6 col-md-3">
-            <div class="box">
-              <div class="img-container">
-                  <img class="imageFoecate" src="..\outlineCategory\images\Fruits&Vegetables\Garden chili peppers, 30 grams, 19 baht per pack.png" alt="Garden chili peppers">
-              </div>
-              <div class="descript">
-                  <p>Garden chili peppers 300g.</p>
-              </div>
-              <div class="cartButton">
-                <p><span style="color: red; margin-left: 4%;">฿19.00/pack</span></p>
-                <button class="cart">ADD TO CART</button>
-              </div>
-            </div>
-          </div> -->
-      </div>
-    </div>
+    </div> -->
   </section>
-
+ 
+  <section id="categoryF">
+    <!-- <div id="box-container" class="container" style="display: inline-block;"> -->
+      <div class="row" style="display: inline;">
+ 
+        <div class="col-lg-12" style="padding: 0% 2% 0% 2%;">
+ 
+          <div id="productList" class="row container-fluid" style="margin: auto;"></div>
+ 
+        </div>
+ 
+      </div>
+    <!-- </div> -->
+  </section>
+ 
   <section>
     <div id="pagination" class="text-center">
       <nav aria-label="Page navigation">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#" onclick="goToPage(1)">1</a></li>
-          <li class="page-item"><a class="page-link" href="#" onclick="goToPage(2)">2</a></li>
-        </ul>
+ 
       </nav>
     </div>
   </section>
-
+ 
   <section id="footer">
     <div class="container-fluid">
       <div class="row">
@@ -509,33 +331,24 @@
       </div>
     </div>
   </section>
-
-
-  <script>
-
-    function goToPage(pageNumber) {
-      if (pageNumber === 1 && window.location.href !== "/html2/Customer/fruit1.html") {
-        window.location.href = "/html2/Customer/fruit1.html";
-      } else if (pageNumber === 2 && window.location.href !== "/html2/Customer/fruit2.html") {
-        window.location.href = "/html2/Customer/fruit2.html";
-      }
-    }
-  </script>
-
+ 
   <script src="https://kit.fontawesome.com/752c6ea0dd.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+ 
   <script>
-
+    document.addEventListener("DOMContentLoaded", function () {
+      
+      fetchProducts(1); // Fetch the first page of products
+    });
+ 
     function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-    }
-
-    // Usage
-    const userId = getCookie('user_id');
-
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+ 
+      // Usage
+      const userId = getCookie('user_id');
     fetch(`http://localhost:3003/cart/${userId}`, {
       method: "GET",
       headers: {
@@ -551,24 +364,64 @@
       .catch((error) => {
         console.error("Error:", error);
       });
-
-    fetch("http://localhost:3003/product", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success product:", data);
-        displayProducts(data); // แก้ไขเป็น displayProducts(data)
+ 
+    function fetchProducts(pageNumber) {
+      fetch(`http://localhost:3003/product-category/5?page=${pageNumber}&limit=8`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-
+        .then((response) => response.json())
+        .then((data) => {
+          displayProducts(data.products);
+          generatePagination(data.totalPages, data.currentPage);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+ 
+ 
+    function generatePagination(totalPages, currentPage) {
+      const paginationDiv = document.getElementById("pagination");
+      paginationDiv.innerHTML = ''; // Clear existing pagination links
+ 
+      const ul = document.createElement("ul");
+      ul.className = "pagination";
+ 
+      // Generate "Previous" link
+      if (currentPage > 1) {
+        const prevLi = document.createElement("li");
+        prevLi.className = "page-item";
+        prevLi.innerHTML = `<p class="page-link" style="cursor: pointer;" onclick="fetchProducts(${currentPage - 1})">Previous</a>`;
+        ul.appendChild(prevLi);
+      }
+ 
+      // Generate page number links
+      for (let i = 1; i <= totalPages; i++) {
+        const li = document.createElement("li");
+        li.className = "page-item";
+        li.innerHTML = `<p class="page-link" style="cursor: pointer;" onclick="fetchProducts(${i})">${i}</a>`;
+        if (i === currentPage) {
+          li.classList.add("active"); // Highlight the current page
+        }
+        ul.appendChild(li);
+      }
+ 
+      // Generate "Next" link
+      if (currentPage < totalPages) {
+        const nextLi = document.createElement("li");
+        nextLi.className = "page-item";
+        nextLi.innerHTML = `<p class="page-link" style="cursor: pointer;" onclick="fetchProducts(${currentPage + 1})">Next</a>`;
+        ul.appendChild(nextLi);
+      }
+ 
+      paginationDiv.appendChild(ul);
+    }
+ 
     // ฟังก์ชันเพื่อดึงสินค้าตามหมวดหมู่
-    function fetchProductsByCategory(categoryId) {
+    /*function fetchProductsByCategory(categoryId) {
       fetch(`/product-category/${categoryId}`)
         .then(response => {
           if (!response.ok) {
@@ -582,37 +435,33 @@
         .catch(error => {
           console.error('มีปัญหาในการดึงข้อมูล:', error);
         });
-    }
-
+    }*/
+ 
     // ฟังก์ชันเพื่อแสดงสินค้า
     function displayProducts(products) {
       const productList = document.getElementById("productList");
-
+      // Clear old data
+      productList.innerHTML = '';
+ 
       products.forEach((product) => {
-        // ตรวจสอบว่า category_ID เท่ากับ 5 หรือไม่
-        if (product.category_ID !== 5) {
-          // ถ้าไม่เท่ากับ 5 ข้ามไปสินค้าถัดไป
-          return;
-        }
-
         const productDiv = document.createElement("div");
         productDiv.className = "productbox col-6 col-md-3";
         productDiv.dataset.productId = product.product_ID;
-
+ 
         productDiv.innerHTML = `
-    <div class="box">
-      <div class="img-container">
-        <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
-      </div>
-      <div class="descript">
-        <p><blockquote>${product.product_Name}</blockquote></p>
-      </div>
-      <div class="cartButton">
-        <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
-        <button class="cart">ADD TO CART</button>
-      </div>
-    </div>
-    `;
+        <div class="box">
+          <div class="img-container">
+            <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
+          </div>
+          <div class="descript">
+            <p><blockquote>${product.product_Name}</blockquote></p>
+          </div>
+          <div class="cartButton">
+            <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
+            <button class="cart">ADD TO CART</button>
+          </div>
+        </div>
+        `;
         // เพิ่ม event listener ให้กับปุ่ม "ADD TO CART"
         const addToCartButton = productDiv.querySelector('.cart');
         addToCartButton.addEventListener('click', function () {
@@ -620,27 +469,22 @@
           // เรียกฟังก์ชันเพื่อเพิ่มสินค้าลงในตะกร้าและอัปเดตจำนวนสินค้าในตะกร้า
           addToCart(productId, productDiv);
         });
-
         productList.appendChild(productDiv);
       });
     }
-
-
-
-
-
+ 
     function addToCart(productId, productDiv) {
       // ตรวจสอบว่าสินค้านี้มีอยู่ในตะกร้าหรือไม่
       console.log(`Product ID: ${productId} added to cart.`);
-
+ 
       const productData = {
         product_id: Number(productId),
         user_id: Number(userId),
         amount: 1
       };
-
-
-
+ 
+ 
+ 
       fetch(`http://localhost:3003/cart`, {
         method: "POST",
         headers: {
@@ -656,9 +500,10 @@
         .catch((error) => {
           console.log("Error:", error);
         });
-
-
+ 
+ 
     }
+ 
     function updateCartCount() {
       fetch(`http://localhost:3003/cart/${userId}`, {
         method: "GET",
@@ -676,11 +521,11 @@
           console.error("Error:", error);
         });
     }
-
+ 
   </script>
 </body>
 <footer>
   <script src="fruits.js" charset="utf-8"></script>
 </footer>
-
+ 
 </html>
