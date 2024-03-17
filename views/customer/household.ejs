@@ -1,190 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fruits&Vegetables</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Household Page</title>
 
-  <link rel="stylesheet" href="/css2/Customer/style_fruit.css">
-   
-  <%- include('../partials/link') %>
-  
-  <style>
-    /* Container for the product */
-    .box {
-      background-color: antiquewhite;
-      height: 320px;
-      width: auto;
-      border: 1px solid black;
-      margin-bottom: 20px;
-      border-radius: 20px;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
-      display: block;
-    }
- 
-    .productbox {
-      align-items: center;
-      text-align: center;
-    }
- 
-    .productlist {
-      margin-left: 60px;
-    }
- 
-    /* Image container */
-    .img-container {
-      text-align: center;
-      display: block;
-      margin: auto;
-    }
- 
- 
-    /* Image */
-    .imageFoecate {
-      object-fit: cover;
-      /* Ensures the image covers the container without stretching */
-      width: 60%;
-      /* Adjust the width as needed */
-      height: 150px;
-      /* Adjust the height as needed */
-      margin: auto;
-      display: block;
-      /* Ensures the image is centered */
-    }
- 
-    @media screen and (max-width: 768px) {
-      .imageFoecate {
-        width: 100%;
-        /* Adjust the width as needed for smaller screens */
-        height: 150px;
-        /* Adjust the height as needed for smaller screens */
-        object-fit: cover;
-        margin-top: 5%;
-      }
-    }
- 
-    /* Description */
-    .descript {
-      padding: 0% 10% 0% 10%;
-      margin-bottom: 0%;
-      margin: auto;
-      font-family: "Josefin Sans", sans-serif;
-      text-align: center;
-    }
- 
-    /* Price */
-    .descript p span {
-      font-family: "Jockey One", sans-serif;
-      font-size: 20px;
-      margin: 0 30px;
-    }
- 
-    /* Add to cart button */
-    .cartButton {
-      margin-top: 10px;
-    }
- 
-    .cart {
-      font-size: 14px;
-      background-color: red;
-      padding: 6px 20px;
-      border: none;
-      cursor: pointer;
-      color: white;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      display: block;
-      margin: 0 auto;
-      margin-top: -10px;
-    }
- 
-   
-    @media screen and (max-width: 768px) {
-  /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
-  .box {
-    height: 260px; /* ปรับความสูงให้เล็กลง */
-    width: 160px;
-    border-radius: 10px; /* ลดขนาดของขอบ */
-  }
- 
-  .imageFoecate {
-    width: 80%; /* ปรับขนาดของรูปภาพให้เล็กลง */
-    height: 120px; /* ปรับความสูงของรูปภาพให้เล็กลง */
-  }
- 
-  .descript {
-    font-size: 14px; /* ปรับขนาดข้อความให้เล็กลง */
-    margin:auto; /* ปรับระยะห่างของข้อความ */
-  }
-  .cart {
-        font-size: 12px;
-        /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
-        padding: 6px 12px;
-        margin-top: -5px;
-  }
- 
-    .cart:hover {
-      background-color: #6e7174;
-    }
-}
- 
-@media screen and (max-width: 375px) {
-  /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
-  .box {
-    height: 230px; /* ปรับความสูงให้เล็กลง */
-    width: 130px;
-    border-radius: 10px; /* ลดขนาดของขอบ */
-  }
- 
-  .imageFoecate {
-    width: 80%; /* ปรับขนาดของรูปภาพให้เล็กลง */
-    height: 120px; /* ปรับความสูงของรูปภาพให้เล็กลง */
-  }
- 
-  .descript ,span {
-    font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
-    margin:auto; /* ปรับระยะห่างของข้อความ */
-  }
- 
-  p {
-    margin-bottom: 0%;
-  }
-  .cart {
-    font-size: 8px; /* ปรับขนาดของปุ่มให้เล็กลง */
-    padding: 4px 10px; /* ปรับขนาดของปุ่มให้เล็กลง */
-    margin-top: 0%; /* ปรับระยะห่างของปุ่ม */
-  }
-  #productList {
-    margin-right: 5%;
-  }
-}
- 
- 
-    /* @media screen and (max-width: 768px) {
-      .cart {
-        font-size: 12px;
-       
-        padding: 6px 12px;
-        margin-top: -5px;
-      }
-    }
- 
-    .cart:hover {
-      background-color: #6e7174;
-    } */
- 
-  </style>
+    <link rel="stylesheet" href="/css2/Customer/style_household.css">
+
+    <%- include('../partials/link')  %>
+
 </head>
-
 <body>
-  
-  <%- include('../partials/navigator') %>
-
+  <%- include('../partials/navigator')  %>
   <section id="content">
-    <h1>Fruits and Vegetables</h1>
+    <h1>Household</h1>
     <div class="carousel-container">
       <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
@@ -210,10 +39,21 @@
     </div>
     <div class="line">
       <hr>
-      <p>ALL FRUITS AND VEGETABLES</p>
+      <p>ALL HOUSEHOLD</p>
       <hr>
     </div>
     <br>
+    <!-- <div id="box-container" class="container" style="display: inline-block;">
+        <div class="row" style="display: inline;">
+ 
+          <div class="col-lg-12" style="padding: 0% 2% 0% 10%;">
+ 
+            <div id="productList" class="row" style="margin: auto;"></div>
+ 
+          </div>
+ 
+        </div>
+    </div> -->
   </section>
  
   <section id="categoryF">
@@ -229,16 +69,16 @@
       </div>
     <!-- </div> -->
   </section>
- 
+
   <section>
     <div id="pagination" class="text-center">
       <nav aria-label="Page navigation">
- 
+
       </nav>
     </div>
   </section>
- 
-  <%- include('../partials/footer') %>
+
+  <%- include('../partials/footer')  %>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -271,7 +111,7 @@
       });
 
     function fetchProducts(pageNumber) {
-      fetch(`http://localhost:3003/product-category/5?page=${pageNumber}&limit=8`, {
+      fetch(`http://localhost:3003/product-category/6?page=${pageNumber}&limit=8`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -428,12 +268,7 @@
     }
 
   </script>
-
-<%- include('../partials/script') %>
-
+    <%- include('../partials/script')  %>
+     
 </body>
-<footer>
-  <script src="fruits.js" charset="utf-8"></script>
-</footer>
-
 </html>
