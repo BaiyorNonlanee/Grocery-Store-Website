@@ -134,7 +134,7 @@
         function sendDataToServer() {
             // ตรวจสอบว่าผู้ใช้ได้เลือก role หรือไม่
             if (!roleSelected) {
-                alert("กรุณาเลือกประเภทผู้ใช้ (Individual หรือ Business)");
+                alert("Please select user type (Individual or Business)");
                 return;
             }
 
@@ -149,7 +149,7 @@
 
             // ตรวจสอบว่ารหัสผ่านและการยืนยันรหัสผ่านตรงกัน
             if (password !== confirm) {
-                alert("รหัสผ่านและการยืนยันรหัสผ่านไม่ตรงกัน");
+                alert("Password do not match");
                 return;
             }
 
@@ -173,13 +173,13 @@
                         alert('Username already exists');
                     }else {
 
-                        alert('ลงทะเบียนสำเร็จ');
+                        alert('Register Successfully');
                     }
                 })
                 .catch((error) => {
                     console.error('Error:', error);
                     // ทำการแจ้งให้ผู้ใช้ทราบว่าเกิดข้อผิดพลาด
-                    alert('เกิดข้อผิดพลาดในการลงทะเบียน');
+                    alert('An error occurred during registration');
                 });
         }
 
