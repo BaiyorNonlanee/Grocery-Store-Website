@@ -139,6 +139,7 @@
     margin-top: 10px;
     background-color: rgb(205, 202, 202); 
     font-family: "Josefin Sans", sans-serif;  
+    margin-bottom: 10%;
 }
 
 @media (max-width: 992px) {
