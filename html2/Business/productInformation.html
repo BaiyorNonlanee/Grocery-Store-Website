@@ -100,6 +100,8 @@
     </div>
   </section>
   <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    let category_ID = urlParams.get("category_ID");
     function previewFile() {
       const input = document.getElementById('textfield-img').value;
       const previewImage = document.getElementById('previewImage');
@@ -129,8 +131,8 @@
         console.log("productData: ", productData);
 
         // Your fetch request here
-        fetch("http://localhost:3003/product", {
-          method: "POST",
+        fetch(`http://localhost:3003/product/${category_ID}` , {
+          method: "POST", 
           headers: {
             "Content-Type": "application/json",
           },
@@ -142,12 +144,25 @@
             // Redirect or display success message
 
             // add success link to show products
-            window.location.href = '/html2/Business/productInCategory.html'
+            redirectToProductInCategory()
           })
           .catch((error) => {
             console.error("Error:", error);
           });
       });
+      
+      function redirectToProductInCategory() {
+    // Extract category_ID from the current URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryID = urlParams.get("category_ID");
+
+    // Construct the URL for the productInCategory page with the category_ID
+    const productInCategoryUrl = `http://127.0.0.1:5500/html2/Business/productInCategory.html?category_ID=${categoryID}`;
+
+    // Redirect the user to the productInCategory page
+    window.location.href = productInCategoryUrl;
+}
+
   </script>
 </body>
 
