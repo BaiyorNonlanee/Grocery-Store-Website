@@ -133,9 +133,9 @@
         </div> -->
 
       <div class="addnewbox">
-        <a href="/html2/Business/productInformation.html">
+        <div  onclick="redirectToProductInCategory()">
           <img src="/image/addnewicon.png" alt="" />
-        </a>
+        </div>
         <p style="color: gray">Add new product</p>
       </div>
 
@@ -178,7 +178,7 @@
         const categoryID = urlParams.get("category_ID");
 
         // เรียก API ที่มีการกรองตาม category_ID
-        fetch(`http://localhost:3003/product-category/${categoryID}`, {
+        fetch(`http://localhost:3003/product/${categoryID}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -386,6 +386,19 @@
             console.error("Error deleting product:", error);
           });
       }
+
+      function redirectToProductInCategory() {
+    // Extract category_ID from the current URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryID = urlParams.get("category_ID");
+
+    // Construct the URL for the productInCategory page with the category_ID
+    const productInCategoryUrl = `http://127.0.0.1:5500/html2/Business/productInformation.html?category_ID=${categoryID}`;
+
+    // Redirect the user to the productInCategory page
+    window.location.href = productInCategoryUrl;
+}
+
     </script>
   </body>
 </html>
