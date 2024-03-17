@@ -272,7 +272,7 @@
 
         // Add product details to the div
         productDiv.innerHTML = `
-            <div class="row">
+            <div class="row" style ="margin: 5% ;">
                 <div class="col-3 col-sm-3 col-lg-3">
                     <div class="productimage">
                         <img src="${product.imagesrc || "default-image-url"}" class="img-fluid rounded-3" style="width: 120px;" alt="picture">
@@ -281,28 +281,28 @@
                 <div class="col-9 col-sm-9 col-lg-9">
                     <div class="productinfo">
                         <div class="row">
-                            <div class="col-3 col-sm-3 col-lg-3">
+                            <div class="col-12 col-sm-12 col-lg-12">
                                 <span style="display: flex; flex-direction: row; gap: 5px">Name: <p id="name${product.product_ID}">${product.product_Name}</p></span>
                             </div>
-                            <div class="col-6 col-sm-6 col-lg-6" id="name-form${product.product_ID}"></div>
+                            <div class="col-12 col-sm-12 col-lg-12" id="name-form${product.product_ID}"></div>
                         </div>
                         <div class="row">
-                            <div class="col-3 col-sm-3 col-lg-3">
+                            <div class="col-12 col-sm-12 col-lg-12">
                                 <span style="display: flex; flex-direction: row; gap: 5px">Price: <p id="price${product.product_ID}">${product.price}</p></span>
                             </div>
-                            <div class="col-6 col-sm-6 col-lg-6" id="price-form${product.product_ID}"></div>
+                            <div class="col-12 col-sm-12 col-lg-12" id="price-form${product.product_ID}"></div>
                         </div>
                         <div class="row">
-                            <div class="col-3 col-sm-3 col-lg-3">
+                            <div class="col-12 col-sm-12 col-lg-12">
                                 <span style="display: flex; flex-direction: row; gap: 5px">Promotion: <p id="promotion${product.product_ID}">${product.promotion}</p></span>
                             </div>
-                            <div class="col-6 col-sm-6 col-lg-6" id="promotion-form${product.product_ID}"></div>
+                            <div class="col-12 col-sm-12 col-lg-12" id="promotion-form${product.product_ID}"></div>
                         </div>
                         <div class="row">
-                            <div class="col-3 col-sm-3 col-lg-3">
+                            <div class="col-12 col-sm-12 col-lg-12">
                                 <span style="display: flex; flex-direction: row; gap: 5px">Description: <p id="description${product.product_ID}">${product.description}</p></span>
                             </div>
-                            <div class="col-6 col-sm-6 col-lg-6" id="description-form${product.product_ID}"></div>
+                            <div class="col-12 col-sm-12 col-lg-12" id="description-form${product.product_ID}"></div>
                         </div>
                     </div>
                 </div>
@@ -458,7 +458,7 @@
     const categoryID = urlParams.get("category_ID");
 
     // Construct the URL for the productInCategory page with the category_ID
-    const productInCategoryUrl = `http://127.0.0.1:5500/html2/Business/productInformation.html?category_ID=${categoryID}`;
+    const productInCategoryUrl = `http://127.0.0.1:5501/html2/Business/productInformation.html?category_ID=${categoryID}`;
 
     // Redirect the user to the productInCategory page
     window.location.href = productInCategoryUrl;

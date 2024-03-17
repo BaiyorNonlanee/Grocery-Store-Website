@@ -227,12 +227,21 @@ hr {
     }
   }
 
-.descript {
-    padding: 0% 10% 0% 10%;
-    margin-left: 18% ;
-    margin-bottom: 0%;
-    margin-right: 18%;
-}
+    /* Description */
+    .descript {
+      padding: 0% 10% 0% 10%;
+      margin-bottom: 0%;
+      margin: auto;
+      font-family: "Josefin Sans", sans-serif;
+      text-align: center;
+    }
+ 
+    /* Price */
+    .descript p span {
+      font-family: "Jockey One", sans-serif;
+      font-size: 20px;
+      margin: 0 30px;
+    }
 
 .cartButton .cart{
     margin-bottom: 4%;
