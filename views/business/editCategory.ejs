@@ -7,18 +7,10 @@
 
     <link rel="stylesheet" href="/css2/Business/editCategory.css">
 
-    <!-- Font family -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jockey+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <%- include('../partials/link')  %>
 </head>
 <body>
-    <nav>
-
-    </nav>
+    <%- include('../partials/navBusiness')  %>
 
     <section class="feature">
         <div class="categoryinfo">
@@ -57,7 +49,9 @@
             };
             xhr.send(JSON.stringify({ category_name: updatedCategoryName }));
         });
-    </script>      
+    </script> 
+      <%- include('../partials/script')  %>
+
 
 </body>
 </html>

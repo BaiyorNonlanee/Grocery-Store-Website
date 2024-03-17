@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const mysql = require("mysql2");
+const path = require('path');
+
  
 const session = require("express-session");
  
@@ -84,7 +86,7 @@ app.post("/register", (req, res) => {
     });
   });
 });
- 
+app.use(express.static(path.join(__dirname, '../public')));
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
  
@@ -161,10 +163,10 @@ function ensureAuthenBusiness(req, res, next) {
   // If the user is not authenticated, deny access
   res.status(401).json({ message: "Unauthorized" });
 }
- 
-// example hello express.js
-app.get("/", (req, res) => {
-  res.send("Hello! Node.js");
+app.use(express.static(path.join(__dirname, '../html2')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/login.html'));
 });
 //User login
 app.get("/users", ensureAuthenBusiness, function (req, res, next) {
@@ -219,13 +221,15 @@ app.post("/user", ensureAuthenticated, function (req, res, next) {
     }
   });
 });
-
+app.get('/category', (req, res) => {res.render('business/CategoriesBusiness')});
 app.get("/category", function (req, res, next) {
   // simple query
   connection.query("SELECT * FROM `Category`", function (err, results, fields) {
     res.json(results);
   });
+
 });
+
 
 app.post("/category",  function (req, res, next) {
   // Extract user data from request body
@@ -575,18 +579,20 @@ app.delete("/cart/:id", function (req, res, next) {
 //     }
 //   });
 // });
- 
+
+app.use(express.static(path.join(__dirname, '../views')));
+
+app.set('views', path.join(__dirname, '../views'));
+
 app.set('view engine', 'ejs');
 
-app.set('views', __dirname + '/views');
-
 // CSS, images
-app.use(express.static(__dirname + '/public'));
+// app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/beverage1', (req, res) => {res.render('customer/beverage1')});
 app.get('/beverage2', (req, res) => { res.render('customer/beverage2')});
 app.get('/beverage3', (req, res) => {res.render('customer/beverage3')});
-app.get('/fruit1', (req, res) => {res.render('customer/fruit1')});
+app.get('/fruit', (req, res) => {res.render('customer/fruit')});
 app.get('/fruit2', (req, res) => {res.render('customer/fruit2')});
 app.get('/empty', (req, res) => {res.render('customer/cartEmptyPage')});
 app.get('/completed', (req, res) => {res.render('customer/completePage')});
@@ -600,6 +606,12 @@ app.get('/information', (req, res) => {res.render('customer/outlineInfo')});
 app.get('/payment', (req, res) => {res.render('customer/paymentPage')});
 app.get('/productList', (req, res) => {res.render('customer/productListPage')});
 app.get('/promotion', (req, res) => {res.render('customer/PromotionPage')});
+app.get('/register', (req, res) => {res.sendFile(path.join(__dirname, '../views/register.html'));});
+app.get('/edit', (req, res) => {res.render('business/editCategory')});
+app.get('/homeBusiness', (req, res) => {res.render('business/homeBusiness')});
+app.get('/productCategory', (req, res) => {res.render('business/productInCategory')});
+app.get('/productInfo', (req, res) => {res.render('business/productInformation')});
+
 
 // Start the server
 app.listen(port, () => {
