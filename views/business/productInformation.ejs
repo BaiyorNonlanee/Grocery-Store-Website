@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Information</title>
+
+  <link rel="stylesheet" href="/css2/Business/productInformation.css" />
+
+  <%- include('../partials/link')  %>
+</head>
+
+<body>
+  <%- include('../partials/navBusiness')  %>
+  <section id="feature">
+    <div class="productinfo" id="userform">
+      <p id="info">PRODUCT INFORMATION</p>
+      <form id="productForm" style="margin: 3% 0% 0% 4%;">
+        <div class="row">
+          <div class="col-sm-12 col-lg-2">
+            Product name <span style="color: red">* </span>
+          </div>
+          <div class="col-sm-12 col-lg-10">
+            <div class="rightinput">
+              <input style="width: 40%;" name="productName" type="text" class="feedback-input" required />
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="row">
+          <div class="col-sm-12 col-lg-2">
+            Price <span style="color: red">* </span>
+          </div>
+          <div class="col-sm-12 col-lg-10">
+            <div class="rightinputprice">
+              <input name="price" type="number" class="feedback-input" required />
+            </div>
+          </div>
+        </div> -->
+
+        <div class="row">
+          <div class="col-sm-12 col-lg-2">
+            Price <span style="color: red">* </span>
+          </div>
+          <div class="col-sm-12 col-lg-4">
+            <div class="rightinputprice">
+              <input style="width: 52%;" name="price" type="number" class="feedback-input" required />
+            </div>
+          </div>
+          <div class="col-sm-12 col-lg-2">
+            Classifier <span style="color: red">* </span>
+          </div>
+          <div class="col-sm-12 col-lg-4">
+            <input style="margin-right: 2%;" type="radio" id="pcs" name="classifier" value="Pcs" required />
+            <label style="margin-right: 2%;" for="pcs" style="color: black"> Pcs </label>
+            <input style="margin-right: 2%;" type="radio" id="pack" name="classifier" value="Pack" />
+            <label style="margin-right: 2%;" for="pack" style="color: black"> Pack </label>
+            <input style="margin-right: 2%;" type="radio" id="box" name="classifier" value="Box" />
+            <label style="margin-right: 2%;" for="box" style="color: black"> Box </label>
+          </div>
+        </div>
+        
+
+        <div class="row">
+          <div class="col-sm-12 col-lg-2">Promotion</div>
+          <div class="col-sm-12 col-lg-10">
+            <div class="rightinput">
+              <input name="promotion" type="text" class="feedback-input" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-lg-2">Description</div>
+          <div class="col-sm-12 col-lg-10">
+            <input name="description" type="text" class="feedback-input" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-lg-2">Product picture</div>
+          <div class="col-sm-12 col-lg-10">
+              <input type="text"  id="textfield-img" placeholder="Enter image URL" onchange="previewFile()" style="width: 100%; border-radius: 7px ; border: 2px solid gray;" name="imagesrc" />
+            <div id="choosePictureBox">
+              <p>Preview image</p>
+              <img id="previewImage" src="#" alt="Your Image" style="display: none"  />
+            </div>
+
+          </div>
+        </div>
+
+        <!-- <div class="row">
+          <div class="col-sm-12 col-lg-2">
+            Classifier <span style="color: red">* </span>
+          </div>
+          <div class="col-sm-12 col-lg-10">
+            <input style="margin-right: 2%;" type="radio" id="pcs" name="classifier" value="Pcs" required />
+            <label style="margin-right: 2%;" for="pcs" style="color: black"> Pcs </label>
+            <input style="margin-right: 2%;" type="radio" id="pack" name="classifier" value="Pack" />
+            <label style="margin-right: 2%;" for="pack" style="color: black"> Pack </label>
+            <input style="margin-right: 2%;" type="radio" id="box" name="classifier" value="Box" />
+            <label style="margin-right: 2%;" for="box" style="color: black"> Box </label>
+          </div>
+        </div> -->
+
+        <div class="row">
+          <button class="savebutton" type="submit" style="width: 20%; height: 3.5%; margin-top: 2%;">SAVE</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  <script>
+    function previewFile() {
+      const input = document.getElementById('textfield-img').value;
+      const previewImage = document.getElementById('previewImage');
+
+      previewImage.src = input;
+      previewImage.style.display = 'block';
+    }
+
+    // เพิ่ม event listener ให้กับกล่อง input
+    document.querySelector('input[type="text"]').addEventListener('keypress', function (event) {
+      // เช็คว่าถ้าคีย์ที่กดเป็น Enter
+      if (event.key === 'Enter') {
+        // เรียกฟังก์ชัน previewFile
+        previewFile();
+      }
+    });
+    document
+      .getElementById("productForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Ensure you're targeting the form element correctly
+        const formElement = this; // 'this' refers to the form element in the event listener
+        const formData = new FormData(formElement); // Create FormData from the form element
+        const productData = Object.fromEntries(formData.entries()); // Convert FormData to an object
+
+        console.log("productData: ", productData);
+
+        // Your fetch request here
+        fetch("http://localhost:3003/product", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(productData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+            // Redirect or display success message
+
+            // add success link to show products
+            window.location.href = '/html2/Business/productInCategory.html'
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+  </script>
+   <%- include('../partials/script')  %>
+</body>
+
+</html>
