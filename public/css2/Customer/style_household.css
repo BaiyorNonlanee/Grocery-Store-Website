@@ -241,6 +241,7 @@ hr {
     font-family: "Jockey One", sans-serif;
     font-size: 20px;
     margin: 0 30px;
+    margin-top: 10%;
   }
 
 .cartButton .cart{
@@ -331,3 +332,132 @@ hr {
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 768px) {
+  /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+  .box {
+  height: 280px; /* ปรับความสูงให้เล็กลง */
+  width: 180px;
+  border-radius: 10px; /* ลดขนาดของขอบ */
+  }
+   
+  .imageFoecate {
+  width: 80%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+  height: 120px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+  }
+   
+  .descript p , span {
+  font-size: 14px; /* ปรับขนาดข้อความให้เล็กลง */
+  margin:auto; /* ปรับระยะห่างของข้อความ */
+  margin-top: 10%;
+  }
+  .cart {
+      font-size: 10px;
+      /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+      padding: 6px 12px;
+      margin-top: -5px;
+  }
+   
+  .cart:hover {
+    background-color: #6e7174;
+  }
+  }
+   
+  @media screen and (max-width: 420px) {
+  /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+  .box {
+  height: 250px; /* ปรับความสูงให้เล็กลง */
+  width: 150px;
+  border-radius: 10px; /* ลดขนาดของขอบ */
+  }
+   
+  .imageFoecate {
+  width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+  height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+  }
+   
+  .descript p ,span {
+  font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
+  margin:auto; /* ปรับระยะห่างของข้อความ */
+  margin-top: 10%;
+  }
+   
+  p {
+  margin-bottom: 0%;
+  margin-top: 5%;
+  }
+  .cart {
+  font-size: 10px; /* ปรับขนาดของปุ่มให้เล็กลง */
+  padding: 6px 12px; /* ปรับขนาดของปุ่มให้เล็กลง */
+  margin-top: 0%; /* ปรับระยะห่างของปุ่ม */
+  }
+  #productList {
+  margin-right: 5%;
+  }
+  }
+   
+  @media screen and (max-width: 420px) {
+    /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+    .box {
+    height: 250px; /* ปรับความสูงให้เล็กลง */
+    width: 150px;
+    border-radius: 10px; /* ลดขนาดของขอบ */
+    }
+   
+    .imageFoecate {
+    width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+    height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+    }
+   
+    .descript p ,span {
+    font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
+    margin:auto; /* ปรับระยะห่างของข้อความ */
+    margin-top: 10%;
+    }
+   
+    p {
+    margin-bottom: 0%;
+    margin-top: 5%;
+    }
+    .cart {
+    font-size: 10px; /* ปรับขนาดของปุ่มให้เล็กลง */
+    padding: 6px 12px; /* ปรับขนาดของปุ่มให้เล็กลง */
+    margin-top: 0%; /* ปรับระยะห่างของปุ่ม */
+    }
+    #productList {
+    margin-right: 5%;
+    }
+    }
+   
+    @media screen and (max-width: 340px) {
+      /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+      .box {
+      height: 230px; /* ปรับความสูงให้เล็กลง */
+      width: 130px;
+      border-radius: 10px; /* ลดขนาดของขอบ */
+      }
+     
+      .imageFoecate {
+      width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+      height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+      }
+     
+      .descript p ,span {
+      font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
+      margin:auto; /* ปรับระยะห่างของข้อความ */
+      margin-top: 5%;
+      }
+     
+      p {
+      margin-bottom: 0%;
+      margin-top: 5%;
+      }
+      .cart {
+      font-size: 10px; /* ปรับขนาดของปุ่มให้เล็กลง */
+      padding: 6px 12px; /* ปรับขนาดของปุ่มให้เล็กลง */
+      margin-top: 0%; /* ปรับระยะห่างของปุ่ม */
+      }
+      #productList {
+      margin-right: 5%;
+      }
+      }

@@ -220,20 +220,6 @@
 .stepper-item:last-child::after {
   content: none;
 }
-#footer {
-  background-color: #818181;
-  color: white;
-  font-size: 16px;
-  margin-bottom: 0%;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-.list-unstyled.custom-list li a {
-  text-decoration: none; 
-  color: white;
-  font-size: 14px;
-}
 
 .cart-icon-container {
   position: relative;
