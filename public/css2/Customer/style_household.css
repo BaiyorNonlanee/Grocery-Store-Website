@@ -1,89 +1,3 @@
-/* Navigator */
-#Navigator {
-  background-color: #145124; 
-  width: 100%;
-  justify-content: space-between;
-}
-
-.navbar-brand {
-  margin-right: auto; 
-  margin-left: 3px;
-  margin-top: 0px;
-  padding: 0px;
-}
-
-.navbar-nav {
-  justify-content: center;
-  align-items: center;
-  margin-right: auto ;
-}
-
-.navbar-nav .nav-item {
-  margin-right: 2%;
-}
-
-.navbar-nav .nav-link {
-  font-family: "Montserrat", sans-serif;
-  color: white;
-  font-size: 16px;
-  font-weight: 200;
-  text-decoration: none;
-  margin-right: 80px;
-  margin-left: 80px;
-}
-
-.navbar-nav .nav-link:hover {
-  border-bottom: 2px solid white; 
-}
-
-.login {
-  font-size: 16px;
-  background-color: #F7AE40; 
-  border-radius: 10px;
-  padding: 10px 20px; 
-  border: none; 
-  cursor: pointer; 
-  color: white;
-  margin-left: 5%;
-  margin-right: 3%;
-}
-@media screen and (max-width: 768px) {
-  .login {
-    font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
-    padding: 6px 12px; 
-  }
-}
-
-.login:hover {
-  background-color: #c6831e; 
-}
-.dropdown-menu {
-  color: white;
-  background-color:#8181818c ;
-  border-bottom: 1px solid #818181;
-
-}
-.navbar-toggler {
-  font-size: 0.75rem; /* ปรับขนาดเล็กลง เช่น 0.75rem */
-  color: #ffffff; /* เปลี่ยนสีข้อความเป็นสีขาว */
-}
-
-/* สีของ Navbar Toggler เมื่อ hover */
-.navbar-toggler:hover {
-  background-color: white; /* เปลี่ยนสีพื้นหลังเมื่อ hover เป็นสีน้ำเงินเข้ม */
-  border-color: white; /* เปลี่ยนสีเส้นขอบเมื่อ hover เป็นสีน้ำเงินเข้ม */
-}
-.navbar-collapse {
-  width: 100%;
-  display: flex;
-}
-
-@media screen and (max-width: 768px) {
-  .navbar-brand img {
-    width: 100%; 
-    height: 100%;
-  }
-}
 
 body {
   display: grid;
@@ -182,6 +96,7 @@ hr {
   background-color: red;
 }
 
+
 .box{
   background-color: antiquewhite;
   height: 340px;
@@ -227,20 +142,12 @@ hr {
   }
 }
 
-  /* Description */
   .descript {
     padding: 0% 10% 0% 10%;
     margin-bottom: 0%;
     margin: auto;
     font-family: "Josefin Sans", sans-serif;
     text-align: center;
-  }
-
-  /* Price */
-  .descript p span {
-    font-family: "Jockey One", sans-serif;
-    font-size: 20px;
-    margin: 0 30px;
   }
 
 .cartButton .cart{
@@ -258,14 +165,6 @@ hr {
   display: block;
   margin: 0 auto;
   margin-top: -10px;
-}
-
-@media screen and (max-width: 768px) {
-  .cart {
-    font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
-    padding: 6px 12px; 
-    margin-top: -5px;
-  }
 }
 /* footer */
 #footer {
@@ -331,3 +230,64 @@ hr {
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 768px) {
+  /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+  .box {
+  height: 280px; /* ปรับความสูงให้เล็กลง */
+  width: 180px;
+  border-radius: 10px; /* ลดขนาดของขอบ */
+  }
+  
+  .imageFoecate {
+  width: 80%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+  height: 120px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+  }
+  
+  .descript p{
+  font-size: 12px; /* ปรับขนาดข้อความให้เล็กลง */
+  margin:auto; /* ปรับระยะห่างของข้อความ */
+  }
+  .cart {
+      font-size: 10px;
+      /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */ 
+      padding: 6px 12px;
+      margin-top: -5px;
+  }
+  
+  .cart:hover {
+    background-color: #6e7174;
+  }
+  }
+  
+  @media screen and (max-width: 375px) {
+  /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+  .box {
+  height: 250px; /* ปรับความสูงให้เล็กลง */
+  width: 150px;
+  border-radius: 10px; /* ลดขนาดของขอบ */
+  margin-left: 5%;
+  }
+  
+  .imageFoecate {
+  width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+  height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+  }
+  
+  .descript p ,span {
+  font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
+  margin:auto; /* ปรับระยะห่างของข้อความ */
+  }
+  
+  p {
+  margin-bottom: 0%;
+  }
+  .cart {
+  font-size: 8px; /* ปรับขนาดของปุ่มให้เล็กลง */
+  padding: 4px 10px; /* ปรับขนาดของปุ่มให้เล็กลง */
+  margin-top: 0%; /* ปรับระยะห่างของปุ่ม */
+  }
+  #productList {
+  margin-right: 5%;
+  }
+  }
