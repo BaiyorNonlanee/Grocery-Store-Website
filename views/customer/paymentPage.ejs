@@ -15,7 +15,6 @@
   <!-- custom CSS -->
   <link rel="stylesheet" href="/css2/Customer/payment.css" />
 
-  <link rel="stylesheet" href="/controllers/index.js" />
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
     integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -157,7 +156,8 @@
                     </div>
                     <div class="col-sm-12 col-lg-6">
                       <div class="checkoutbutton">
-                        <button class="btn btn-warning" style="color: white;"><b>Proceed to
+                        <button id="proceedToCheckout" href="/completed" class="btn btn-warning"
+                          style="color: white;"><b>Proceed to
                             checkout </b><i class="fa fa-angle-right"></i></button>
                       </div>
                     </div>
@@ -205,6 +205,12 @@
 
     <%- include('../partials/footer') %>
       <script>
+        function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+        const userId = getCookie('user_id');
         document.addEventListener('DOMContentLoaded', function () {
           const urlParams = new URLSearchParams(window.location.search);
           const grandTotal = urlParams.get('grandTotal');
@@ -260,39 +266,31 @@
           cashOnDeliveryOption.addEventListener("change", toggleCashInfoBox); // เมื่อมีการเปลี่ยนแปลงในการเลือกปุ่ม
         });
 
-        // document.addEventListener('DOMContentLoaded', function () {
-        //   const proceedToCheckoutButton = document.querySelector('.checkoutbutton a');
-        //   proceedToCheckoutButton.addEventListener('click', function (event) {
-        //     event.preventDefault(); // ป้องกันการเปลี่ยนหน้าเพจ
 
-        //     // ส่ง request ไปยัง server เพื่ออัปเดต sold_count และลบสินค้าออกจากตะกร้า
-        //     fetch('/cart-update/USER_ID', { // แทน USER_ID ด้วย ID ของผู้ใช้ที่เป็นค่าที่เกี่ยวข้อง
-        //       method: 'PUT',
-        //       headers: {
-        //         'Content-Type': 'application/json',
-        //       },
-        //       body: JSON.stringify({
-        //         // ส่งข้อมูลที่จำเป็นถ้ามี
-        //       }),
-        //     })
-        //       .then(response => response.json())
-        //       .then(data => {
-        //         if (data.message === 'Sold count updated and cart items removed successfully') {
-        //           // แสดงข้อความหรือการแจ้งเตือนเมื่อสำเร็จ
-        //           alert('Your cart has been cleared and you can add new items now.');
-        //           // เปลี่ยนหน้าเพจไปยังหน้าถัดไปหรือทำการอื่นๆ ตามที่คุณต้องการ
-        //           window.location.href = '/completedPage';
-        //         } else {
-        //           // แสดงข้อความหรือการแจ้งเตือนถ้ามีข้อผิดพลาด
-        //           alert('An error occurred. Please try again.');
-        //         }
-        //       })
-        //       .catch((error) => {
-        //         console.error('Error:', error);
-        //         alert('An error occurred. Please try again.');
-        //       });
-        //   });
-        // });
+        document.addEventListener('DOMContentLoaded', function () {
+          // เพิ่ม event listener ที่จะทำงานเมื่อปุ่มถูกกด
+          document.getElementById('proceedToCheckout').addEventListener('click', function (event) {
+            // เรียกใช้ฟังก์ชันที่จะทำการเคลียร์ตะกร้าหรือลบสินค้าออกจากตะกร้า
+            // ตัวอย่าง: ส่งคำขอไปยัง server หรือแสดงข้อความ
+            console.log('Proceed to checkout button clicked');
+            // เรียกใช้ฟังก์ชัน completePurchase ก่อนที่จะเปลี่ยนหน้าเพจ
+            // ตัวอย่าง: ส่ง userId เป็นพารามิเตอร์
+            fetch(`/cart-update/${userId}`, {
+              method: 'PUT',
+            })
+              .then(response => response.json())
+              .then(data => {
+                console.log(data.message);
+              })
+              .catch(error => {
+                console.error('Error:', error);
+                // จัดการการผิดพลาด เช่น แสดงข้อความผิดพลาด
+              });
+            // ใช้ JavaScript เพื่อเปลี่ยนหน้าเพจ
+            window.location.href = "/completed";
+          });
+        });
+
 
 
       </script>

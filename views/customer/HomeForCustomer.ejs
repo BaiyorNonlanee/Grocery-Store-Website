@@ -11,177 +11,6 @@
     <title>Home Page</title>
 
     <%- include('../partials/link') %>
-        <style>
-            /* Container for the product */
-            .box {
-                background-color: antiquewhite;
-                height: 320px;
-                width: auto;
-                border: 1px solid black;
-                margin-bottom: 20px;
-                border-radius: 20px;
-                justify-content: center;
-                align-items: center;
-                display: flex;
-                box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
-                display: block;
-            }
-
-            .productbox {
-                align-items: center;
-                text-align: center;
-            }
-
-            .productlist {
-                margin-left: 60px;
-            }
-
-            /* Image container */
-            .img-container {
-                text-align: center;
-                display: block;
-                margin: auto;
-            }
-
-            /* Image */
-            .imageFoecate {
-                object-fit: cover;
-                /* Ensures the image covers the container without stretching */
-                width: 60%;
-                /* Adjust the width as needed */
-                height: 150px;
-                /* Adjust the height as needed */
-                margin: auto;
-                display: block;
-                /* Ensures the image is centered */
-            }
-
-            @media screen and (max-width: 768px) {
-                .imageFoecate {
-                    width: 100%;
-                    /* Adjust the width as needed for smaller screens */
-                    height: 150px;
-                    /* Adjust the height as needed for smaller screens */
-                    object-fit: cover;
-                    margin-top: 5%;
-                }
-            }
-
-            /* Description */
-            .descript {
-                padding: 0% 10% 0% 10%;
-                margin-bottom: 0%;
-                margin: auto;
-                font-family: "Josefin Sans", sans-serif;
-                text-align: center;
-            }
-
-            /* Price */
-            .descript p span {
-                font-family: "Jockey One", sans-serif;
-                font-size: 20px;
-                margin: 0 30px;
-            }
-
-            /* Add to cart button */
-            .cartButton {
-                margin-top: 10px;
-            }
-
-            .cart {
-                font-size: 14px;
-                background-color: red;
-                padding: 6px 20px;
-                border: none;
-                cursor: pointer;
-                color: white;
-                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-                display: block;
-                margin: 0 auto;
-                margin-top: -10px;
-            }
-
-            @media screen and (max-width: 768px) {
-
-                /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
-                .box {
-                    height: 260px;
-                    /* ปรับความสูงให้เล็กลง */
-                    width: 160px;
-                    border-radius: 10px;
-                    /* ลดขนาดของขอบ */
-                }
-
-                .imageFoecate {
-                    width: 80%;
-                    /* ปรับขนาดของรูปภาพให้เล็กลง */
-                    height: 120px;
-                    /* ปรับความสูงของรูปภาพให้เล็กลง */
-                }
-
-                .descript {
-                    font-size: 14px;
-                    /* ปรับขนาดข้อความให้เล็กลง */
-                    margin: auto;
-                    /* ปรับระยะห่างของข้อความ */
-                }
-
-                .cart {
-                    font-size: 12px;
-                    /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
-                    padding: 6px 12px;
-                    margin-top: -5px;
-                }
-
-                .cart:hover {
-                    background-color: #6e7174;
-                }
-            }
-
-            @media screen and (max-width: 375px) {
-
-                /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
-                .box {
-                    height: 230px;
-                    /* ปรับความสูงให้เล็กลง */
-                    width: 130px;
-                    border-radius: 10px;
-                    /* ลดขนาดของขอบ */
-                }
-
-                .imageFoecate {
-                    width: 80%;
-                    /* ปรับขนาดของรูปภาพให้เล็กลง */
-                    height: 120px;
-                    /* ปรับความสูงของรูปภาพให้เล็กลง */
-                }
-
-                .descript,
-                span {
-                    font-size: 10px;
-                    /* ปรับขนาดข้อความให้เล็กลง */
-                    margin: auto;
-                    /* ปรับระยะห่างของข้อความ */
-                }
-
-                p {
-                    margin-bottom: 0%;
-                }
-
-                .cart {
-                    font-size: 8px;
-                    /* ปรับขนาดของปุ่มให้เล็กลง */
-                    padding: 4px 10px;
-                    /* ปรับขนาดของปุ่มให้เล็กลง */
-                    margin-top: 0%;
-                    /* ปรับระยะห่างของปุ่ม */
-                }
-
-                #productList {
-                    margin-right: 5%;
-                }
-            }
-        </style>
 </head>
 
 <body>
@@ -222,7 +51,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active " style="margin-bottom:2%; margin-top: 4%;">
 
-                        
+
                         </div>
                         <!-- Carousel items will be dynamically added here -->
                     </div>
@@ -289,29 +118,32 @@
 
                         // Create the HTML for each product in the group
                         const productHtml = group.map(product => `
-                    
-                        <div class="box">
-      <div class="img-container">
-        <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
-      </div>
-      <div class="descript">
-        <p><blockquote>${product.product_Name}</blockquote></p>
-      </div>
-      <div class="cartButton">
-        <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
-        <button class="cart">ADD TO CART</button>
-      </div>
-    </div>  
-                    
-`).join('');
-
-                        carouselItem.innerHTML = `      
-                        <div class="container">
-                            <div class="row justify-content-center">                         
-                                        ${productHtml}                       
+                <div class="col-md-3">
+                    <div class="rectangle2 mx-auto">
+                        <div onClick = "redirectToProductInfo(${product.product_ID})" class="box">
+                            <div class="img-container">
+                                <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
+                            </div>
+                            <div class="descript">
+                                <p><blockquote>${product.product_Name}</blockquote></p>
+                            </div>
+                            <div class="cartButton">
+                                <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
+                                <button onClick="addToCart(${product.product_ID})" class="cart">ADD TO CART</button>
                             </div>
                         </div>
-`;
+                    </div>
+                </div>
+            `).join('');
+
+                        // Wrap each group of products in its own carousel structure
+                        carouselItem.innerHTML = `
+                <div class="container">
+                    <div class="row justify-content-center">
+                        ${productHtml}
+                    </div>
+                </div>
+            `;
 
                         carouselInner.appendChild(carouselItem);
                     });
@@ -344,7 +176,18 @@
                         const productHtml = group.map(product => `
                         <div class="col-md-3">
                             <div class="rectangle2 mx-auto">
-                                <img src="${product.imagesrc}" alt="${product.product_Name}" style="width: 100%; height: 100%;">
+                                <div onClick = "redirectToProductInfo(${product.product_ID})" class="box">
+                                   <div class="img-container">
+                                      <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
+                                   </div>
+      <div class="descript">
+        <p><blockquote>${product.product_Name}</blockquote></p>
+      </div>
+      <div class="cartButton">
+        <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
+        <button onClick="addToCart(${product.product_ID})" class="cart">ADD TO CART</button>
+      </div>
+    </div>  
                             </div>
                         </div>
                     `).join('');
@@ -367,12 +210,74 @@
             // Call the functions to fetch and display products
             fetchPopularProducts();
             fetchNewProducts();
+
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+            // Usage
+            let userId = getCookie('user_id');
+
+            function addToCart(productId) {
+                // ตรวจสอบว่าสินค้านี้มีอยู่ในตะกร้าหรือไม่
+                console.log(`Product ID: ${productId} added to cart.`);
+
+                const productData = {
+                    product_id: Number(productId),
+                    user_id: Number(userId),
+                    amount: 1
+                };
+
+                fetch(`http://localhost:3003/cart`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(productData)
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log("Success product:", data);
+                        updateCartCount(); // อัปเดตจำนวนสินค้าในตะกร้า
+                    })
+                    .catch((error) => {
+                        console.log("Error:", error);
+                    });
+            }
+
+            function updateCartCount() {
+                fetch(`http://localhost:3003/cart/${userId}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log("Success cart:", data);
+                        const cartCountElement = document.querySelector('.cart-count');
+                        cartCountElement.textContent = data.length;
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                    });
+            }
+            function redirectToProductInfo(product_ID) {
+          // Construct the URL for the productInCategory page with the product_ID
+          const productInCategoryUrl = `/information?product_ID=${product_ID}`;
+
+          // Redirect the user to the productInCategory page
+          window.location.href = productInCategoryUrl;
+        }
         </script>
 
 
         <%- include('../partials/footer') %>
 
             <%- include('../partials/script') %>
+
+
 
 </body>
 
