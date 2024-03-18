@@ -118,11 +118,12 @@
           /* ปรับความสูงของรูปภาพให้เล็กลง */
         }
 
-        .descript {
+        .descript p ,span{
           font-size: 14px;
           /* ปรับขนาดข้อความให้เล็กลง */
           margin: auto;
           /* ปรับระยะห่างของข้อความ */
+          margin-top: 10%;
         }
 
         .cart {
@@ -155,12 +156,13 @@
           /* ปรับความสูงของรูปภาพให้เล็กลง */
         }
 
-        .descript,
+        .descript p,
         span {
           font-size: 10px;
           /* ปรับขนาดข้อความให้เล็กลง */
           margin: auto;
           /* ปรับระยะห่างของข้อความ */
+          margin-top: 10%;
         }
 
         p {
@@ -372,7 +374,7 @@
         <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
       </div>
       <div class="descript">
-        <p><blockquote>${product.product_Name}</blockquote></p>
+        <p>${product.product_Name}</p>
       </div>
       <div class="cartButton">
         <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>

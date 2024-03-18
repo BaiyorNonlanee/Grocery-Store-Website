@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product in category</title>
-
+ 
     <link rel="stylesheet" href="/css2/Business/productInCategory.css" />
-
+ 
     <%- include('../partials/link')  %>
   </head>
-
+ 
   <body>
     <%- include('../partials/navBusiness')  %>
     <section id="feature">
@@ -73,7 +73,7 @@
  
         // Add product details to the div
         productDiv.innerHTML = `
-            <div class="row" style ="margin: 5% ;">
+        <div class="row" style ="margin: 5% ;">
                 <div class="col-3 col-sm-3 col-lg-3">
                     <div class="productimage">
                         <img src="${product.imagesrc || "default-image-url"}" class="img-fluid rounded-3" style="width: 120px;" alt="picture">
@@ -109,9 +109,9 @@
                 </div>
             </div>
             <div class="editbutton">
-                <p style="color: red;" onclick="editProduct(${product.product_ID})">Edit</p>
+                <p style="color: red;" id="edit-button-${product.product_ID}" onclick="editProduct(${product.product_ID})">Edit</p>
             </div>
-            <div class="savebutton" style="display: none;">
+            <div class="savebutton" style="display: none" id="save-button-${product.product_ID}">
                 <a href="#" onclick="saveProduct(${product.product_ID})">SAVE</a>
             </div>
             <div class="deletebutton">
@@ -158,11 +158,11 @@
           `description-form${id}`
         ).innerHTML = `<input type="text" id="description-field${id}" value="${description}">`;
  
-        // ซ่อนปุ่ม "Edit"
-        document.getElementsByClassName("editbutton")[0].style.display = "none";
+       // ซ่อนปุ่ม "Edit"
+    document.getElementById(`edit-button-${id}`).style.display = "none";
  
-        // แสดงปุ่ม "Save"
-        document.getElementsByClassName("savebutton")[0].style.display = "flex";
+ // แสดงปุ่ม "Save" ที่เฉพาะเจาะจง
+ document.querySelector(`#save-button-${id}`).style.display = "block";
       }
  
       function saveProduct(id) {
@@ -216,12 +216,11 @@
         document.getElementById(`promotion${id}`).innerHTML = promotion;
         document.getElementById(`description${id}`).innerHTML = description;
  
-        // แสดงปุ่ม "Edit" อีกครั้ง
-        document.getElementsByClassName("editbutton")[0].style.display =
-          "block";
+      // ซ่อนปุ่ม "Save"
+    document.querySelector(`#save-button-${id}`).style.display = "none";
  
-        // ซ่อนปุ่ม "Save"
-        document.getElementsByClassName("savebutton")[0].style.display = "none";
+ // แสดงปุ่ม "Edit" อีกครั้ง
+ document.getElementById(`edit-button-${id}`).style.display = "block";
       }
  
       function deleteProduct(id) {
