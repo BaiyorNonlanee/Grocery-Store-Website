@@ -22,7 +22,7 @@
     /* Container for the product */
     .box {
       background-color: antiquewhite;
-      height: 320px;
+      height: 340px;
       width: auto;
       border: 1px solid black;
       margin-bottom: 20px;
@@ -55,7 +55,7 @@
     .imageFoecate {
       object-fit: cover;
       /* Ensures the image covers the container without stretching */
-      width: 60%;
+      width: 40%;
       /* Adjust the width as needed */
       height: 150px;
       /* Adjust the height as needed */
@@ -143,20 +143,20 @@
   /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
   .box {
     height: 230px; /* ปรับความสูงให้เล็กลง */
-    width: 130px;
+    width: 150px;
     border-radius: 10px; /* ลดขนาดของขอบ */
   }
  
   .imageFoecate {
-    width: 80%; /* ปรับขนาดของรูปภาพให้เล็กลง */
-    height: 120px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+    width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+    height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
   }
  
   .descript ,span {
     font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
     margin:auto; /* ปรับระยะห่างของข้อความ */
   }
- 
+  
   p {
     margin-bottom: 0%;
   }
@@ -457,7 +457,7 @@
             <p><blockquote>${product.product_Name}</blockquote></p>
           </div>
           <div class="cartButton">
-            <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
+            <p><span class="price" style="color: red; margin-left: 4%;">฿${product.price}</span></p>
             <button class="cart">ADD TO CART</button>
           </div>
         </div>
