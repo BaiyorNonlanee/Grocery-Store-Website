@@ -549,37 +549,6 @@ app.delete("/cart/:id", function (req, res, next) {
 });
 
 
-//  //Add new
-//  app.get("/product", function (req, res, next) {
-//   // simple query
-//   connection.query("SELECT * FROM `Product`", function (err, results, fields) {
-//     res.json(results);
-//   });
-// });
- 
-// app.post("/product", function (req, res, next) {
-//   // Extract user data from request body
-//   const { username } = req.body;
- 
-//   // SQL query to insert a new user
-//   const query = "INSERT INTO `users` (username) VALUES (?)";
- 
-//   // Execute the query
-//   connection.query(query, [username], function (err, results) {
-//     if (err) {
-//       // If there's an error, send a 500 response
-//       res
-//         .status(500)
-//         .json({ message: err, error: "An error occurred while creating the user." });
-//     } else {
-//       // If successful, send a 201 response with the inserted user's ID
-//       res
-//         .status(201)
-//         .json({ message: "User created successfully.", id: results.insertId });
-//     }
-//   });
-// });
-
 app.use(express.static(path.join(__dirname, '../views')));
 
 app.set('views', path.join(__dirname, '../views'));

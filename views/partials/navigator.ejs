@@ -160,7 +160,7 @@
                 </ul>
             </div>
             <div id="login">
-
+                
             </div>
             <div>
                 <a class="nav-item nav-link cart-icon-container" href="/productList" style="margin-right: 2%;">
@@ -173,28 +173,28 @@
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Function to get a cookie by name
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        }
+ document.addEventListener('DOMContentLoaded', function () {
+    // Function to get a cookie by name
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 
-        // Get the userName from the cookie
-        const userName = getCookie('user_name');
+    // Get the userName from the cookie
+    const userName = getCookie('user_name');
 
-        // Get the login button element
-        const loginButton = document.getElementById('login');
+    // Get the login button element
+    const loginButton = document.getElementById('login');
 
-        // Check if the userName cookie exists
-        if (userName) {
-            // If userName exists, update the login button's content to show the username
-            loginButton.innerHTML = `<span>${userName}</span>`;
-        } else {
-            // If userName does not exist, ensure the login button is displayed
-            loginButton.innerHTML = `<button class="login" type="button" aria-expanded="false">login</button>`;
-        }
-    });
+    // Check if the userName cookie exists
+    if (userName) {
+        // If userName exists, update the login button's content to show the username
+        loginButton.innerHTML = `<span style="color: white;">${userName}</span>`;
+    } else {
+        // If userName does not exist, ensure the login button is displayed
+        loginButton.innerHTML = `<button class="login" type="button" aria-expanded="false" onclick="window.location.href='/login'">Login</button>`;
+    }
+});
 
 </script>
