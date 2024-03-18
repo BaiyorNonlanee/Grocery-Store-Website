@@ -1,356 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
-   
-    
+
+
     <link rel="stylesheet" href="/css2/cssForHomeForCus.css">
     <title>Home Page</title>
 
-    <%- include('../partials/link')  %>
+    <%- include('../partials/link') %>
+        <style>
+            /* Container for the product */
+            .box {
+                background-color: antiquewhite;
+                height: 320px;
+                width: auto;
+                border: 1px solid black;
+                margin-bottom: 20px;
+                border-radius: 20px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
+                display: block;
+            }
+
+            .productbox {
+                align-items: center;
+                text-align: center;
+            }
+
+            .productlist {
+                margin-left: 60px;
+            }
+
+            /* Image container */
+            .img-container {
+                text-align: center;
+                display: block;
+                margin: auto;
+            }
+
+            /* Image */
+            .imageFoecate {
+                object-fit: cover;
+                /* Ensures the image covers the container without stretching */
+                width: 60%;
+                /* Adjust the width as needed */
+                height: 150px;
+                /* Adjust the height as needed */
+                margin: auto;
+                display: block;
+                /* Ensures the image is centered */
+            }
+
+            @media screen and (max-width: 768px) {
+                .imageFoecate {
+                    width: 100%;
+                    /* Adjust the width as needed for smaller screens */
+                    height: 150px;
+                    /* Adjust the height as needed for smaller screens */
+                    object-fit: cover;
+                    margin-top: 5%;
+                }
+            }
+
+            /* Description */
+            .descript {
+                padding: 0% 10% 0% 10%;
+                margin-bottom: 0%;
+                margin: auto;
+                font-family: "Josefin Sans", sans-serif;
+                text-align: center;
+            }
+
+            /* Price */
+            .descript p span {
+                font-family: "Jockey One", sans-serif;
+                font-size: 20px;
+                margin: 0 30px;
+            }
+
+            /* Add to cart button */
+            .cartButton {
+                margin-top: 10px;
+            }
+
+            .cart {
+                font-size: 14px;
+                background-color: red;
+                padding: 6px 20px;
+                border: none;
+                cursor: pointer;
+                color: white;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                display: block;
+                margin: 0 auto;
+                margin-top: -10px;
+            }
+
+            @media screen and (max-width: 768px) {
+
+                /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+                .box {
+                    height: 260px;
+                    /* ปรับความสูงให้เล็กลง */
+                    width: 160px;
+                    border-radius: 10px;
+                    /* ลดขนาดของขอบ */
+                }
+
+                .imageFoecate {
+                    width: 80%;
+                    /* ปรับขนาดของรูปภาพให้เล็กลง */
+                    height: 120px;
+                    /* ปรับความสูงของรูปภาพให้เล็กลง */
+                }
+
+                .descript {
+                    font-size: 14px;
+                    /* ปรับขนาดข้อความให้เล็กลง */
+                    margin: auto;
+                    /* ปรับระยะห่างของข้อความ */
+                }
+
+                .cart {
+                    font-size: 12px;
+                    /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+                    padding: 6px 12px;
+                    margin-top: -5px;
+                }
+
+                .cart:hover {
+                    background-color: #6e7174;
+                }
+            }
+
+            @media screen and (max-width: 375px) {
+
+                /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+                .box {
+                    height: 230px;
+                    /* ปรับความสูงให้เล็กลง */
+                    width: 130px;
+                    border-radius: 10px;
+                    /* ลดขนาดของขอบ */
+                }
+
+                .imageFoecate {
+                    width: 80%;
+                    /* ปรับขนาดของรูปภาพให้เล็กลง */
+                    height: 120px;
+                    /* ปรับความสูงของรูปภาพให้เล็กลง */
+                }
+
+                .descript,
+                span {
+                    font-size: 10px;
+                    /* ปรับขนาดข้อความให้เล็กลง */
+                    margin: auto;
+                    /* ปรับระยะห่างของข้อความ */
+                }
+
+                p {
+                    margin-bottom: 0%;
+                }
+
+                .cart {
+                    font-size: 8px;
+                    /* ปรับขนาดของปุ่มให้เล็กลง */
+                    padding: 4px 10px;
+                    /* ปรับขนาดของปุ่มให้เล็กลง */
+                    margin-top: 0%;
+                    /* ปรับระยะห่างของปุ่ม */
+                }
+
+                #productList {
+                    margin-right: 5%;
+                }
+            }
+        </style>
 </head>
+
 <body>
 
-    <%- include('../partials/navigator')  %>
+    <%- include('../partials/navigator') %>
 
-    <!-- <section id="HeadForPromote">
-        <div class="container-fluid" style="padding: 0% 0% 0% 0%;">
-            <div class="top">
-                <div class="row align-items-center">
-                    <div class="col" style="padding: 0%;">
-                        <blockquote>
-                            <p class="TextForHead">A great Place For Grocerty Product</p>
-                            <p class="TextForHeadPri">The Fruits, Vegetables, Drink, Household, And Others</p>
-                            <p class="TextForHeadPri">Provide you to easy to cooking delicious food</p>
-                        </blockquote>
-                    </div>
-                    <div class="col" style="padding: 0%;">
-                        <img src="/image/LittleBoy.png "alt="LittleBoy" class="LittleBoy">
-                    </div>
-                </div>                
-            </div>
-        </div>
-      </section>
-    </section>
 
-    <section id="HomePageForCustomer">
-        <div class="col-md-3 text-center" style="margin: 5% 0% 0% 5%;">
-            <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;"><blockquote>OUR POPULAR PRODUCTS</blockquote></p>
-        </div>
-        <div class="container">
-            <div id="carouselExample" class="carousel slide vertical">
-                <div class="carousel-inner">
-                    <div class="carousel-item active " style="margin-bottom:2%; margin-top: 4%;">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-md-2">
-                                    <div class="rectangle1 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle1 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle1 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle1 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                            </div>
+        <!-- Head -->
+        <section id="HeadForPromote">
+            <div class="container-fluid" style="padding: 0% 0% 0% 0%;">
+                <div class="top">
+                    <div class="row align-items-center">
+                        <div class="col" style="padding: 0%;">
+                            <blockquote>
+                                <p class="TextForHead">A great Place For Grocerty Product</p>
+                                <p class="TextForHeadPri">The Fruits, Vegetables, Drink, Household, And Others</p>
+                                <p class="TextForHeadPri">Provide you to easy to cooking delicious food</p>
+                            </blockquote>
                         </div>
-                    </div>
-                    <div class="carousel-item" style="margin-bottom:2%; margin-top: 4%;">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-md-2">
-                                    <div class="rectangle1 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>        
-                                <div class="col-md-2">
-                                    <div class="rectangle1 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle1 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle1 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col" style="padding: 0%;">
+                            <img src="/image/LittleBoy.png" alt="LittleBoy" class="LittleBoy">
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
-        </div>
-            
-         <div class="container">
-            <div class="col-md-3 text-center" style="margin: 5% 0% 0% 0%;">
-                <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;"> <blockquote>NEW PRODUCTS</blockquote></p>
-            </div>
-            <div id="boxesCarousel1" class="carousel slide vertical" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active" style="margin-bottom:2%; margin-top: 2%;">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-md-2">
-                                    <div class="rectangle2 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle2 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle2 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle2 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item" style="margin-bottom:2%; margin-top: 2%;">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-md-2">
-                                    <div class="rectangle2 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle2 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle2 my-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">                                        </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="rectangle2 my-auto">
-                                    <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                </div>                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#boxesCarousel1" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#boxesCarousel1" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section> -->
+        </section>
+        </section>
 
-    <!-- Head -->
-    <section id="HeadForPromote">
-        <div class="container-fluid" style="padding: 0% 0% 0% 0%;">
-            <div class="top">
-                <div class="row align-items-center">
-                    <div class="col" style="padding: 0%;">
-                        <blockquote>
-                            <p class="TextForHead">A great Place For Grocerty Product</p>
-                            <p class="TextForHeadPri">The Fruits, Vegetables, Drink, Household, And Others</p>
-                            <p class="TextForHeadPri">Provide you to easy to cooking delicious food</p>
-                        </blockquote>
-                    </div>
-                    <div class="col" style="padding: 0%;">
-                        <img src="/image/LittleBoy.png"alt="LittleBoy" class="LittleBoy">
-                    </div>
-                </div>                
-            </div>
-        </div>
-      </section>
-    </section>
- 
-    <section id="HomePageForCustomer">
-        <div class="col-md-3 text-center" style="margin: 5% 0% 0% 5%;">
-            <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;"><blockquote>OUR POPULAR PRODUCTS</blockquote></p>
-        </div>
-        <div class="container" style="padding: auto;">
-            <div id="carouselExample" class="carousel slide vertical">
-                <div class="carousel-inner">
-                    <div class="carousel-item active " style="margin-bottom:2%; margin-top: 4%;">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <!-- <div class="col-md-3 text-center">
-                                    <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;">OUR POPULAR PRODUCT1</p>
-                                </div> -->
-                                <div class="col-md-3">
-                                    <div class="rectangle1 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle1 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle1 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle1 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item" style="margin-bottom:2%; margin-top: 4%;">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <!-- <div class="col-md-3 text-center">
-                                    <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;">OUR POPULAR PRODUCT2</p>
-                                </div> -->
-                                <div class="col-md-3">
-                                    <div class="rectangle1 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>        
-                                <div class="col-md-3">
-                                    <div class="rectangle1 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle1 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle1 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Popular Products Carousel -->
+        <section id="HomePageForCustomer">
+            <div class="container" style="padding: auto;">
+                <div class="col-md-3 text-center" style="margin: 5% 0% 0% 5%;">
+                    <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;">
+                    <blockquote>OUR POPULAR PRODUCTS</blockquote>
+                    </p>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-           
-         <div class="container">
-            <div class="col-md-3 text-center" style="margin: 5% 0% 0% 0%;">
-                <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;"> <blockquote>NEW PRODUCTS</blockquote></p>
-            </div>
-            <div id="boxesCarousel1" class="carousel slide vertical" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active" style="margin-bottom:2%; margin-top: 2%;">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <!-- <div class="col-md-3 text-center">
-                                    <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;">NEW PRODUCTS</p>
-                                </div> -->
-                                <div class="col-md-3">
-                                    <div class="rectangle2 mx-auto" >
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle2 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle2 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle2 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item" style="margin-bottom:2%; margin-top: 2%;">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <!-- <div class="col-md-3 text-center">
-                                    <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;">OUR POPULAR PRODUCT2</p>
-                                </div> -->
-                                <div class="col-md-3">
-                                    <div class="rectangle2 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle2 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle2 mx-auto">
-                                        <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">                                        </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="rectangle2 mx-auto">
-                                    <img src="your-image-path.jpg" alt="Your Image" style="width: 100%; height: 100%;">
-                                </div>                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#boxesCarousel1" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#boxesCarousel1" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section>
+                <div id="carouselExample" class="carousel slide vertical">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active " style="margin-bottom:2%; margin-top: 4%;">
 
-    <%- include('../partials/footer')  %>
-   
-    <%- include('../partials/script')  %>
-    
+                        
+                        </div>
+                        <!-- Carousel items will be dynamically added here -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="col-md-3 text-center" style="margin: 5% 0% 0% 0%;">
+                    <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;">
+                    <blockquote>NEW PRODUCTS</blockquote>
+                    </p>
+                </div>
+                <div id="boxesCarousel1" class="carousel slide vertical" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Carousel items will be dynamically added here -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#boxesCarousel1"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#boxesCarousel1"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Custom JS -->
+        <script>
+            // Function to fetch and display popular products
+            async function fetchPopularProducts() {
+                try {
+                    const response = await fetch('/product-popular');
+                    const products = await response.json();
+                    const carouselInner = document.querySelector('#carouselExample .carousel-inner');
+
+                    // Group products into sets of 4
+                    const groupedProducts = [];
+                    for (let i = 0; i < products.length; i += 4) {
+                        groupedProducts.push(products.slice(i, i + 4));
+                    }
+
+                    groupedProducts.forEach((group, index) => {
+                        const carouselItem = document.createElement('div');
+                        carouselItem.classList.add('carousel-item');
+                        if (index === 0) {
+                            carouselItem.classList.add('active'); // Add 'active' class to the first item
+                        }
+
+                        // Create the HTML for each product in the group
+                        const productHtml = group.map(product => `
+                    
+                        <div class="box">
+      <div class="img-container">
+        <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
+      </div>
+      <div class="descript">
+        <p><blockquote>${product.product_Name}</blockquote></p>
+      </div>
+      <div class="cartButton">
+        <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
+        <button class="cart">ADD TO CART</button>
+      </div>
+    </div>  
+                    
+`).join('');
+
+                        carouselItem.innerHTML = `      
+                        <div class="container">
+                            <div class="row justify-content-center">                         
+                                        ${productHtml}                       
+                            </div>
+                        </div>
+`;
+
+                        carouselInner.appendChild(carouselItem);
+                    });
+                } catch (error) {
+                    console.error('Error fetching popular products:', error);
+                }
+            }
+
+            // Function to fetch and display new products
+            async function fetchNewProducts() {
+                try {
+                    const response = await fetch('/product-new');
+                    const products = await response.json();
+                    const carouselInner = document.querySelector('#boxesCarousel1 .carousel-inner');
+
+                    // Group products into sets of 4
+                    const groupedProducts = [];
+                    for (let i = 0; i < products.length; i += 4) {
+                        groupedProducts.push(products.slice(i, i + 4));
+                    }
+
+                    groupedProducts.forEach((group, index) => {
+                        const carouselItem = document.createElement('div');
+                        carouselItem.classList.add('carousel-item');
+                        if (index === 0) {
+                            carouselItem.classList.add('active'); // Add 'active' class to the first item
+                        }
+
+                        // Create the HTML for each product in the group
+                        const productHtml = group.map(product => `
+                        <div class="col-md-3">
+                            <div class="rectangle2 mx-auto">
+                                <img src="${product.imagesrc}" alt="${product.product_Name}" style="width: 100%; height: 100%;">
+                            </div>
+                        </div>
+                    `).join('');
+
+                        carouselItem.innerHTML = `
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                ${productHtml}
+                            </div>
+                        </div>
+                    `;
+
+                        carouselInner.appendChild(carouselItem);
+                    });
+                } catch (error) {
+                    console.error('Error fetching new products:', error);
+                }
+            }
+
+            // Call the functions to fetch and display products
+            fetchPopularProducts();
+            fetchNewProducts();
+        </script>
+
+
+        <%- include('../partials/footer') %>
+
+            <%- include('../partials/script') %>
+
 </body>
+
 </html>
