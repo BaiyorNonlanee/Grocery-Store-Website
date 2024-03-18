@@ -1,22 +1,21 @@
-
 body {
   display: grid;
-  grid-template-rows: 1fr auto; 
+  grid-template-rows: 1fr auto;
   max-height: 100vh;
  
 }
-
+ 
 .list-unstyled.custom-list li a {
-  text-decoration: none; 
+  text-decoration: none;
   color: white;
   font-size: 14px;
 }
-
+ 
 .carousel-container {
   margin: 50px;
   padding-top: 20px;
 }
-
+ 
 #carouselExample ,#boxesCarousel ,#boxesCarousel2{
   width: 100%;
   overflow: hidden;
@@ -29,7 +28,7 @@ body {
   flex: 0 0 auto;
   /* border-radius: 20px; */
 }
-
+ 
 .carousel-item img {
   width: 100%;
   height: 100%;
@@ -39,13 +38,13 @@ body {
   object-position: center center;
  
 }
-
+ 
 h1{
   font-family: "Mansalva",sans-serif;
   text-align: center;
-  padding-top: 80px; 
+  padding-top: 80px;
 }
-
+ 
 #footer {
   background-color: #818181;
   color: white;
@@ -59,15 +58,15 @@ h1{
   justify-content: center;
   margin-left: 30px;
   margin-right: 30px;
-  
+ 
 }
-
+ 
 .line p {
   font-family: "Jockey One", sans-serif;
   font-size: 20px;
-  margin: 0 30px; 
+  margin: 0 30px;
 }
-
+ 
 @media (max-width: 767px) {
 .line {
   margin-left: 5px;
@@ -79,23 +78,23 @@ h1{
 #carouselExample{
     border-radius: 0;
 }
-
+ 
 .carousel-container {
     margin: 20px;
 }
 .carousel-item img{
   height: 200px;
 }
-
-
+ 
+ 
 }
-
+ 
 hr {
   flex: 1;
   height: 5px;
   background-color: red;
 }
-
+ 
 .box{
   background-color: antiquewhite;
   height: 340px;
@@ -108,17 +107,17 @@ hr {
   box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
   display: block;
 }
-
+ 
 #box-container, #box-container2{
   margin-bottom: 50px;
 }
-
+ 
 .img-container {
   text-align: center;
-  display: block; 
+  display: block;
   margin: auto;
 }
-
+ 
 .imageFoecate {
   object-fit: cover;
   width: 50%;
@@ -128,10 +127,10 @@ hr {
   display: inline-block;
   object-fit: cover;
 }
-
+ 
 @media screen and (max-width: 768px) {
   .imageFoecate {
-    width: 50%; 
+    width: 50%;
     height: auto;
     object-fit: cover;
     padding-top: 5%;
@@ -140,7 +139,7 @@ hr {
     margin-top: 5%;
   }
 }
-
+ 
   .descript {
     padding: 0% 10% 0% 10%;
     margin-bottom: 0%;
@@ -148,17 +147,17 @@ hr {
     font-family: "Josefin Sans", sans-serif;
     text-align: center;
   }
-
+ 
 .cartButton .cart{
   margin-bottom: 4%;
 }
-
+ 
 .cart {
   font-size: 14px;
-  background-color: red; 
-  padding: 6px 20px; 
-  border: none; 
-  cursor: pointer; 
+  background-color: red;
+  padding: 6px 20px;
+  border: none;
+  cursor: pointer;
   color: white;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   display: block;
@@ -173,47 +172,47 @@ hr {
   margin-bottom: 0%;
 }
 .list-unstyled.custom-list li a {
-  text-decoration: none; 
+  text-decoration: none;
   color: white;
   font-size: 14px;
 }
-
+ 
 /**/
 .pagination {
   display: inline-block;
 }
-
+ 
 .pagination li {
   display: inline;
   margin: 0 5px;
 }
-
+ 
 .pagination li a {
   color: black;
   padding: 8px 16px;
   text-decoration: none;
 }
-
+ 
 .pagination li a:hover {
   background-color: #ddd;
 }
-
+ 
 .pagination .active a {
   background-color: #145124;
   color: white;
 }
-
+ 
 #pagination {
   display: flex;
   justify-content: center;
 }
-
-
+ 
+ 
 .cart-icon-container {
   position: relative;
   display: inline-block; /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
 }
-
+ 
 .cart-count {
   position: absolute;
   top: -7px; /* ปรับตำแหน่งตามต้องการ */
@@ -229,7 +228,7 @@ hr {
   justify-content: center;
   align-items: center;
 }
-
+ 
 @media screen and (max-width: 768px) {
 /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
 .box {
@@ -237,12 +236,12 @@ height: 280px; /* ปรับความสูงให้เล็กลง *
 width: 180px;
 border-radius: 10px; /* ลดขนาดของขอบ */
 }
-
+ 
 .imageFoecate {
 width: 80%; /* ปรับขนาดของรูปภาพให้เล็กลง */
 height: 120px; /* ปรับความสูงของรูปภาพให้เล็กลง */
 }
-
+ 
 .descript p , span {
 font-size: 14px; /* ปรับขนาดข้อความให้เล็กลง */
 margin:auto; /* ปรับระยะห่างของข้อความ */
@@ -250,16 +249,16 @@ margin-top: 5%;
 }
 .cart {
     font-size: 10px;
-    /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */ 
+    /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
     padding: 6px 12px;
     margin-top: -5px;
 }
-
+ 
 .cart:hover {
   background-color: #6e7174;
 }
 }
-
+ 
 @media screen and (max-width: 420px) {
 /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
 .box {
@@ -267,18 +266,18 @@ height: 250px; /* ปรับความสูงให้เล็กลง *
 width: 150px;
 border-radius: 10px; /* ลดขนาดของขอบ */
 }
-
+ 
 .imageFoecate {
 width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
 height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
 }
-
+ 
 .descript p ,span {
 font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
 margin:auto; /* ปรับระยะห่างของข้อความ */
 margin-top: 5%;
 }
-
+ 
 p {
 margin-bottom: 0%;
 margin-top: 5%;
@@ -292,7 +291,7 @@ margin-top: 0%; /* ปรับระยะห่างของปุ่ม */
 margin-right: 5%;
 }
 }
-
+ 
 @media screen and (max-width: 420px) {
   /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
   .box {
@@ -300,18 +299,18 @@ margin-right: 5%;
   width: 150px;
   border-radius: 10px; /* ลดขนาดของขอบ */
   }
-  
+ 
   .imageFoecate {
   width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
   height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
   }
-  
+ 
   .descript p ,span {
   font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
   margin:auto; /* ปรับระยะห่างของข้อความ */
   margin-top: 5%;
   }
-  
+ 
   p {
   margin-bottom: 0%;
   margin-top: 5%;
@@ -325,7 +324,7 @@ margin-right: 5%;
   margin-right: 5%;
   }
   }
-  
+ 
   @media screen and (max-width: 340px) {
     /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
     .box {
@@ -333,18 +332,18 @@ margin-right: 5%;
     width: 130px;
     border-radius: 10px; /* ลดขนาดของขอบ */
     }
-    
+   
     .imageFoecate {
     width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
     height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
     }
-    
+   
     .descript p ,span {
     font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
     margin:auto; /* ปรับระยะห่างของข้อความ */
     margin-top: 5%;
     }
-    
+   
     p {
     margin-bottom: 0%;
     margin-top: 5%;

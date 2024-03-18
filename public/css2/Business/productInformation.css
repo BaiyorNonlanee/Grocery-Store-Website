@@ -62,25 +62,30 @@
     border-radius: 7px ;
     border: 2px solid gray;
 }
-/* .savebutton a{
-    padding: 5px 50px;
-    color: rgb(26, 25, 25);
-    background-color: rgb(160, 156, 156);
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-} */
+
 .savebutton {
     margin-top: 30px;
     margin-left: 40%;
     border-radius: 10px;
     padding: 10px 50px; /* เพิ่มความสูงให้ปุ่มเพื่อให้มันมีความสูงที่เพียงพอสำหรับข้อความ */
     color: rgb(26, 25, 25);
-    background-color: rgb(160, 156, 156);
+    /* background-color: rgb(160, 156, 156); */
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
     text-align: center;
+    display: flex;
+    align-items: center;
   }
-.savebutton a:hover {
+  .savebutton button{
+    padding: 5px 50px;
+    border-radius: 5px;
+    color: rgb(26, 25, 25);
+    
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    border: 1px solid gray;
+}
+.savebutton button:hover {
     background-color: orange; /* เปลี่ยนพื้นหลังเป็นสีส้มเมื่อโฮเวอร์ */
     color: white; /* เปลี่ยนสีตัวอักษรเป็นสีขาวเมื่อโฮเวอร์ */
 }

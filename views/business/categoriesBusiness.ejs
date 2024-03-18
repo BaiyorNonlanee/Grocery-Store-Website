@@ -6,8 +6,8 @@
     <title>Category Page</title>
 
     <link rel="stylesheet" href="/css2/Business/categoriesBusiness.css">
-   
-    <%- include('../partials/link')  %>
+    
+    <%- include('../partials/link')  %>    
     
 </head>
 
@@ -19,7 +19,7 @@
         <div class="allcategory">
             <div class="row">
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <button class="beverages" style="padding: 0%;" >
+                    <button class="beverages" style="color: black;">
                         <img src="/image/baverage2.jpeg" alt="">
                         <p>Beverages</p>
                         <div class="editbutton">
@@ -31,7 +31,7 @@
                     </button>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <button class="fruits" style="padding: 0%;">
+                    <button class="fruits" style="color: black;">
                         <img src="/image/fruit.jpeg" alt="">
                         <p>Fruits And <br>Vegetables</p>
                         <div class="editbutton">
@@ -43,7 +43,7 @@
                     </button>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <button class="household" style="padding: 0%;">
+                    <button class="household" style="color: black;">
                         <img src="/image/household.jpeg" alt="">
                         <p>Household</p>
                         <div class="editbutton">
@@ -54,9 +54,9 @@
                         </div>
                     </button>
                 </div>
-
+ 
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <button class="meat" style="padding: 0%;">
+                    <button class="meat" style="color: black;">
                         <img src="/image/meat.png" alt="">
                         <p>Meat And <br>Seafood</p>
                         <div class="editbutton">
@@ -67,11 +67,11 @@
                         </div>
                     </button>
                 </div>
-
+ 
                 <div class="col-6 col-sm-6 col-lg-3">
                     <div class="addnew">
                         <div class="addnewicon" >
-                            <a href="/html2/Business/editCategory.html">
+                            <a href="/edit">
                                 <img src="/image/addnewicon.png" alt="">
                                 <a>
                         </div>
@@ -80,17 +80,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="confirmbox">
-            <p>Do you want to delete? <br> All product in this category will also delete.</p>
-            <div class="continuebutton">
-                <a href="#" style="color: rgb(255, 255, 255);"><b>Continue</b><i class="fa fa-angle-right"></i></a>
-            </div>
-            <div class="canclebutton">
-                <a href="#" style="color: rgb(255, 252, 252);"><b>Cancle</b><i class="fa fa-angle-right"></i></a>
-            </div>
-
-        </div>
+ 
     </section>
     <script>
         // ฟังก์ชันสำหรับดึงข้อมูลหมวดหมู่จากฐานข้อมูล
@@ -145,9 +135,7 @@
  
  
     </script>
-    
-     <%- include('../partials/script')  %>
-      
+      <%- include('../partials/script')  %>  
       <script src="/controllers/app.js"></script>
 
 </body>

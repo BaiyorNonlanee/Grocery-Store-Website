@@ -84,6 +84,12 @@
       height: 100%;
     }
   }
+  .nameUser{
+        margin-right: 20px;
+        margin-top: 10px;
+        font-weight: bold;
+     
+    }
  
 </style>
 
@@ -118,7 +124,89 @@
                     </li>
                 </ul>
             </div>                                 
-            <button class="login" type="button" aria-expanded="false">login</button>   
+            <div id="login"></div>
         </nav>
     </div>
 </section>
+<script>
+    let userIds
+  document.addEventListener("DOMContentLoaded", function () {
+    // Function to get a cookie by name
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    // Get the userName from the cookie
+    const userName = getCookie("user_name");
+    userIds = getCookie("user_id");
+
+    // Get the login button element
+    const loginButton = document.getElementById("login");
+    updateCartCount();
+
+    console.log(userName);
+
+    // Check if the userName cookie exists
+    if (userName) {
+      // If userName exists, update the login button's content to show the username
+      loginButton.innerHTML = `<div style="display: flex; gap: 10px;">
+        <span class="nameUser" style="color: #f7ae40;">${userName}</span>
+                    <button class="login" type="button" aria-expanded="false" onclick="logout()">Logout</button>
+                </div>`;
+    } else {
+      // If userName does not exist, ensure the login button is displayed
+      loginButton.innerHTML = `<button class="login" type="button" aria-expanded="false" onclick="window.location.href='/login'">Login</button>`;
+    }
+  });
+
+  function deleteAllCookies() {
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i];
+      const eqPos = cookie.indexOf("=");
+      const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+    }
+  }
+
+  function logout() {
+    fetch(`http://localhost:3003/logout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Delete all cookies
+        deleteAllCookies();
+
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    // Navigate to the logout endpoint
+  }
+
+  function updateCartCount() {
+    fetch(`http://localhost:3003/cart/${userIds}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success cart:", data);
+        const cartCountElement = document.querySelector(".cart-count");
+        cartCountElement.textContent = data.length;
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+</script>

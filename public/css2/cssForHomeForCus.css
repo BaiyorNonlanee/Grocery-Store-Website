@@ -52,10 +52,10 @@
         font-size: 9px;
     }
 }
-.box{
+/* .box{
     background-color: antiquewhite;
     height: 325px;
-    border: 1px solid black;
+   
     margin-bottom: 10px;
     border-radius: 20px;
     justify-content: center;
@@ -63,10 +63,9 @@
     display: flex;
     box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
     display: block;
-}
+} */
 
-.rectangle1 {
-    /* width: 150px; */
+/* .rectangle1 {
     height: 310px;
     width: 295px;
     border: 1px solid black;
@@ -89,7 +88,7 @@
     border-radius: 20px;
     margin:2% 2% 5% 1%;
     background-color: #FFB6B6;
-  }
+  } */
 
 #carouselExample .carousel-control-prev,
 #carouselExample .carousel-control-next{
@@ -235,7 +234,7 @@
     .rectangle1 , .rectangle2 {
         width: 250px;
         height: 270px;
-        border: 1.5px solid black;
+    
         border-radius: 20px;
     }
 
@@ -275,3 +274,168 @@
     justify-content: center;
     align-items: center;
 }
+     /* Container for the product */
+     .box {
+        background-color: antiquewhite;
+        height: 320px;
+        width: auto;
+        margin-bottom: 50px;
+        border-radius: 20px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        display: block;
+      }
+
+      .productbox {
+        align-items: center;
+        text-align: center;
+      }
+
+      .productlist {
+        margin-left: 60px;
+      }
+
+      /* Image container */
+      .img-container {
+        text-align: center;
+        display: block;
+        margin-left: 30%;
+      }
+
+      /* Image */
+      .imageFoecate {
+        object-fit: cover;
+        /* Ensures the image covers the container without stretching */
+        width: 60%;
+        /* Adjust the width as needed */
+        height: 150px;
+        /* Adjust the height as needed */
+        padding-top: 10px;
+        display: block;
+        /* Ensures the image is centered */
+      }
+
+      @media screen and (max-width: 768px) {
+        .imageFoecate {
+          width: 100%;
+          /* Adjust the width as needed for smaller screens */
+          height: 150px;
+          /* Adjust the height as needed for smaller screens */
+          object-fit: cover;
+          margin-left: 3.5%;
+        }
+      }
+
+      /* Description */
+      .descript {
+        padding: 0% 10% 0% 10%;
+        margin-bottom: 0%;
+        margin: auto;
+        font-family: "Josefin Sans", sans-serif;
+        text-align: center;
+      }
+
+      /* Price */
+      .descript p span {
+        font-family: "Jockey One", sans-serif;
+        font-size: 20px;
+        margin: 0 30px;
+      }
+
+      /* Add to cart button */
+      .cartButton {
+        margin-top: 10px;
+      }
+
+      .cart {
+        font-size: 14px;
+        background-color: red;
+        padding: 6px 20px;
+        border: none;
+        cursor: pointer;
+        color: white;
+        display: block;
+        margin: 0 auto;
+        margin-top: -10px;
+      }
+
+      @media screen and (max-width: 768px) {
+
+        /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+        .box {
+          height: 260px;
+          /* ปรับความสูงให้เล็กลง */
+          width: 160px;
+          border-radius: 10px;
+          /* ลดขนาดของขอบ */
+        }
+
+        .imageFoecate {
+          width: 80%;
+          /* ปรับขนาดของรูปภาพให้เล็กลง */
+          height: 120px;
+          /* ปรับความสูงของรูปภาพให้เล็กลง */
+        }
+
+        .descript {
+          font-size: 14px;
+          /* ปรับขนาดข้อความให้เล็กลง */
+          margin: auto;
+          /* ปรับระยะห่างของข้อความ */
+        }
+
+        .cart {
+          font-size: 12px;
+          /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+          padding: 6px 12px;
+          margin-top: -5px;
+        }
+
+        .cart:hover {
+          background-color: #6e7174;
+        }
+      }
+
+      @media screen and (max-width: 375px) {
+        /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+        .box {
+          height: 100%;
+          /* ปรับความสูงให้เล็กลง */
+          width: 100%;
+         
+        }
+
+        .imageFoecate {
+          margin-top: 40px;
+          width: 55%;
+          /* ปรับขนาดของรูปภาพให้เล็กลง */
+          
+          align-items: center;  
+        }
+
+        .descript,
+        span {
+          font-size: 15px;
+          /* ปรับขนาดข้อความให้เล็กลง */
+          margin: auto;
+          /* ปรับระยะห่างของข้อความ */
+        }
+
+        p {
+          margin-bottom: 0%;
+        }
+
+        .cart {
+          font-size: 13px;
+          /* ปรับขนาดของปุ่มให้เล็กลง */
+          padding: 4px 10px;
+          /* ปรับขนาดของปุ่มให้เล็กลง */
+          margin-top:10px;
+          /* ปรับระยะห่างของปุ่ม */
+        }
+
+        #productList {
+          margin-right: 5%;
+        }
+      }

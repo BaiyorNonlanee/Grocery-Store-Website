@@ -30,7 +30,7 @@
                 <img class="fish" src="/image/fish.png">
                 <img class="bread" src="/image/bread.png">
                 <img class="tomato" src="/image/tomato.png">
-                <img class="meat" src="/image/meat.png">
+                <img class="meat" src="/image/meat copy.png">
                 <img class="juice" src="/image/orange.png">
                 <img class="pumpkin" src="/image/pumpkin.png">
                 <img class="milk" src="/image/milk.png">
@@ -38,7 +38,7 @@
 
             <div class="col-md-6 right-content">
                 <!-- right content -->
-                <p class="top">Already have an account?<span id="login"><a href="/loginPage/login.html">
+                <p class="top">Already have an account?<span id="login"><a href="/">
                             Login</a></span></p>
                 <br>
                 <h3>Registration</h3>
@@ -106,30 +106,24 @@
 
 
         function handleInput() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById('password').value;
-            const email = document.getElementById('email').value;
-            const confirm = document.getElementById('confirm').value;
-            const signUpButton = document.getElementById('signUpButton');
+    const username = document.getElementById("username").value;
+    const password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
+    const confirm = document.getElementById('confirm').value;
+    const signUpButton = document.getElementById('signUpButton');
 
-            // ตรวจสอบว่าผู้ใช้ได้เลือก role หรือไม่
-            if (!roleSelected) {
-                signUpButton.style.backgroundColor = '#d9d9d9';
-                signUpButton.style.color = '#818181';
-                signUpButton.disabled = true; // ปิดการใช้งานปุ่ม
-            } else {
-                signUpButton.style.backgroundColor = 'red';
-                signUpButton.style.color = 'white';
-                signUpButton.disabled = false; // เปิดการใช้งานปุ่ม
-            }
+    // ตรวจสอบว่าฟิลด์ที่จำเป็นได้รับค่า
+    if (username.trim() !== '' && password.trim() !== '' && email.trim() !== '' && confirm.trim() !== '') {
+        signUpButton.style.backgroundColor = 'red'; // เปลี่ยนสีปุ่มเป็นสีแดง
+        signUpButton.style.color = 'white'; // เปลี่ยนสีตัวอักษรในปุ่มเป็นสีขาว
+        signUpButton.disabled = false; // เปิดใช้งานปุ่ม
+    } else {
+        signUpButton.style.backgroundColor = '#d9d9d9'; // เปลี่ยนสีปุ่มกลับเป็นสีเทา
+        signUpButton.style.color = '#818181'; // เปลี่ยนสีตัวอักษรในปุ่มกลับเป็นสีเทา
+        signUpButton.disabled = true; // ปิดการใช้งานปุ่ม
+    }
+}
 
-            // ตรวจสอบว่าฟิลด์ที่จำเป็นได้รับค่า
-            if (username.trim() !== '' && password.trim() !== '' && email.trim() !== '' && confirm.trim() !== '') {
-                signUpButton.disabled = false; // เปิดการใช้งานปุ่ม
-            } else {
-                signUpButton.disabled = true; // ปิดการใช้งานปุ่ม
-            }
-        }
 
         function sendDataToServer() {
             // ตรวจสอบว่าผู้ใช้ได้เลือก role หรือไม่
