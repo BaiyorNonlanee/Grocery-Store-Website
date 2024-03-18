@@ -66,6 +66,7 @@
                             <th scope="col">Unit</th>
                             <th scope="col">Discount</th>
                             <th scope="col">Total</th>
+                          
                           </tr>
                         </thead>
                         <tbody>
@@ -171,6 +172,7 @@
             const unitCell = row.insertCell(3);
             const discountCell = row.insertCell(4);
             const totalCell = row.insertCell(5);
+            const trashCell = row.insertCell(6);
  
             productCell.innerHTML = `
                       <div class="d-flex align-items-center">
@@ -187,6 +189,7 @@
             totalCell.innerHTML = `<p class="mb-0" style="font-weight: 500;">${totalPrice.toFixed(2)}</p>`;
             grandTotal += totalPrice; // Add to grand total
             grandTotals += totalPrice
+            trashCell.innerHTML = `<i class="fa fa-trash-o" style="font-size:24px"></i>`;
  
             const quantityInput = quantityCell.querySelector('input');
             let timeoutId = null;

@@ -627,7 +627,7 @@ app.get('/productInfo', (req, res) => {res.render('business/productInformation')
 app.get('/best', (req, res) => {res.render('business/bestSeller')});
 app.get('/details', (req, res) => {res.render('business/billDetail')});
 app.get('/summary', (req, res) => {res.render('business/billSummary')});
-
+app.get('/category', (req, res) => {res.render('business/categoriesBusiness')});
 
 // Start the server
 app.listen(port, () => {
