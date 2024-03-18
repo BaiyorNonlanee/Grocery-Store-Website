@@ -24,17 +24,18 @@
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;     
 }
-.savebutton a{
+.savebutton button{
     padding: 5px 50px;
     border-radius: 5px;
     color: rgb(26, 25, 25);
     background-color: rgb(160, 156, 156);
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
+    border: 1px solid gray;
 }
-.savebutton a:hover {
+.savebutton button:hover {
     background-color: orange; /* เปลี่ยนพื้นหลังเป็นสีส้มเมื่อโฮเวอร์ */
     color: white; /* เปลี่ยนสีตัวอักษรเป็นสีขาวเมื่อโฮเวอร์ */
 }
