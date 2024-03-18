@@ -8,23 +8,25 @@
    width: 100%;
    height: auto;
    filter: blur(0.3px) opacity(0.9);
-   border-radius: 5px;
+   border-radius: 15px;
 }
 .fruits img, .household img, .meat img{
    width: 100%;
    height: auto;
    filter: blur(0.3px) opacity(0.7);
-   border-radius: 5px;
+   border-radius: 15px;
 }
 .beverages, .fruits, .household, .meat{
     width: 100%;
-    background-color: antiquewhite;
+    background-color: rgba(128, 128, 128, 0.338);
     position: relative;
     margin-top: 150px;
     display: flex;
    justify-content: center;
    justify-content: center;
    text-align: center;
+   border: none;
+   border-radius: 15px;
 }
 .beverages p, .fruits p, .household p, .meat p{
     position: absolute;
@@ -71,7 +73,7 @@
     flex-direction: column;
     margin-top: 20px;
     border: 1px solid #817c7c; /* สีขอบและขนาดขอบ */
-    border-radius: 5px;
+    border-radius: 15px;
     font-family: "Jockey One", sans-serif;
 }
 .addnew a{
