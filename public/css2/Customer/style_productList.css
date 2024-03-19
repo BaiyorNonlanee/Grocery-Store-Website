@@ -12,6 +12,9 @@
     font-family: "Josefin Sans", sans-serif;
 }
  
+.flex-column p {
+    margin-right: 120px;
+}
 .productlist {
     flex-grow: 1; /* ทำให้ยืดหยุ่นตามข้อมูล */
 }
