@@ -340,23 +340,6 @@
           paginationDiv.appendChild(ul);
         }
 
-        // ฟังก์ชันเพื่อดึงสินค้าตามหมวดหมู่
-        /*function fetchProductsByCategory(categoryId) {
-            fetch(`/product-category/${categoryId}`)
-              .then(response => {
-                if (!response.ok) {
-                  throw new Error('การตอบกลับจากเครือข่ายไม่ถูกต้อง');
-                }
-                return response.json();
-              })
-              .then(products => {
-                displayProducts(products);
-              })
-              .catch(error => {
-                console.error('มีปัญหาในการดึงข้อมูล:', error);
-              });
-          }*/
-
         function displayProducts(products) {
           const productList = document.getElementById("productList");
           // Clear old data

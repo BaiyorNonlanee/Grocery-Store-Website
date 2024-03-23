@@ -166,8 +166,8 @@
 }
 @media screen and (max-width: 667px) {
     #google-map{
-        width: 250px; /* ปรับขนาดไอคอนให้เล็กลง */
-        height: 250px; /* ปรับขนาดไอคอนให้เล็กลง */
+        width: 250px; 
+        height: 250px; 
         align-self: center;
         margin: 0 auto;
         margin-bottom: 20px;
