@@ -13,7 +13,7 @@ The system also includes a secure back-office for store owners to manage product
   </tr>
   <tr>
     <td><img src="./assets/payment.png" alt="Image3" width="300"/></td>
-    <td><img src="./assets/admin4.png" alt="Image4" width="300"/></td>
+    <td><img src="./assets/admin.png" alt="Image4" width="300"/></td>
   </tr>
 </table>
 
@@ -26,11 +26,11 @@ The system also includes a secure back-office for store owners to manage product
 
 ## 🛠️ Framework and Tools
 
-Frontend: HTML, CSS, Bootstrap, JavaScript, EJS
-Backend: Node.js, Express.js
-Database: MySQL
-Auth: Session-based Authentication
-Deployment: AWS, Docker
+- Frontend: HTML, CSS, Bootstrap, JavaScript, EJS
+- Backend: Node.js, Express.js
+- Database: MySQL
+- Auth: Session-based Authentication
+- Deployment: AWS, Docker
 
 ## Name Group: PowerPuffGirl
 
